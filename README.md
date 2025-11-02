@@ -88,10 +88,6 @@ public/
 - Efficient re-renders with React hooks
 - Responsive images and assets
 
-## 📝 License
-
-This project is open source and available under the [ISC License](LICENSE).
-
 ## 👤 Author
 
 **Earnest S**
