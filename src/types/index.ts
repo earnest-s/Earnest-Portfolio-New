@@ -45,6 +45,18 @@ export interface Skill {
   items: string[];
 }
 
+export interface CertificateItem {
+  id: string;
+  title: string;
+  provider: string;
+  issueDate: string;
+  credentialId?: string;
+  credentialUrl?: string;
+  skills?: string[];
+  thumbnail?: string;
+  category: 'data-analytics' | 'job-simulation' | 'ai-ml' | 'networking' | 'development' | 'soft-skills' | 'iot';
+}
+
 export interface ContactFormData {
   name: string;
   email: string;
