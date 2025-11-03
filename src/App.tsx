@@ -6,6 +6,7 @@ import {
   About,
   Experience,
   Skills,
+  Certificates,
   Projects,
   Contact,
   Footer,
@@ -28,6 +29,7 @@ function App() {
         <About />
         <Experience />
         <Skills />
+        <Certificates />
         <Projects />
         <Contact />
       </main>
