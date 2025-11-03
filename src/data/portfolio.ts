@@ -141,7 +141,7 @@ export const skills: Skill[] = [
     id: 'version-control',
     category: 'devops',
     title: 'Version Control',
-    icon: 'fa-git-alt',
+    icon: 'fa-code-branch',
     items: ['Git', 'GitHub'],
   },
   {
