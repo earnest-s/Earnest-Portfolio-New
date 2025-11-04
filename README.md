@@ -2,6 +2,8 @@
 
 A modern, responsive portfolio website built with React, TypeScript, Vite, GSAP animations, and Spline 3D integration.
 
+🌐 **Live Demo**: [earnest.qzz.io](https://earnest.qzz.io)
+
 ## 🚀 Features
 
 - **Modern Stack**: Built with React 19, TypeScript, and Vite for fast development and optimal performance
