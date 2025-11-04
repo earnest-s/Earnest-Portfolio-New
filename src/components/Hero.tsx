@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useTypingEffect } from '../hooks/useTypingEffect';
 import { typingPhrases } from '../data/portfolio';
 import { gsap } from 'gsap';
-import Spline from '@splinetool/react-spline';
+// import Spline from '@splinetool/react-spline';
 
 export const Hero = () => {
   const typingText = useTypingEffect(typingPhrases);

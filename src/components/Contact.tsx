@@ -12,7 +12,6 @@ export const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -46,7 +45,6 @@ export const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
 
     try {
       const response = await fetch('https://formspree.io/f/xandgjvp', {
@@ -61,17 +59,14 @@ export const Contact = () => {
       });
 
       if (response.ok) {
-        setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
         
         // Show success popup
         alert('Thank you for your message! I will get back to you soon.');
       } else {
-        setSubmitStatus('error');
         alert('Oops! There was a problem sending your message. Please try again.');
       }
     } catch (error) {
-      setSubmitStatus('error');
       alert('Oops! There was a problem sending your message. Please try again.');
     } finally {
       setIsSubmitting(false);
