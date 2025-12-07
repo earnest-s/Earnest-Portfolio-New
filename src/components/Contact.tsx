@@ -38,7 +38,7 @@ export const Contact = () => {
       gsap.from(formRef.current, {
         opacity: 0,
         y: 40,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'power3.out',
         force3D: true,
         scrollTrigger: {
@@ -52,8 +52,8 @@ export const Contact = () => {
       gsap.from('.contact-form input, .contact-form textarea', {
         opacity: 0,
         x: -20,
-        duration: 0.6,
-        stagger: 0.1,
+        duration: 0.4,
+        stagger: 0.08,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: formRef.current,
@@ -67,8 +67,8 @@ export const Contact = () => {
         opacity: 0,
         y: 20,
         scale: 0.9,
-        duration: 0.6,
-        stagger: 0.1,
+        duration: 0.4,
+        stagger: 0.08,
         ease: 'back.out(1.4)',
         force3D: true,
         scrollTrigger: {

@@ -18,7 +18,7 @@ export const Hero = () => {
       gsap.from(leftContentRef.current, {
         opacity: 0,
         x: -50,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'power3.out',
         force3D: true,
         clearProps: 'all'
@@ -27,8 +27,8 @@ export const Hero = () => {
       gsap.from(rightContentRef.current, {
         opacity: 0,
         x: 50,
-        duration: 0.8,
-        delay: 0.2,
+        duration: 0.5,
+        delay: 0.1,
         ease: 'power3.out',
         force3D: true,
         clearProps: 'all'
@@ -38,9 +38,9 @@ export const Hero = () => {
       gsap.from('.hero-buttons .btn', {
         opacity: 0,
         y: 20,
-        duration: 0.6,
-        delay: 0.5,
-        stagger: 0.1,
+        duration: 0.4,
+        delay: 0.3,
+        stagger: 0.08,
         ease: 'back.out(1.4)',
         force3D: true
       });

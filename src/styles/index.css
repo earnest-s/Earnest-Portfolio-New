@@ -1118,6 +1118,9 @@ body::after {
   background: rgba(220, 38, 38, 0.05) !important;
   border-radius: 10px !important;
   font-family: 'Courier New', monospace !important;
+  word-break: break-all !important;
+  overflow-wrap: break-word !important;
+  line-height: 1.5 !important;
 }
 
 .certificate-skills {
@@ -1134,21 +1137,44 @@ body::after {
 .certificate-link {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 0.5rem !important;
-  padding: 0.75rem 1.5rem !important;
+  justify-content: center !important;
+  gap: 0.6rem !important;
+  padding: 1rem 2rem !important;
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color)) !important;
   color: white !important;
   text-decoration: none !important;
   border-radius: 12px !important;
-  font-weight: 600 !important;
-  transition: all 0.3s ease !important;
-  margin-top: 0.5rem !important;
-  align-self: flex-start !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  margin-top: 1rem !important;
+  width: 100% !important;
+  max-width: 250px !important;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3) !important;
+  position: relative !important;
+  z-index: 2 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
 }
 
 .certificate-link:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3) !important;
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: 0 12px 35px rgba(220, 38, 38, 0.45) !important;
+  background: linear-gradient(135deg, #ef4444, #b91c1c) !important;
+}
+
+.certificate-link:active {
+  transform: translateY(-1px) scale(0.99) !important;
+}
+
+.certificate-link i {
+  font-size: 1.1rem !important;
+  animation: pulse 2s ease-in-out infinite !important;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
 [data-theme="dark"] .certificate-card:hover {
@@ -1158,6 +1184,134 @@ body::after {
 
 [data-theme="dark"] .certificate-credential {
   background: rgba(248, 113, 113, 0.1) !important;
+}
+
+/* Experience Section - View Certificate Button */
+.certificate-display {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding: 1.25rem;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.certificate-display:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15);
+}
+
+.certificate-pdf-preview {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1.75rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 150px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-pdf-preview::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.certificate-pdf-preview:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.certificate-pdf-preview:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(220, 38, 38, 0.45);
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+
+.certificate-pdf-preview:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.certificate-pdf-icon {
+  font-size: 2rem;
+  animation: bounce 2s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.certificate-preview-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.certificate-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.certificate-info .certificate-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  line-height: 1.3;
+}
+
+.certificate-info .certificate-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.certificate-info .certificate-provider {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .certificate-display {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .certificate-pdf-preview {
+    width: 100%;
+    max-width: 250px;
+  }
 }
 
 /* Footer - Stick to Bottom */
