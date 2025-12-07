@@ -16,7 +16,7 @@ export const About = () => {
       gsap.from('.section-title', {
         opacity: 0,
         y: 30,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'power3.out',
         force3D: true,
         scrollTrigger: {
@@ -30,8 +30,8 @@ export const About = () => {
       gsap.from('.about-content p', {
         opacity: 0,
         y: 20,
-        duration: 0.8,
-        stagger: 0.15,
+        duration: 0.5,
+        stagger: 0.1,
         ease: 'power2.out',
         force3D: true,
         scrollTrigger: {

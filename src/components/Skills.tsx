@@ -34,9 +34,9 @@ export const Skills = () => {
           opacity: 0,
           scale: 0.9,
           y: 30,
-          duration: 0.6,
+          duration: 0.4,
           stagger: {
-            amount: 0.5,
+            amount: 0.3,
             from: 'start',
             ease: 'power2.out'
           },
@@ -53,8 +53,8 @@ export const Skills = () => {
         gsap.from('.skill-icon', {
           scale: 0,
           rotation: 180,
-          duration: 0.8,
-          stagger: 0.05,
+          duration: 0.5,
+          stagger: 0.03,
           ease: 'elastic.out(1, 0.5)',
           scrollTrigger: {
             trigger: gridRef.current,

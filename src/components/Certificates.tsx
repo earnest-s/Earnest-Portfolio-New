@@ -33,9 +33,9 @@ export const Certificates = () => {
           opacity: 0,
           y: 40,
           scale: 0.95,
-          duration: 0.7,
+          duration: 0.4,
           stagger: {
-            amount: 0.5,
+            amount: 0.3,
             from: 'start',
             ease: 'power2.out'
           },
@@ -52,8 +52,8 @@ export const Certificates = () => {
         gsap.from('.certificate-provider-icon', {
           scale: 0,
           rotation: 360,
-          duration: 0.8,
-          stagger: 0.08,
+          duration: 0.5,
+          stagger: 0.05,
           ease: 'elastic.out(1, 0.5)',
           scrollTrigger: {
             trigger: gridRef.current,

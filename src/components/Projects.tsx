@@ -30,9 +30,9 @@ export const Projects = () => {
           opacity: 0,
           y: 40,
           scale: 0.95,
-          duration: 0.7,
+          duration: 0.4,
           stagger: {
-            amount: 0.4,
+            amount: 0.3,
             from: 'start',
             ease: 'power2.out'
           },

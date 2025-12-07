@@ -33,7 +33,7 @@ export const Experience = () => {
         gsap.from(item.querySelector('.date-badge'), {
           scale: 0,
           rotation: 180,
-          duration: 0.6,
+          duration: 0.4,
           ease: 'back.out(1.7)',
           scrollTrigger: {
             trigger: item,
@@ -46,7 +46,7 @@ export const Experience = () => {
         gsap.from(item.querySelector('.experience-content'), {
           opacity: 0,
           x: 50,
-          duration: 0.7,
+          duration: 0.5,
           ease: 'power3.out',
           force3D: true,
           scrollTrigger: {
@@ -60,8 +60,8 @@ export const Experience = () => {
         gsap.from(item.querySelectorAll('.experience-achievements li'), {
           opacity: 0,
           x: -20,
-          duration: 0.5,
-          stagger: 0.08,
+          duration: 0.3,
+          stagger: 0.05,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: item.querySelector('.experience-achievements'),
