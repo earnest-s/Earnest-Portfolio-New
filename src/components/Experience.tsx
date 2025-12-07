@@ -12,17 +12,60 @@ export const Experience = () => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
+      // Animate section header
+      gsap.from('.section-header', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+      
+      // Optimized experience items with stagger
       const items = gsap.utils.toArray<HTMLElement>('.experience-item');
       
-      items.forEach((item, index) => {
-        gsap.from(item, {
-          opacity: 0,
-          x: index % 2 === 0 ? -30 : 30,
-          duration: 0.4,
+      items.forEach((item) => {
+        // Animate date badge
+        gsap.from(item.querySelector('.date-badge'), {
+          scale: 0,
+          rotation: 180,
+          duration: 0.6,
+          ease: 'back.out(1.7)',
           scrollTrigger: {
             trigger: item,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        });
+        
+        // Animate content card
+        gsap.from(item.querySelector('.experience-content'), {
+          opacity: 0,
+          x: 50,
+          duration: 0.7,
+          ease: 'power3.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        });
+        
+        // Stagger animate achievements
+        gsap.from(item.querySelectorAll('.experience-achievements li'), {
+          opacity: 0,
+          x: -20,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: item.querySelector('.experience-achievements'),
             start: 'top 85%',
-            end: 'bottom 15%',
             toggleActions: 'play none none reverse',
           },
         });

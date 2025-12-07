@@ -12,14 +12,31 @@ export const About = () => {
     if (!sectionRef.current || !contentRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.from(contentRef.current, {
+      // Animate section with optimized settings
+      gsap.from('.section-title', {
         opacity: 0,
         y: 30,
-        duration: 0.5,
+        duration: 0.8,
+        ease: 'power3.out',
+        force3D: true,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
-          end: 'bottom 20%',
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+      
+      // Stagger animate paragraphs
+      gsap.from('.about-content p', {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power2.out',
+        force3D: true,
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: 'top 70%',
           toggleActions: 'play none none reverse',
         },
       });
