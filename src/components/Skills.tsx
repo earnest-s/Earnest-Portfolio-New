@@ -15,22 +15,54 @@ export const Skills = () => {
   useEffect(() => {
     if (!sectionRef.current || !gridRef.current) return;
 
+    // Kill any existing ScrollTriggers to prevent duplicates
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger.vars.trigger === gridRef.current) {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
       const boxes = gsap.utils.toArray<HTMLElement>('.skill-box');
       
-      boxes.forEach((box, index) => {
-        gsap.from(box, {
+      // Set initial state
+      gsap.set(boxes, { opacity: 1, scale: 1, y: 0 });
+      
+      // Only animate if not already visible
+      if (boxes.length > 0) {
+        gsap.from(boxes, {
           opacity: 0,
           scale: 0.9,
-          duration: 0.3,
-          delay: index * 0.05,
+          y: 30,
+          duration: 0.6,
+          stagger: {
+            amount: 0.5,
+            from: 'start',
+            ease: 'power2.out'
+          },
+          ease: 'back.out(1.3)',
+          force3D: true,
           scrollTrigger: {
-            trigger: box,
-            start: 'top 90%',
-            toggleActions: 'play none none reverse',
+            trigger: gridRef.current,
+            start: 'top 85%',
+            once: true,
           },
         });
-      });
+        
+        // Animate icons separately
+        gsap.from('.skill-icon', {
+          scale: 0,
+          rotation: 180,
+          duration: 0.8,
+          stagger: 0.05,
+          ease: 'elastic.out(1, 0.5)',
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: 'top 85%',
+            once: true,
+          },
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
