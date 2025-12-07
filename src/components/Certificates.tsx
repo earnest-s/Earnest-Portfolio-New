@@ -15,22 +15,53 @@ export const Certificates = () => {
   useEffect(() => {
     if (!sectionRef.current || !gridRef.current) return;
 
+    // Kill any existing ScrollTriggers to prevent duplicates
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger.vars.trigger === gridRef.current || trigger.vars.trigger === sectionRef.current) {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>('.certificate-card');
       
-      cards.forEach((card, index) => {
-        gsap.from(card, {
+      // Set initial state
+      gsap.set(cards, { opacity: 1, scale: 1, y: 0 });
+      
+      if (cards.length > 0) {
+        gsap.from(cards, {
           opacity: 0,
-          y: 30,
-          duration: 0.4,
-          delay: index * 0.06,
+          y: 40,
+          scale: 0.95,
+          duration: 0.7,
+          stagger: {
+            amount: 0.5,
+            from: 'start',
+            ease: 'power2.out'
+          },
+          ease: 'back.out(1.2)',
+          force3D: true,
           scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            trigger: gridRef.current,
+            start: 'top 80%',
+            once: true,
           },
         });
-      });
+        
+        // Animate certificate icons
+        gsap.from('.certificate-provider-icon', {
+          scale: 0,
+          rotation: 360,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: 'elastic.out(1, 0.5)',
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: 'top 80%',
+            once: true,
+          },
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();

@@ -19,15 +19,62 @@ export const Contact = () => {
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    // Kill any existing ScrollTriggers for this section
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger.vars.trigger === sectionRef.current || 
+          trigger.vars.trigger === formRef.current || 
+          trigger.vars.trigger === '.contact-links') {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
+      // Set initial states
+      gsap.set(formRef.current, { opacity: 1, y: 0 });
+      gsap.set('.contact-form input, .contact-form textarea', { opacity: 1, x: 0 });
+      gsap.set('.contact-link', { opacity: 1, y: 0, scale: 1 });
+      
+      // Animate form with stagger for inputs
       gsap.from(formRef.current, {
         opacity: 0,
-        y: 20,
-        duration: 0.5,
+        y: 40,
+        duration: 0.8,
+        ease: 'power3.out',
+        force3D: true,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          start: 'top 70%',
+          once: true,
+        },
+      });
+      
+      // Stagger animate form fields
+      gsap.from('.contact-form input, .contact-form textarea', {
+        opacity: 0,
+        x: -20,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: 'top 75%',
+          once: true,
+        },
+      });
+      
+      // Animate contact links
+      gsap.from('.contact-link', {
+        opacity: 0,
+        y: 20,
+        scale: 0.9,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'back.out(1.4)',
+        force3D: true,
+        scrollTrigger: {
+          trigger: '.contact-links',
+          start: 'top 85%',
+          once: true,
         },
       });
     }, sectionRef);
@@ -61,13 +108,36 @@ export const Contact = () => {
       if (response.ok) {
         setFormData({ name: '', email: '', message: '' });
         
-        // Show success popup
-        alert('Thank you for your message! I will get back to you soon.');
+        // Show success message with better UX
+        const successMsg = document.createElement('div');
+        successMsg.className = 'success-message';
+        successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! I\'ll get back to you soon.';
+        formRef.current?.appendChild(successMsg);
+        
+        setTimeout(() => {
+          successMsg.remove();
+        }, 5000);
       } else {
-        alert('Oops! There was a problem sending your message. Please try again.');
+        // Show error message
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'error-message';
+        errorMsg.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! Please try again.';
+        formRef.current?.appendChild(errorMsg);
+        
+        setTimeout(() => {
+          errorMsg.remove();
+        }, 5000);
       }
     } catch (error) {
-      alert('Oops! There was a problem sending your message. Please try again.');
+      // Show error message
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'error-message';
+      errorMsg.innerHTML = '<i class="fas fa-exclamation-circle"></i> Connection error. Please try again.';
+      formRef.current?.appendChild(errorMsg);
+      
+      setTimeout(() => {
+        errorMsg.remove();
+      }, 5000);
     } finally {
       setIsSubmitting(false);
     }

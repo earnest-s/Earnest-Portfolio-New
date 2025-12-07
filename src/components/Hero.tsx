@@ -14,20 +14,35 @@ export const Hero = () => {
     if (!heroRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Animate hero content on load
+      // Optimized hero animations with better performance
       gsap.from(leftContentRef.current, {
         opacity: 0,
         x: -50,
-        duration: 0.5,
-        ease: 'power2.out',
+        duration: 0.8,
+        ease: 'power3.out',
+        force3D: true,
+        clearProps: 'all'
       });
 
       gsap.from(rightContentRef.current, {
         opacity: 0,
         x: 50,
-        duration: 0.5,
-        delay: 0.15,
-        ease: 'power2.out',
+        duration: 0.8,
+        delay: 0.2,
+        ease: 'power3.out',
+        force3D: true,
+        clearProps: 'all'
+      });
+      
+      // Animate hero buttons with stagger
+      gsap.from('.hero-buttons .btn', {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: 0.5,
+        stagger: 0.1,
+        ease: 'back.out(1.4)',
+        force3D: true
       });
     }, heroRef);
 
@@ -86,11 +101,12 @@ export const Hero = () => {
               </div>
             </div>
             <div className="hero-image-placeholder">
-              {/* Fallback SVG animation */}
+              {/* Enhanced Fallback SVG animation */}
               <svg 
                 className="hero-svg" 
                 viewBox="0 0 500 400" 
                 xmlns="http://www.w3.org/2000/svg"
+                aria-label="Data visualization animation"
               >
                 <defs>
                   <pattern 
@@ -106,6 +122,10 @@ export const Hero = () => {
                       strokeWidth="1"
                     />
                   </pattern>
+                  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="var(--primary-color)" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="var(--accent-color)" stopOpacity="1" />
+                  </linearGradient>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -118,8 +138,10 @@ export const Hero = () => {
                       className="chart-line" 
                       d="M0,250 L100,200 L200,150 L300,100 L400,50"
                       fill="none"
-                      stroke="var(--primary-color)"
-                      strokeWidth="3"
+                      stroke="url(#lineGradient)"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
 
                     <circle cx="0" cy="250" r="6" className="data-point" fill="var(--primary-color)"/>

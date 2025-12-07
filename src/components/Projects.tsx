@@ -11,22 +11,40 @@ export const Projects = () => {
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    // Kill any existing ScrollTriggers for this section
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger.vars.trigger === sectionRef.current || trigger.vars.trigger === '.projects-grid') {
+        trigger.kill();
+      }
+    });
+
     const ctx = gsap.context(() => {
+      // Optimized stagger animation for cards
       const cards = gsap.utils.toArray<HTMLElement>('.project-card');
       
-      cards.forEach((card, index) => {
-        gsap.from(card, {
+      // Set initial state
+      gsap.set(cards, { opacity: 1, scale: 1, y: 0 });
+      
+      if (cards.length > 0) {
+        gsap.from(cards, {
           opacity: 0,
-          y: 30,
-          duration: 0.4,
-          delay: index * 0.08,
+          y: 40,
+          scale: 0.95,
+          duration: 0.7,
+          stagger: {
+            amount: 0.4,
+            from: 'start',
+            ease: 'power2.out'
+          },
+          ease: 'back.out(1.2)',
+          force3D: true,
           scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            trigger: '.projects-grid',
+            start: 'top 80%',
+            once: true,
           },
         });
-      });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
