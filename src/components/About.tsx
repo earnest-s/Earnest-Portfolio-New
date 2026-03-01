@@ -5,7 +5,13 @@ import '../styles/about.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Spline = lazy(() => import('@splinetool/react-spline'));
+// Safe lazy-load: falls back to null if Spline is unavailable
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Spline = lazy(() =>
+  (import('@splinetool/react-spline') as Promise<any>).catch(() => ({
+    default: () => null,
+  }))
+);
 
 export const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
