@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 import {
   Header,
   Hero,
@@ -11,16 +10,17 @@ import {
   Contact,
   Footer,
 } from './components';
+import { MagneticCursor } from './components/MagneticCursor';
 import './styles/index.css';
 
 function App() {
   useEffect(() => {
-    // Add fade-in class to body
     document.body.classList.add('fade-in');
   }, []);
 
   return (
     <>
+      <MagneticCursor />
       <Header />
       <main>
         <Hero />
