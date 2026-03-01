@@ -20,6 +20,7 @@ function App() {
 
   return (
     <>
+      <div className="noise-overlay" aria-hidden="true" />
       <MagneticCursor />
       <Header />
       <main>
