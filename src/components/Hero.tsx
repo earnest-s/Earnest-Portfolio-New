@@ -1,6 +1,7 @@
 import { useRef, useEffect, lazy, Suspense } from 'react';
 import { gsap } from 'gsap';
 import '../styles/hero.css';
+import ErrorBoundary from './ErrorBoundary';
 
 // Safe lazy-load: falls back to CSS grid if Spline is unavailable
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -73,9 +74,11 @@ export const Hero = () => {
     >
       {/* Spline 3D Background — lazy-loaded */}
       <Suspense fallback={<div className="hero-bg-grid" />}>
-        <div className="hero-spline-bg">
-          <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
-        </div>
+        <ErrorBoundary fallback={<div className="hero-bg-grid" />}>
+          <div className="hero-spline-bg">
+            <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
+          </div>
+        </ErrorBoundary>
       </Suspense>
 
       {/* Fallback grid (visible while Spline loads) */}
