@@ -100,10 +100,7 @@ body {
 
 /* Hide native cursor so magnetic cursor takes over */
 @media (hover: hover) {
-
-  *,
-  *::before,
-  *::after {
+  body, a, button, input, select, textarea {
     cursor: none !important;
   }
 }
@@ -167,10 +164,7 @@ body {
   }
 }
 
-/* Section titles: init clip-path so GSAP can animate */
-.section-title {
-  clip-path: inset(0 0% 0 0);
-}
+/* DO NOT add clip-path here — it conflicts with -webkit-background-clip: text gradient */
 
 
 body::before {
