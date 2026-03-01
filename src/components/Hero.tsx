@@ -2,8 +2,13 @@ import { useRef, useEffect, lazy, Suspense } from 'react';
 import { gsap } from 'gsap';
 import '../styles/hero.css';
 
-// Lazy-load Spline to improve Lighthouse performance
-const Spline = lazy(() => import('@splinetool/react-spline'));
+// Safe lazy-load: falls back to CSS grid if Spline is unavailable
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Spline = lazy(() =>
+  (import('@splinetool/react-spline') as Promise<any>).catch(() => ({
+    default: () => null,
+  }))
+);
 
 export const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
