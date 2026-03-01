@@ -5,18 +5,29 @@
     padding: 40px 0;
 }
 
-/* Glowing central line */
+/* Glowing central line — hidden, replaced by animated element */
 .experience-timeline-new::before {
-    content: '';
+    display: none;
+}
+
+/* Animated line drawn by GSAP ScrollTrigger (scaleY 0→1) */
+.timeline-line-animated {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 50%;
     width: 2px;
-    background: #00F5FF;
-    box-shadow: 0 0 15px #00F5FF;
-    transform: translateX(-50%);
+    background: linear-gradient(180deg, #00F5FF 0%, rgba(0, 245, 255, 0.3) 100%);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.7);
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top center;
     z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .timeline-line-animated {
+        left: 20px;
+    }
 }
 
 @media (max-width: 768px) {

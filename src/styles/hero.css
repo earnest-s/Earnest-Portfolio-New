@@ -1,3 +1,77 @@
+/* ================================================
+   HERO SECTION — Redesigned
+   ================================================ */
+
+/* CSS Grid fallback background */
+.hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(0, 245, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridPulse 6s ease-in-out infinite;
+}
+
+.hero-bg-grid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0, 245, 255, 0.08) 0%, transparent 70%);
+    animation: gridPulse 6s ease-in-out infinite reverse;
+}
+
+@keyframes gridPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Spline background wrapper */
+.hero-spline-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-spline-bg canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.hero-content-wrap {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero Grid */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+
+/* ================================================
+   LEFT CONTENT
+   ================================================ */
+
 .hero-title-massive {
     font-family: 'Syne', sans-serif;
     font-size: 120px;
@@ -41,97 +115,252 @@
     }
 }
 
+.hero-description {
+    color: #a3a3a3;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 500px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ============== CTA Buttons ============== */
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 48px;
+}
+
+.btn-neon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #00F5FF;
+    text-decoration: none;
+    border: 1px solid #00F5FF;
+    background: transparent;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    z-index: 0;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.2), inset 0 0 10px rgba(0, 245, 255, 0);
+}
+
+.btn-neon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #00F5FF;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: -1;
+}
+
+.btn-neon:hover {
+    color: #080808;
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.5), 0 0 60px rgba(0, 245, 255, 0.2);
+}
+
+.btn-neon:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-neon-outline {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: none;
+}
+
+.btn-neon-outline::before {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-neon-outline:hover {
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============== Scroll Indicator ============== */
+.scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    opacity: 0.6;
+}
+
+.scroll-indicator span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a3a3a3;
+}
+
+.scroll-dots {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.scroll-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #00F5FF;
+    animation: dotBounce 1.4s ease-in-out infinite;
+}
+
+.scroll-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.scroll-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dotBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+
+    40% {
+        transform: translateY(8px);
+        opacity: 1;
+    }
+}
+
+/* ================================================
+   RIGHT SIDE — Photo + Floating Tags
+   ================================================ */
+
 .hero-visual-right {
     position: relative;
     width: 100%;
-    max-width: 450px;
+    max-width: 380px;
     margin: 0 auto;
+    padding: 60px 40px;
 }
 
+/* Profile Photo Frame */
 .hero-photo-frame {
     position: relative;
     z-index: 2;
-    border: 2px solid #00F5FF;
-    box-shadow: 0 0 30px rgba(0, 245, 255, 0.2);
-    padding: 15px;
-    /* sharp corners */
-    background: rgba(8, 8, 8, 0.5);
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 3px solid #00F5FF;
+    box-shadow:
+        0 0 0 6px rgba(0, 245, 255, 0.12),
+        0 0 40px rgba(0, 245, 255, 0.35),
+        0 0 80px rgba(0, 245, 255, 0.1);
+    overflow: hidden;
+    background: rgba(8, 8, 8, 0.6);
     backdrop-filter: blur(10px);
 }
 
 .hero-photo-frame img {
     width: 100%;
-    aspect-ratio: 3/4;
+    height: 100%;
     object-fit: cover;
-    filter: grayscale(20%) contrast(120%);
+    object-position: top center;
+    filter: grayscale(15%) contrast(115%);
     display: block;
 }
 
+/* Floating Tags */
 .floating-tag {
     position: absolute;
-    background: rgba(8, 8, 8, 0.8);
-    border: 1px solid #00F5FF;
+    background: rgba(8, 8, 8, 0.9);
+    border: 1px solid rgba(0, 245, 255, 0.7);
     color: #00F5FF;
-    padding: 8px 16px;
+    padding: 8px 18px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    box-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
+    box-shadow: 0 0 18px rgba(0, 245, 255, 0.25);
     z-index: 3;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
+    white-space: nowrap;
+    border-radius: 6px;
 }
 
+/* Tag positions: evenly distributed around the circle */
 .tag-1 {
-    top: 10%;
-    left: -30px;
-    animation: float1 4s ease-in-out infinite;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: tagFloat 3.5s ease-in-out infinite;
 }
 
 .tag-2 {
-    bottom: 25%;
-    right: -40px;
-    animation: float2 5s ease-in-out infinite;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    animation: tagFloat 4.2s ease-in-out infinite 0.5s;
 }
 
 .tag-3 {
-    bottom: -20px;
-    left: 40px;
-    animation: float3 4.5s ease-in-out infinite;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: tagFloat 3.8s ease-in-out infinite 1s;
 }
 
-@keyframes float1 {
+@keyframes tagFloat {
 
     0%,
     100% {
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
     }
 
     50% {
-        transform: translateY(-15px);
+        transform: translateX(-50%) translateY(-12px);
     }
 }
 
-@keyframes float2 {
+/* tag-2 uses Y centering so override */
+.tag-2 {
+    animation: tagFloat2 4.2s ease-in-out infinite 0.5s;
+}
+
+@keyframes tagFloat2 {
 
     0%,
     100% {
-        transform: translateY(0);
+        transform: translateY(-50%) translateX(0);
     }
 
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-50%) translateX(-10px);
     }
 }
 
-@keyframes float3 {
-
-    0%,
-    100% {
-        transform: translateY(0);
+@media (max-width: 900px) {
+    .hero-visual-right {
+        padding: 40px 20px;
+        max-width: 320px;
     }
 
-    50% {
-        transform: translateY(-10px);
+    .hero-photo-frame {
+        width: 240px;
+        height: 240px;
     }
 }
 
