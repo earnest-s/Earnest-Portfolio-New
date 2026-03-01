@@ -1,0 +1,191 @@
+.experience-timeline-new {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* Glowing central line */
+.experience-timeline-new::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #00F5FF;
+    box-shadow: 0 0 15px #00F5FF;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .experience-timeline-new::before {
+        left: 20px;
+    }
+}
+
+.experience-item-new {
+    position: relative;
+    width: 50%;
+    padding: 40px 40px;
+    z-index: 1;
+}
+
+.experience-item-new:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.experience-item-new:nth-child(even) {
+    left: 50%;
+}
+
+@media (max-width: 768px) {
+    .experience-item-new {
+        width: 100%;
+        padding: 20px 20px 20px 50px;
+    }
+
+    .experience-item-new:nth-child(odd),
+    .experience-item-new:nth-child(even) {
+        left: 0;
+        text-align: left;
+    }
+}
+
+/* Timeline dot */
+.experience-item-new::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #080808;
+    border: 2px solid #00F5FF;
+    border-radius: 50%;
+    top: 55px;
+    box-shadow: 0 0 10px #00F5FF;
+    z-index: 2;
+}
+
+.experience-item-new:nth-child(odd)::after {
+    right: -8px;
+}
+
+.experience-item-new:nth-child(even)::after {
+    left: -8px;
+}
+
+@media (max-width: 768px) {
+
+    .experience-item-new:nth-child(odd)::after,
+    .experience-item-new:nth-child(even)::after {
+        left: 12px;
+    }
+}
+
+.exp-card {
+    background: rgba(15, 15, 15, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 3px solid #00F5FF;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    transition: all 0.3s ease;
+    text-align: left;
+    /* reset text align */
+}
+
+/* Change border color if internship vs simulation */
+.exp-card.internship {
+    border-top-color: #00F5FF;
+}
+
+.exp-card.simulation {
+    border-top-color: #bb86fc;
+    /* distinct color for simulation */
+}
+
+.exp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1);
+    border-color: rgba(0, 245, 255, 0.2);
+}
+
+.exp-date {
+    font-family: 'Syne', sans-serif;
+    color: #00F5FF;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.exp-card.simulation .exp-date {
+    color: #bb86fc;
+}
+
+.exp-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.exp-company {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: #a3a3a3;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.exp-achievements {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.exp-achievements li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.exp-achievements li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #00F5FF;
+    font-weight: bold;
+}
+
+.exp-cert-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    color: #00F5FF;
+    padding: 8px 16px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.exp-cert-btn:hover {
+    background: #00F5FF;
+    color: #080808;
+}

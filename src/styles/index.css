@@ -1,17 +1,17 @@
 :root {
   /* Mild Red Color Palette - Light Mode */
-  --primary-color: #dc2626; /* Mild red */
-  --primary-hover: #b91c1c; /* Darker mild red */
-  --accent-color: #ef4444; /* Slightly brighter red accent */
-  --accent-hover: #dc2626; /* Darker red accent */
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --heading-color: #111827;
+  --primary-color: #00F5FF; /* Mild red */
+  --primary-hover: #00d4dd; /* Darker mild red */
+  --accent-color: #00F5FF; /* Slightly brighter red accent */
+  --accent-hover: #00F5FF; /* Darker red accent */
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  --heading-color: #ffffff;
   
   /* Subtle Background System */
-  --bg-primary: linear-gradient(135deg, #fefefe 0%, #f9fafb 50%, #f3f4f6 100%);
-  --bg-overlay: radial-gradient(circle at 25% 25%, rgba(220, 38, 38, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(239, 68, 68, 0.03) 0%, transparent 50%);
+  --bg-primary: #080808;
+  --bg-overlay: radial-gradient(circle at 25% 25%, rgba(0, 245, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 245, 255, 0.03) 0%, transparent 50%);
   
   /* Refined Glass Effects */
   --glass-bg: rgba(255, 255, 255, 0.85);
@@ -22,15 +22,15 @@
   
   /* Consistent Card System */
   --card-bg: rgba(255, 255, 255, 0.9);
-  --card-border: rgba(220, 38, 38, 0.08);
+  --card-border: rgba(0, 245, 255, 0.08);
   --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   --card-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.08);
   
   /* Mild Red Shadow Effects */
-  --gradient-shadow: 0 8px 25px rgba(220, 38, 38, 0.15);
-  --gradient-shadow-lg: 0 15px 35px rgba(220, 38, 38, 0.2);
-  --red-shadow: 0 8px 25px rgba(239, 68, 68, 0.15);
-  --red-shadow-lg: 0 15px 35px rgba(239, 68, 68, 0.2);
+  --gradient-shadow: 0 8px 25px rgba(0, 245, 255, 0.15);
+  --gradient-shadow-lg: 0 15px 35px rgba(0, 245, 255, 0.2);
+  --red-shadow: 0 8px 25px rgba(0, 245, 255, 0.15);
+  --red-shadow-lg: 0 15px 35px rgba(0, 245, 255, 0.2);
   
   /* Unified Blur System */
   --blur-strength: 12px;
@@ -39,16 +39,16 @@
 }
 
 [data-theme="dark"] {
-  --primary-color: #f87171; /* Soft red for dark mode */
-  --primary-hover: #ef4444; /* Slightly brighter red */
-  --accent-color: #fca5a5; /* Light red accent */
-  --accent-hover: #f87171; /* Darker red accent */
-  --text-primary: #f9fafb;
-  --text-secondary: #d1d5db;
+  --primary-color: #00F5FF; /* Soft red for dark mode */
+  --primary-hover: #00F5FF; /* Slightly brighter red */
+  --accent-color: #00F5FF; /* Light red accent */
+  --accent-hover: #00F5FF; /* Darker red accent */
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
   --heading-color: #ffffff;
-  --bg-primary: linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%);
-  --bg-overlay: radial-gradient(circle at 20% 80%, rgba(248, 113, 113, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(252, 165, 165, 0.08) 0%, transparent 50%),
+  --bg-primary: #080808;
+  --bg-overlay: radial-gradient(circle at 20% 80%, rgba(0, 245, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 245, 255, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(156, 163, 175, 0.05) 0%, transparent 50%);
   --glass-bg: rgba(31, 41, 55, 0.4);
   --glass-bg-secondary: rgba(31, 41, 55, 0.5);
@@ -59,10 +59,10 @@
   --glass-shadow-lg: 0 16px 48px 0 rgba(0, 0, 0, 0.6);
   --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   --card-shadow-hover: 0 16px 48px 0 rgba(0, 0, 0, 0.5);
-  --gradient-shadow: 0 8px 25px rgba(248, 113, 113, 0.2);
-  --gradient-shadow-lg: 0 15px 35px rgba(248, 113, 113, 0.3);
-  --red-shadow: 0 8px 25px rgba(252, 165, 165, 0.2);
-  --red-shadow-lg: 0 15px 35px rgba(252, 165, 165, 0.3);
+  --gradient-shadow: 0 8px 25px rgba(0, 245, 255, 0.2);
+  --gradient-shadow-lg: 0 15px 35px rgba(0, 245, 255, 0.3);
+  --red-shadow: 0 8px 25px rgba(0, 245, 255, 0.2);
+  --red-shadow-lg: 0 15px 35px rgba(0, 245, 255, 0.3);
 }
 
 * {
@@ -72,7 +72,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--bg-primary);
@@ -110,8 +110,8 @@ body::after {
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(circle at 1px 1px, rgba(220, 38, 38, 0.02) 1px, transparent 0),
-    radial-gradient(circle at 3px 3px, rgba(239, 68, 68, 0.02) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, rgba(0, 245, 255, 0.02) 1px, transparent 0),
+    radial-gradient(circle at 3px 3px, rgba(0, 245, 255, 0.02) 1px, transparent 0);
   background-size: 20px 20px, 30px 30px;
   pointer-events: none;
   z-index: -1;
@@ -120,8 +120,8 @@ body::after {
 
 [data-theme="dark"] body::after {
   background-image: 
-    radial-gradient(circle at 1px 1px, rgba(248, 113, 113, 0.03) 1px, transparent 0),
-    radial-gradient(circle at 3px 3px, rgba(252, 165, 165, 0.02) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, rgba(0, 245, 255, 0.03) 1px, transparent 0),
+    radial-gradient(circle at 3px 3px, rgba(0, 245, 255, 0.02) 1px, transparent 0);
   opacity: 0.2;
 }
 
@@ -163,13 +163,13 @@ body::after {
 .glass-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--glass-shadow-lg);
-  border-color: rgba(220, 38, 38, 0.15);
+  border-color: rgba(0, 245, 255, 0.15);
   background: rgba(255, 255, 255, 0.95);
 }
 
 [data-theme="dark"] .glass-card:hover {
   background: rgba(31, 41, 55, 0.5);
-  border-color: rgba(248, 113, 113, 0.2);
+  border-color: rgba(0, 245, 255, 0.2);
 }
 
 /* Header with Glassmorphism */
@@ -202,7 +202,7 @@ body::after {
 }
 
 .logo {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
@@ -282,7 +282,7 @@ body::after {
 }
 
 .section-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -334,7 +334,7 @@ body::after {
 }
 
 .hero-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 4rem;
   font-weight: 800;
   color: var(--text-primary);
@@ -463,7 +463,7 @@ body::after {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(220, 38, 38, 0.05), rgba(239, 68, 68, 0.05), transparent);
+  background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.05), rgba(0, 245, 255, 0.05), transparent);
   animation: shimmer 3s infinite linear;
 }
 
@@ -503,13 +503,13 @@ body::after {
 .contact-form:hover {
   box-shadow: var(--card-shadow-hover);
   background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(220, 38, 38, 0.1);
+  border-color: rgba(0, 245, 255, 0.1);
 }
 
 [data-theme="dark"] .about-text:hover,
 [data-theme="dark"] .contact-form:hover {
   background: rgba(31, 41, 55, 0.4);
-  border-color: rgba(248, 113, 113, 0.15);
+  border-color: rgba(0, 245, 255, 0.15);
 }
 
 .about-text p {
@@ -586,7 +586,7 @@ body::after {
 }
 
 .experience-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--heading-color);
@@ -764,7 +764,7 @@ body::after {
 .project-card:hover {
   transform: translateY(-8px) !important;
   box-shadow: var(--card-shadow-hover) !important;
-  border-color: rgba(220, 38, 38, 0.15) !important;
+  border-color: rgba(0, 245, 255, 0.15) !important;
 }
 
 .project-icon {
@@ -781,7 +781,7 @@ body::after {
 }
 
 .project-card h3 {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 1.4rem !important;
   font-weight: 600 !important;
   color: var(--heading-color) !important;
@@ -821,7 +821,7 @@ body::after {
   background: var(--primary-color) !important;
   color: white !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3) !important;
+  box-shadow: 0 8px 25px rgba(0, 245, 255, 0.3) !important;
 }
 
 /* Contact Form - Single Column Layout */
@@ -859,7 +859,7 @@ body::after {
 .contact-form textarea:focus {
   outline: none !important;
   border-color: var(--primary-color) !important;
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1) !important;
   background: rgba(255, 255, 255, 0.95) !important;
 }
 
@@ -968,7 +968,7 @@ body::after {
 .skills-grid .skill-box:hover {
   transform: translateY(-8px) !important;
   box-shadow: var(--card-shadow-hover) !important;
-  border-color: rgba(220, 38, 38, 0.15) !important;
+  border-color: rgba(0, 245, 255, 0.15) !important;
   background: var(--card-bg) !important;
 }
 
@@ -1037,7 +1037,7 @@ body::after {
   color: white !important;
   border-color: transparent !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3) !important;
+  box-shadow: 0 8px 25px rgba(0, 245, 255, 0.3) !important;
 }
 
 .certificates-grid {
@@ -1065,7 +1065,7 @@ body::after {
 .certificate-card:hover {
   transform: translateY(-8px) !important;
   box-shadow: var(--card-shadow-hover) !important;
-  border-color: rgba(220, 38, 38, 0.15) !important;
+  border-color: rgba(0, 245, 255, 0.15) !important;
 }
 
 .certificate-header {
@@ -1115,7 +1115,7 @@ body::after {
   font-size: 0.85rem !important;
   color: var(--text-secondary) !important;
   padding: 0.75rem !important;
-  background: rgba(220, 38, 38, 0.05) !important;
+  background: rgba(0, 245, 255, 0.05) !important;
   border-radius: 10px !important;
   font-family: 'Courier New', monospace !important;
   word-break: break-all !important;
@@ -1150,7 +1150,7 @@ body::after {
   margin-top: 1rem !important;
   width: 100% !important;
   max-width: 250px !important;
-  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3) !important;
+  box-shadow: 0 6px 20px rgba(0, 245, 255, 0.3) !important;
   position: relative !important;
   z-index: 2 !important;
   text-transform: uppercase !important;
@@ -1159,8 +1159,8 @@ body::after {
 
 .certificate-link:hover {
   transform: translateY(-3px) scale(1.03) !important;
-  box-shadow: 0 12px 35px rgba(220, 38, 38, 0.45) !important;
-  background: linear-gradient(135deg, #ef4444, #b91c1c) !important;
+  box-shadow: 0 12px 35px rgba(0, 245, 255, 0.45) !important;
+  background: linear-gradient(135deg, #00F5FF, #00d4dd) !important;
 }
 
 .certificate-link:active {
@@ -1179,11 +1179,11 @@ body::after {
 
 [data-theme="dark"] .certificate-card:hover {
   background: rgba(31, 41, 55, 0.4) !important;
-  border-color: rgba(248, 113, 113, 0.15) !important;
+  border-color: rgba(0, 245, 255, 0.15) !important;
 }
 
 [data-theme="dark"] .certificate-credential {
-  background: rgba(248, 113, 113, 0.1) !important;
+  background: rgba(0, 245, 255, 0.1) !important;
 }
 
 /* Experience Section - View Certificate Button */
@@ -1201,7 +1201,7 @@ body::after {
 
 .certificate-display:hover {
   border-color: var(--primary-color);
-  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 245, 255, 0.15);
 }
 
 .certificate-pdf-preview {
@@ -1222,7 +1222,7 @@ body::after {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 245, 255, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -1247,8 +1247,8 @@ body::after {
 
 .certificate-pdf-preview:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 12px 35px rgba(220, 38, 38, 0.45);
-  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  box-shadow: 0 12px 35px rgba(0, 245, 255, 0.45);
+  background: linear-gradient(135deg, #00F5FF, #00d4dd);
 }
 
 .certificate-pdf-preview:active {
@@ -1320,7 +1320,7 @@ body {
   flex-direction: column !important;
   min-height: 100vh !important;
   margin: 0 !important;
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'DM Sans', sans-serif !important;
   line-height: 1.6 !important;
   color: var(--text-primary) !important;
   background: var(--bg-primary) !important;
@@ -1427,7 +1427,7 @@ main {
 }
 
 .mobile-nav-close:hover {
-  background: rgba(220, 38, 38, 0.1);
+  background: rgba(0, 245, 255, 0.1);
   color: var(--primary-color);
 }
 
@@ -1723,7 +1723,7 @@ main {
 [data-theme="dark"] .contact-form input,
 [data-theme="dark"] .contact-form textarea {
   background: rgba(31, 41, 55, 0.8) !important;
-  border-color: rgba(248, 113, 113, 0.2) !important;
+  border-color: rgba(0, 245, 255, 0.2) !important;
   color: white !important;
 }
 
@@ -1735,17 +1735,17 @@ main {
 
 [data-theme="dark"] .contact-link {
   background: rgba(31, 41, 55, 0.6) !important;
-  border-color: rgba(248, 113, 113, 0.2) !important;
+  border-color: rgba(0, 245, 255, 0.2) !important;
 }
 
 [data-theme="dark"] .skills-grid .skill-box:hover {
   background: rgba(31, 41, 55, 0.4) !important;
-  border-color: rgba(248, 113, 113, 0.15) !important;
+  border-color: rgba(0, 245, 255, 0.15) !important;
 }
 
 [data-theme="dark"] .project-card:hover {
   background: rgba(31, 41, 55, 0.4) !important;
-  border-color: rgba(248, 113, 113, 0.15) !important;
+  border-color: rgba(0, 245, 255, 0.15) !important;
 }
 
 @keyframes fadeInDown {
@@ -1861,7 +1861,7 @@ html {
   color: white !important;
   border-color: transparent !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3) !important;
+  box-shadow: 0 8px 25px rgba(0, 245, 255, 0.3) !important;
 }
 
 /* Profile photo on right side */
@@ -1879,7 +1879,7 @@ html {
   border-radius: 50% !important;
   overflow: hidden !important;
   border: 5px solid var(--primary-color) !important;
-  box-shadow: 0 15px 50px rgba(220, 38, 38, 0.4) !important;
+  box-shadow: 0 15px 50px rgba(0, 245, 255, 0.4) !important;
   transition: all 0.4s ease !important;
 }
 
@@ -1894,7 +1894,7 @@ html {
 
 .profile-photo-frame:hover {
   transform: scale(1.08) !important;
-  box-shadow: 0 20px 60px rgba(220, 38, 38, 0.5) !important;
+  box-shadow: 0 20px 60px rgba(0, 245, 255, 0.5) !important;
   border-width: 6px !important;
 }
 
@@ -2067,7 +2067,7 @@ html {
 }
 
 .error-message {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: linear-gradient(135deg, #00F5FF, #00F5FF);
   color: white;
 }
 
@@ -2125,3 +2125,90 @@ html {
   }
 }
 
+
+
+/* --- NEW GLOBAL REDESIGN STYLES --- */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #00F5FF;
+  border-radius: 10px;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #00F5FF;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+  mix-blend-mode: exclusion;
+}
+
+/* Dot Pattern Background */
+.bg-dot-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -2;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Staggered Fade-in utility */
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Neon Glow Hover Button */
+.btn-neon {
+  background: transparent !important;
+  color: #00F5FF !important;
+  border: 1px solid #00F5FF !important;
+  box-shadow: 0 0 5px rgba(0, 245, 255, 0.2) !important;
+  transition: all 0.3s ease !important;
+  padding: 16px 32px !important;
+  border-radius: 0 !important; /* Sharp */
+  font-family: 'Syne', sans-serif !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-neon:hover {
+  background: rgba(0, 245, 255, 0.1) !important;
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.6), inset 0 0 10px rgba(0, 245, 255, 0.4) !important;
+  transform: scale(1.03) !important;
+  color: #00F5FF !important;
+}
+
+/* Glowing Border Frame */
+.glow-frame {
+  border: 2px solid #00F5FF;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  border-radius: 0; /* Sharp corners */
+}

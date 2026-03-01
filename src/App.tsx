@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useTheme } from './hooks/useTheme';
+
 import {
   Header,
   Hero,
@@ -14,8 +14,6 @@ import {
 import './styles/index.css';
 
 function App() {
-  const { theme, toggleTheme } = useTheme();
-
   useEffect(() => {
     // Add fade-in class to body
     document.body.classList.add('fade-in');
@@ -23,7 +21,7 @@ function App() {
 
   return (
     <>
-      <Header theme={theme} toggleTheme={toggleTheme} />
+      <Header />
       <main>
         <Hero />
         <About />

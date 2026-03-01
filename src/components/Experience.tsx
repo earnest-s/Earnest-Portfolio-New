@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { experiences } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import '../styles/experience.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,52 +22,22 @@ export const Experience = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 75%',
-          toggleActions: 'play none none reverse',
         },
       });
-      
-      // Optimized experience items with stagger
-      const items = gsap.utils.toArray<HTMLElement>('.experience-item');
-      
-      items.forEach((item) => {
-        // Animate date badge
-        gsap.from(item.querySelector('.date-badge'), {
-          scale: 0,
-          rotation: 180,
-          duration: 0.4,
-          ease: 'back.out(1.7)',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        });
-        
-        // Animate content card
-        gsap.from(item.querySelector('.experience-content'), {
+
+      const items = gsap.utils.toArray<HTMLElement>('.experience-item-new');
+
+      items.forEach((item, index) => {
+        const isLeft = index % 2 === 0;
+
+        gsap.from(item, {
           opacity: 0,
-          x: 50,
-          duration: 0.5,
+          x: isLeft ? -50 : 50,
+          duration: 0.6,
           ease: 'power3.out',
-          force3D: true,
           scrollTrigger: {
             trigger: item,
             start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        });
-        
-        // Stagger animate achievements
-        gsap.from(item.querySelectorAll('.experience-achievements li'), {
-          opacity: 0,
-          x: -20,
-          duration: 0.3,
-          stagger: 0.05,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: item.querySelector('.experience-achievements'),
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
           },
         });
       });
@@ -80,113 +51,40 @@ export const Experience = () => {
   };
 
   return (
-    <section id="experience" className="section" ref={sectionRef}>
+    <section id="experience" className="section" ref={sectionRef} style={{ padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
       <div className="container">
         <div className="section-content">
-          <div className="section-header">
+          <div className="section-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 className="section-title">
-              <i className="fas fa-briefcase" />
               Experience
             </h2>
           </div>
 
-          <div className="experience-timeline">
-            {experiences.map((exp) => (
-              <div key={exp.id} className="experience-item">
-                <div className="experience-date">
-                  <span className="date-badge">{exp.date}</span>
-                </div>
-                <div className="experience-content">
-                  <div className="experience-header">
-                    <h3 className="experience-title">{exp.title}</h3>
-                    <h4 className="experience-company">
-                      <i className="fas fa-building" />
-                      {exp.company}
-                    </h4>
-                  </div>
-                  <div className="experience-details">
-                    {exp.grade && (
-                      <div className="experience-grade">
-                        <i className="fas fa-star" />
-                        <span className="grade-text">{exp.grade}</span>
-                      </div>
-                    )}
-                    {!exp.grade && (
-                      <div className="experience-grade">
-                        <i className="fas fa-certificate" />
-                        <span className="grade-text">Virtual Experience Program</span>
-                      </div>
-                    )}
-                    <div className="experience-description">
-                      <p>{exp.description}</p>
-                      <div className="experience-achievements">
-                        <h5>
-                          <i className="fas fa-trophy" /> Key Achievements:
-                        </h5>
-                        <ul>
-                          {exp.achievements.map((achievement, idx) => (
-                            <li key={idx}>{achievement}</li>
-                          ))}
-                        </ul>
-                      </div>
+          <div className="experience-timeline-new">
+            {experiences.map((exp, index) => (
+              <div key={exp.id} className={`experience-item-new item-${index % 2 === 0 ? 'left' : 'right'}`}>
+                <div className={`exp-card ${exp.type}`}>
+                  <span className="exp-date">{exp.date}</span>
+                  <h3 className="exp-title">{exp.title}</h3>
+                  <h4 className="exp-company">
+                    <i className="fas fa-building" />
+                    {exp.company}
+                  </h4>
 
-                      {exp.certificate && (
-                        <div className="experience-projects">
-                          <h5>
-                            <i className="fas fa-certificate" /> Certificate:
-                          </h5>
-                          <div className="certificate-display">
-                            <div
-                              className="certificate-pdf-preview"
-                              onClick={() => openCertificatePDF(exp.certificate!.pdfPath)}
-                              role="button"
-                              tabIndex={0}
-                              onKeyPress={(e) => {
-                                if (e.key === 'Enter') openCertificatePDF(exp.certificate!.pdfPath);
-                              }}
-                            >
-                              <i className="fas fa-award certificate-pdf-icon" />
-                              <span className="certificate-preview-text">View Certificate</span>
-                            </div>
-                            <div className="certificate-info">
-                              <span className="certificate-title">{exp.certificate.title}</span>
-                              <span className="certificate-desc">{exp.certificate.description}</span>
-                              <span className="certificate-provider">{exp.certificate.provider}</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+                  <ul className="exp-achievements">
+                    {exp.achievements.map((achievement, idx) => (
+                      <li key={idx}>{achievement}</li>
+                    ))}
+                  </ul>
 
-                      {exp.relatedWork && (
-                        <div className="experience-projects" style={{ marginTop: '1.5rem' }}>
-                          <h5>
-                            <i className="fas fa-code-branch" /> Related Work:
-                          </h5>
-                          <div className="project-link-card">
-                            <a
-                              href={exp.relatedWork.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="project-link"
-                            >
-                              <div className="project-link-content">
-                                <div className="project-link-icon">
-                                  <i className="fab fa-github" />
-                                </div>
-                                <div className="project-link-info">
-                                  <span className="project-link-title">{exp.relatedWork.title}</span>
-                                  <span className="project-link-desc">{exp.relatedWork.description}</span>
-                                </div>
-                                <div className="project-link-arrow">
-                                  <i className="fas fa-external-link-alt" />
-                                </div>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  {exp.certificate && (
+                    <button
+                      className="exp-cert-btn"
+                      onClick={() => openCertificatePDF(exp.certificate!.pdfPath)}
+                    >
+                      <i className="fas fa-award" /> View Credential
+                    </button>
+                  )}
                 </div>
               </div>
             ))}

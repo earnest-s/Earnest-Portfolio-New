@@ -1,9 +1,12 @@
+import '../styles/contact.css';
+
 export const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer-minimal">
       <div className="container">
-        <p>
-          &copy; {new Date().getFullYear()} <strong>Earnest S</strong>. All rights reserved.
+        <div className="footer-logo">ES</div>
+        <p className="footer-text">
+          &copy; {new Date().getFullYear()} Earnest S. Designed & Built in Dark Mode.
         </p>
       </div>
     </footer>
