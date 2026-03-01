@@ -1,13 +1,7 @@
 import { useState, useEffect } from 'react';
+import '../styles/header.css';
 import { navLinks } from '../data/portfolio';
-import { Theme } from '../types';
-
-interface HeaderProps {
-  theme: Theme;
-  toggleTheme: () => void;
-}
-
-export const Header = ({ theme, toggleTheme }: HeaderProps) => {
+export const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -50,8 +44,8 @@ export const Header = ({ theme, toggleTheme }: HeaderProps) => {
   return (
     <header className="header">
       <div className="container">
-        <h1 className="logo">Earnest S</h1>
-        
+        <h1 className="logo">ES</h1>
+
         <nav className="nav">
           {navLinks.map(link => (
             <a
@@ -63,13 +57,6 @@ export const Header = ({ theme, toggleTheme }: HeaderProps) => {
               {link.label}
             </a>
           ))}
-          <button
-            className="theme-btn"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
-          </button>
         </nav>
 
         <button
@@ -88,7 +75,7 @@ export const Header = ({ theme, toggleTheme }: HeaderProps) => {
           >
             <i className="fas fa-times" />
           </button>
-          
+
           {navLinks.map(link => (
             <a
               key={link.id}
@@ -99,14 +86,6 @@ export const Header = ({ theme, toggleTheme }: HeaderProps) => {
               {link.label}
             </a>
           ))}
-          
-          <button
-            className="theme-btn"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
-          </button>
         </div>
       </div>
     </header>

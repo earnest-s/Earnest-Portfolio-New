@@ -1,11 +1,8 @@
 import { useRef, useEffect } from 'react';
-import { useTypingEffect } from '../hooks/useTypingEffect';
-import { typingPhrases } from '../data/portfolio';
 import { gsap } from 'gsap';
-// import Spline from '@splinetool/react-spline';
+import '../styles/hero.css';
 
 export const Hero = () => {
-  const typingText = useTypingEffect(typingPhrases);
   const heroRef = useRef<HTMLDivElement>(null);
   const leftContentRef = useRef<HTMLDivElement>(null);
   const rightContentRef = useRef<HTMLDivElement>(null);
@@ -14,35 +11,28 @@ export const Hero = () => {
     if (!heroRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Optimized hero animations with better performance
       gsap.from(leftContentRef.current, {
         opacity: 0,
         x: -50,
-        duration: 0.5,
+        duration: 0.8,
         ease: 'power3.out',
-        force3D: true,
-        clearProps: 'all'
       });
 
       gsap.from(rightContentRef.current, {
         opacity: 0,
         x: 50,
-        duration: 0.5,
-        delay: 0.1,
+        duration: 0.8,
+        delay: 0.2,
         ease: 'power3.out',
-        force3D: true,
-        clearProps: 'all'
       });
-      
-      // Animate hero buttons with stagger
-      gsap.from('.hero-buttons .btn', {
+
+      gsap.from('.hero-buttons .btn-neon', {
         opacity: 0,
         y: 20,
-        duration: 0.4,
-        delay: 0.3,
-        stagger: 0.08,
-        ease: 'back.out(1.4)',
-        force3D: true
+        duration: 0.5,
+        delay: 0.4,
+        stagger: 0.1,
+        ease: 'power3.out',
       });
     }, heroRef);
 
@@ -50,144 +40,71 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="section active" ref={heroRef}>
+    <section id="home" className="section active" ref={heroRef} style={{ padding: '150px 0 100px 0', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
       <div className="container">
-        <div className="hero-grid">
+        <div className="hero-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'center', '@media (max-width: 900px)': { gridTemplateColumns: '1fr' } } as any}>
+
+          {/* Left Side */}
           <div className="hero-left" ref={leftContentRef}>
             <div className="section-content">
-              <h2 className="hero-title">Hi, I'm Earnest</h2>
+              <h1 className="hero-title-massive">
+                <span>EARNEST</span>
+                <span>S</span>
+              </h1>
 
-              <p className="hero-subtitle" aria-live="polite">
-                {typingText}
-                <span className="typing-cursor">|</span>
+              <div className="hero-subtitle-new">
+                AI Engineer & Data Analyst
+                <span className="blinking-cursor"></span>
+              </div>
+
+              <p className="hero-description" style={{ color: '#a3a3a3', fontSize: '1.2rem', lineHeight: '1.8', marginBottom: '40px', maxWidth: '500px' }}>
+                A data-driven thinker who transforms real-time data into smart decisions.
+                I build AI-powered tools, IoT systems, and interactive dashboards to help
+                businesses solve real-world problems confidently.
               </p>
 
-              <p className="hero-description">
-                A data-driven thinker who transforms real-time data into smart decisions. 
-                I build AI-powered tools, IoT systems, and interactive dashboards to help 
-                people and businesses solve real-world problems.
-              </p>
-
-              <div className="hero-buttons">
-                <a 
-                  href="/assets/Earnest_Resume.pdf" 
-                  download 
-                  className="btn primary"
+              <div className="hero-buttons" style={{ display: 'flex', gap: '20px' }}>
+                <a
+                  href="/assets/Earnest_Resume.pdf"
+                  download
+                  className="btn-neon"
                 >
-                  <i className="fas fa-download" /> Download Resume
+                  Download Resume
                 </a>
-                <a 
-                  href="/assets/Earnest_Resume.pdf" 
-                  target="_blank" 
+                <a
+                  href="/assets/Earnest_Resume.pdf"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="btn outline"
+                  className="btn-neon"
                 >
-                  <i className="fas fa-eye" /> View Resume
+                  View Resume
                 </a>
               </div>
             </div>
           </div>
 
+          {/* Right Side */}
           <div className="hero-right" ref={rightContentRef}>
-            <div className="profile-photo-container">
-              <div className="profile-photo-frame">
-                <img 
-                  src="/assets/earnest-photo.jpg" 
-                  alt="Earnest S" 
-                  className="profile-photo"
+            <div className="hero-visual-right">
+              {/* Floating tags */}
+              <div className="floating-tag tag-1">Python</div>
+              <div className="floating-tag tag-2">IoT</div>
+              <div className="floating-tag tag-3">Power BI</div>
+
+              <div className="hero-photo-frame">
+                <img
+                  src="/assets/earnest-photo.jpg"
+                  alt="Earnest S - AI Engineer"
                   loading="eager"
                   decoding="async"
                 />
               </div>
             </div>
-            <div className="hero-image-placeholder">
-              {/* Enhanced Fallback SVG animation */}
-              <svg 
-                className="hero-svg" 
-                viewBox="0 0 500 400" 
-                xmlns="http://www.w3.org/2000/svg"
-                aria-label="Data visualization animation"
-              >
-                <defs>
-                  <pattern 
-                    id="grid" 
-                    width="40" 
-                    height="40" 
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path 
-                      d="M 40 0 L 0 0 0 40" 
-                      fill="none" 
-                      stroke="rgba(128,128,128,0.1)" 
-                      strokeWidth="1"
-                    />
-                  </pattern>
-                  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="var(--primary-color)" stopOpacity="0.8" />
-                    <stop offset="100%" stopColor="var(--accent-color)" stopOpacity="1" />
-                  </linearGradient>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-
-                <g className="chart-container" transform="translate(50, 50)">
-                  <line x1="0" y1="0" x2="0" y2="300" stroke="currentColor" strokeWidth="2"/>
-                  <line x1="0" y1="300" x2="400" y2="300" stroke="currentColor" strokeWidth="2"/>
-
-                  <g className="data-visualization">
-                    <path 
-                      className="chart-line" 
-                      d="M0,250 L100,200 L200,150 L300,100 L400,50"
-                      fill="none"
-                      stroke="url(#lineGradient)"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-
-                    <circle cx="0" cy="250" r="6" className="data-point" fill="var(--primary-color)"/>
-                    <circle cx="100" cy="200" r="6" className="data-point" fill="var(--primary-color)"/>
-                    <circle cx="200" cy="150" r="6" className="data-point" fill="var(--primary-color)"/>
-                    <circle cx="300" cy="100" r="6" className="data-point" fill="var(--primary-color)"/>
-                    <circle cx="400" cy="50" r="6" className="data-point" fill="var(--primary-color)"/>
-                  </g>
-
-                  <g className="floating-elements">
-                    <rect 
-                      x="50" 
-                      y="50" 
-                      width="40" 
-                      height="40" 
-                      rx="8" 
-                      className="float-item" 
-                      fill="var(--primary-color)" 
-                      opacity="0.2"
-                    />
-                    <circle 
-                      cx="350" 
-                      cy="150" 
-                      r="25" 
-                      className="float-item" 
-                      fill="var(--primary-color)" 
-                      opacity="0.2"
-                    />
-                    <path 
-                      d="M250,200 L270,180 L290,200 L270,220 Z" 
-                      className="float-item" 
-                      fill="var(--primary-color)" 
-                      opacity="0.2"
-                    />
-                  </g>
-                </g>
-              </svg>
-              
-              {/* Optional: Spline 3D Scene - Uncomment when you have a Spline scene URL */}
-              {/* <div className="spline-container">
-                <Spline scene="https://prod.spline.design/YOUR-SCENE-URL/scene.splinecode" />
-              </div> */}
-            </div>
           </div>
+
         </div>
       </div>
     </section>
   );
 };
+

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { skills } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import '../styles/skills.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,9 @@ export const Skills = () => {
   const [activeCategory, setActiveCategory] = useState<SkillCategory>('all');
   const sectionRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+
+  // Extract all individual skill items for the marquee
+  const allSkillItems = Array.from(new Set(skills.flatMap(s => s.items)));
 
   useEffect(() => {
     if (!sectionRef.current || !gridRef.current) return;
@@ -23,43 +27,20 @@ export const Skills = () => {
     });
 
     const ctx = gsap.context(() => {
-      const boxes = gsap.utils.toArray<HTMLElement>('.skill-box');
-      
-      // Set initial state
+      const boxes = gsap.utils.toArray<HTMLElement>('.bento-card');
+
       gsap.set(boxes, { opacity: 1, scale: 1, y: 0 });
-      
-      // Only animate if not already visible
+
       if (boxes.length > 0) {
         gsap.from(boxes, {
           opacity: 0,
-          scale: 0.9,
-          y: 30,
-          duration: 0.4,
-          stagger: {
-            amount: 0.3,
-            from: 'start',
-            ease: 'power2.out'
-          },
-          ease: 'back.out(1.3)',
-          force3D: true,
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: 'top 85%',
-            once: true,
-          },
-        });
-        
-        // Animate icons separately
-        gsap.from('.skill-icon', {
-          scale: 0,
-          rotation: 180,
+          y: 40,
           duration: 0.5,
-          stagger: 0.03,
-          ease: 'elastic.out(1, 0.5)',
+          stagger: 0.1,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: gridRef.current,
             start: 'top 85%',
-            once: true,
           },
         });
       }
@@ -68,70 +49,80 @@ export const Skills = () => {
     return () => ctx.revert();
   }, [activeCategory]);
 
-  const filteredSkills = activeCategory === 'all' 
-    ? skills 
+  const filteredSkills = activeCategory === 'all'
+    ? skills
     : skills.filter(skill => skill.category === activeCategory);
 
   return (
-    <section id="skills" className="section" ref={sectionRef}>
+    <section id="skills" className="section" ref={sectionRef} style={{ padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <div className="section-header" style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <h2 className="section-title">
+          Technical Skills
+        </h2>
+      </div>
+
+      {/* Marquee Section */}
+      <div className="skills-marquee-container">
+        <div className="skills-marquee">
+          {/* Double the list for seamless looping */}
+          {[...allSkillItems, ...allSkillItems].map((item, idx) => (
+            <div key={idx} className="marquee-pill">
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="container">
         <div className="section-content">
-          <div className="section-header">
-            <h2 className="section-title">
-              <i className="fas fa-tools" />
-              Technical Skills
-            </h2>
-          </div>
 
           <div className="skills-tabs">
             <button
               className={`skills-tab ${activeCategory === 'all' ? 'active' : ''}`}
               onClick={() => setActiveCategory('all')}
             >
-              <i className="fas fa-th-large" /> All
+              All
             </button>
             <button
               className={`skills-tab ${activeCategory === 'data' ? 'active' : ''}`}
               onClick={() => setActiveCategory('data')}
             >
-              <i className="fas fa-chart-bar" /> Data & Analytics
+              Data & Analytics
             </button>
             <button
               className={`skills-tab ${activeCategory === 'dev' ? 'active' : ''}`}
               onClick={() => setActiveCategory('dev')}
             >
-              <i className="fas fa-code" /> Development
+              Development
             </button>
             <button
               className={`skills-tab ${activeCategory === 'devops' ? 'active' : ''}`}
               onClick={() => setActiveCategory('devops')}
             >
-              <i className="fas fa-server" /> DevOps
+              DevOps
             </button>
             <button
               className={`skills-tab ${activeCategory === 'tools' ? 'active' : ''}`}
               onClick={() => setActiveCategory('tools')}
             >
-              <i className="fas fa-toolbox" /> Tools
+              Tools
             </button>
           </div>
 
-          <div className="skills-section skills-grid" ref={gridRef}>
+          <div className="skills-bento-grid" ref={gridRef}>
             {filteredSkills.map((skill) => (
-              <div 
-                key={skill.id} 
-                className="skill-box" 
+              <div
+                key={skill.id}
+                className="bento-card"
                 data-category={skill.category}
               >
-                <i className={`fas ${skill.icon} skill-icon`} />
-                <div>
-                  <strong>{skill.title}</strong>
-                  <ul>
-                    {skill.items.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+                <i className={`fas ${skill.icon} bento-icon`} />
+                <h3 className="bento-title">{skill.title}</h3>
+                <ul className="bento-list">
+                  {skill.items.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
