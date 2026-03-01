@@ -1,3 +1,7 @@
+/* ================================================
+   PROJECTS — Cinematic Cards with 3D Tilt + Hover Reveal
+   ================================================ */
+
 .projects-hscroll-container {
     display: flex;
     overflow-x: auto;
@@ -5,31 +9,30 @@
     padding: 20px 0 60px 0;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE and Edge */
+    perspective: 1200px;
 }
 
 .projects-hscroll-container::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari and Opera */
 }
 
+/* ============== Cinematic Card ============== */
 .project-cinematic-card {
     flex: 0 0 400px;
-    /* Fixed width for cards */
     height: 550px;
     scroll-snap-align: start;
-    background: rgba(15, 15, 15, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(13, 17, 23, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     position: relative;
     overflow: hidden;
-    transition: all 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    /* Content at bottom */
     padding: 40px;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 @media (max-width: 768px) {
@@ -40,6 +43,7 @@
     }
 }
 
+/* Gradient vignette overlay */
 .project-cinematic-card::before {
     content: '';
     position: absolute;
@@ -47,16 +51,38 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(8, 8, 8, 0.9) 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(8, 8, 8, 0.92) 70%);
     z-index: 1;
+    transition: background 0.4s ease;
+}
+
+/* Cyan gradient overlay on top half on hover */
+.project-cinematic-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(180deg, rgba(0, 245, 255, 0.12) 0%, transparent 100%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-cinematic-card:hover::after {
+    opacity: 1;
 }
 
 .project-cinematic-card:hover {
-    border-color: rgba(0, 245, 255, 0.3);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 245, 255, 0.1);
+    border-color: rgba(0, 245, 255, 0.4);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(0, 245, 255, 0.12),
+        0 0 40px rgba(0, 245, 255, 0.08);
 }
 
+/* ============== Content ============== */
 .project-cinematic-content {
     position: relative;
     z-index: 2;
@@ -69,7 +95,7 @@
 .project-cinematic-icon {
     font-size: 3rem;
     color: #00F5FF;
-    opacity: 0.5;
+    opacity: 0.4;
     transition: all 0.4s ease;
     position: absolute;
     top: 40px;
@@ -85,61 +111,64 @@
 }
 
 .project-cinematic-card:hover .project-cinematic-icon {
-    opacity: 1;
-    transform: scale(1.1);
+    opacity: 0.9;
+    transform: scale(1.12) rotate(-5deg);
 }
 
 .project-cinematic-title {
     font-family: 'Syne', sans-serif;
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     line-height: 1.2;
 }
 
 .project-cinematic-desc {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #a3a3a3;
-    margin-bottom: 25px;
-    line-height: 1.5;
+    margin-bottom: 22px;
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
+/* Tags (slide up and fade out on hover, replaced by buttons) */
 .project-cinematic-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 0;
-    transition: all 0.4s ease;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-cinematic-tag {
-    background: rgba(0, 245, 255, 0.05);
+    background: rgba(0, 245, 255, 0.06);
     border: 1px solid rgba(0, 245, 255, 0.2);
     color: #00F5FF;
-    padding: 6px 14px;
+    padding: 5px 13px;
     border-radius: 4px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-family: 'Syne', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
+/* Links hidden below card, revealed on hover */
 .project-cinematic-links {
     position: absolute;
     bottom: 0;
     left: 40px;
     right: 40px;
     display: flex;
-    gap: 15px;
-    transform: translateY(100%);
+    gap: 12px;
+    transform: translateY(110%);
     opacity: 0;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 3;
     padding-bottom: 40px;
 }
@@ -153,7 +182,7 @@
 }
 
 .project-cinematic-card:hover .project-cinematic-tags {
-    transform: translateY(20px);
+    transform: translateY(18px);
     opacity: 0;
 }
 
@@ -162,6 +191,7 @@
     opacity: 1;
 }
 
+/* "View Code" button */
 .project-cinematic-link {
     display: inline-flex;
     align-items: center;
@@ -169,19 +199,21 @@
     gap: 8px;
     background: #00F5FF;
     color: #080808;
-    padding: 12px 24px;
+    padding: 12px 20px;
     font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     text-decoration: none;
     transition: all 0.3s ease;
     flex: 1;
     text-align: center;
+    border-radius: 2px;
 }
 
 .project-cinematic-link:hover {
     background: #fff;
     color: #080808;
-    box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+    box-shadow: 0 0 24px rgba(0, 245, 255, 0.45);
 }
