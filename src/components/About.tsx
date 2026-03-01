@@ -2,6 +2,7 @@ import { useRef, useEffect, lazy, Suspense } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/about.css';
+import ErrorBoundary from './ErrorBoundary';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -131,7 +132,9 @@ export const About = () => {
               {/* Spline 3D Orb */}
               <div className="about-spline-orb">
                 <Suspense fallback={<div className="spline-spinner" />}>
-                  <Spline scene="https://prod.spline.design/uZcO9FPQbMDoJgHy/scene.splinecode" />
+                  <ErrorBoundary fallback={<div className="spline-spinner" />}>
+                    <Spline scene="https://prod.spline.design/uZcO9FPQbMDoJgHy/scene.splinecode" />
+                  </ErrorBoundary>
                 </Suspense>
               </div>
             </div>
