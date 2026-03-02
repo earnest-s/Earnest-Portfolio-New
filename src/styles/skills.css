@@ -1,213 +1,82 @@
-/* ================================================
-   SKILLS SECTION — Filter Tabs + Marquee + Bento
-   ================================================ */
-
-/* Filter Tabs */
-.skills-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-bottom: 40px;
+.skills-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
 }
 
-.skills-tab {
-    background: rgba(13, 17, 23, 0.9);
-    border: 1px solid rgba(0, 245, 255, 0.2);
-    color: #ccc;
-    padding: 10px 26px;
-    border-radius: 50px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(6px);
-    white-space: nowrap;
+.skills-pill {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text-soft);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
-.skills-tab:hover {
-    color: #00F5FF;
-    border-color: rgba(0, 245, 255, 0.5);
-    background: rgba(0, 245, 255, 0.06);
+.skills-pill.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
 }
 
-.skills-tab.active {
-    background: #00F5FF;
-    border-color: #00F5FF;
-    color: #080808;
-    font-weight: 700;
-    box-shadow: 0 0 20px rgba(0, 245, 255, 0.35);
+.skills-grid-template {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-/* ============== Marquee ============== */
-.skills-marquee-container {
-    width: 100%;
-    overflow: hidden;
-    padding: 28px 0;
-    margin-bottom: 60px;
-    background: rgba(0, 245, 255, 0.02);
-    border-top: 1px solid rgba(0, 245, 255, 0.1);
-    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
-    white-space: nowrap;
-    display: flex;
+.skill-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 16px;
 }
 
-.skills-marquee {
-    display: inline-flex;
-    gap: 24px;
-    padding-right: 24px;
-    animation: scroll-marquee 28s linear infinite;
+.skill-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
-.skills-marquee:hover {
-    animation-play-state: paused;
+.skill-title-row i {
+  color: var(--primary);
 }
 
-.marquee-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 24px;
-    background: rgba(8, 8, 8, 0.9);
-    border: 1px solid rgba(0, 245, 255, 0.35);
-    border-radius: 50px;
-    color: #00F5FF;
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 0 8px rgba(0, 245, 255, 0.05);
-    transition: all 0.3s ease;
-    cursor: default;
+.skill-title-row h3 {
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-size: 1rem;
 }
 
-.marquee-pill:hover {
-    background: rgba(0, 245, 255, 0.1);
-    border-color: #00F5FF;
-    box-shadow: 0 0 18px rgba(0, 245, 255, 0.3);
-    transform: scale(1.05);
+.skill-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
-@keyframes scroll-marquee {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
+.skill-chip-list span {
+  border: 1px solid var(--chip-border);
+  background: var(--primary-soft);
+  color: var(--chip-text);
+  border-radius: 999px;
+  font-size: 0.74rem;
+  padding: 4px 8px;
 }
 
-/* ============== Bento Grid ============== */
-.skills-bento-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(180px, auto);
-    gap: 20px;
+@media (max-width: 960px) {
+  .skills-grid-template {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-@media (max-width: 900px) {
-    .skills-bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .skills-bento-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.bento-card {
-    background: rgba(13, 17, 23, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 28px;
-    border-radius: 0;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-}
-
-.bento-card:nth-child(1),
-.bento-card:nth-child(4) {
-    grid-column: span 2;
-}
-
-@media (max-width: 900px) {
-
-    .bento-card:nth-child(1),
-    .bento-card:nth-child(4) {
-        grid-column: span 1;
-    }
-}
-
-.bento-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 0;
-}
-
-.bento-card:hover {
-    border-color: rgba(0, 245, 255, 0.35);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 35px rgba(0, 245, 255, 0.1);
-}
-
-.bento-card:hover::before {
-    opacity: 1;
-}
-
-.bento-icon {
-    font-size: 2.5rem;
-    color: #00F5FF;
-    margin-bottom: 18px;
-    position: relative;
-    z-index: 1;
-}
-
-.bento-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 14px;
-    position: relative;
-    z-index: 1;
-}
-
-.bento-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.bento-list li {
-    background: rgba(255, 255, 255, 0.05);
-    color: #a3a3a3;
-    padding: 5px 13px;
-    border-radius: 4px;
-    font-size: 0.88rem;
-    font-family: 'DM Sans', sans-serif;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: color 0.2s, border-color 0.2s;
-}
-
-.bento-card:hover .bento-list li {
-    color: #c9d1d9;
-    border-color: rgba(0, 245, 255, 0.1);
+@media (max-width: 640px) {
+  .skills-grid-template {
+    grid-template-columns: 1fr;
+  }
 }

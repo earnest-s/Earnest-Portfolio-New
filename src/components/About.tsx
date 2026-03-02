@@ -1,81 +1,27 @@
-import { useRef, useEffect, lazy, Suspense } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/about.css';
-import ErrorBoundary from './ErrorBoundary';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Safe lazy-load: falls back to null if Spline is unavailable
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Spline = lazy(() =>
-  (import('@splinetool/react-spline') as Promise<any>).catch(() => ({
-    default: () => null,
-  }))
-);
-
 export const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !contentRef.current) return;
+    if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Clip-path reveal for section title
-      gsap.from('.about-section-title', {
-        clipPath: 'inset(0 100% 0 0)',
+      gsap.from('.about-intro-card, .about-pillars .pillar-card', {
+        y: 24,
         opacity: 0,
-        duration: 0.9,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 78%',
-        },
-      });
-
-      gsap.from('.about-quote', {
-        opacity: 0,
-        x: -50,
-        duration: 0.8,
-        ease: 'power3.out',
+        duration: 0.55,
+        stagger: 0.1,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 75%',
         },
-      });
-
-      gsap.from('.stat-card', {
-        opacity: 0,
-        y: 40,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.stats-grid',
-          start: 'top 82%',
-        },
-      });
-
-      // Count-up animation using IntersectionObserver + GSAP
-      const stats = gsap.utils.toArray<HTMLElement>('.stat-number');
-      stats.forEach((stat) => {
-        const target = parseFloat(stat.getAttribute('data-target') || '0');
-        const suffix = stat.getAttribute('data-suffix') || '';
-        const obj = { val: 0 };
-
-        gsap.to(obj, {
-          val: target,
-          duration: 2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: stat,
-            start: 'top 85%',
-          },
-          onUpdate: () => {
-            stat.innerText = Math.floor(obj.val) + suffix;
-          },
-        });
       });
     }, sectionRef);
 
@@ -83,62 +29,41 @@ export const About = () => {
   }, []);
 
   return (
-    <section
-      id="about"
-      className="section"
-      ref={sectionRef}
-      style={{ padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}
-    >
+    <section id="about" className="section" ref={sectionRef}>
       <div className="container">
-        <div className="section-content" ref={contentRef}>
-          <div className="section-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 className="section-title about-section-title">About Me</h2>
-          </div>
+        <div className="section-header">
+          <h2 className="section-title">About</h2>
+        </div>
 
-          <div className="about-grid">
+        <div className="about-template-grid">
+          <article className="about-intro-card">
+            <p className="about-lead">
+              I transform complex data into clear insights and build AI systems that solve practical
+              business problems.
+            </p>
+            <p>
+              With a strong foundation in Python, SQL, Power BI, and machine learning, I focus on
+              solutions that are reliable, measurable, and easy to maintain.
+            </p>
+          </article>
 
-            {/* Left: Pull-quote bio */}
-            <div className="about-left">
-              <div className="about-quote">
-                I transform complex datasets into actionable insights and build AI systems that solve real-world challenges confidently.
-                <span className="about-quote-author">Earnest S.</span>
-              </div>
-              <p style={{ marginTop: '30px', color: '#a3a3a3', fontSize: '1.05rem', lineHeight: '1.8' }}>
-                With strong foundations in Python, SQL, Power BI, and Machine Learning, I specialize in bridging the gap between raw data and strategic decision-making. My professional journey encompasses hands-on experience in IoT systems development, predictive modeling, and interactive business intelligence dashboards.
-              </p>
-            </div>
-
-            {/* Right: Stats Grid + Spline Orb */}
-            <div className="about-right">
-              <div className="stats-grid">
-                <div className="stat-card">
-                  <span className="stat-number" data-target="12" data-suffix="+">0</span>
-                  <span className="stat-label">Certifications</span>
-                </div>
-                <div className="stat-card">
-                  <span className="stat-number" data-target="3" data-suffix="">0</span>
-                  <span className="stat-label">AI Projects</span>
-                </div>
-                <div className="stat-card">
-                  <span className="stat-number" data-target="2" data-suffix="+">0</span>
-                  <span className="stat-label">Years Experience</span>
-                </div>
-                <div className="stat-card">
-                  <span className="stat-number" data-target="100" data-suffix="%">0</span>
-                  <span className="stat-label">Data Driven</span>
-                </div>
-              </div>
-
-              {/* Spline 3D Orb */}
-              <div className="about-spline-orb">
-                <Suspense fallback={<div className="spline-spinner" />}>
-                  <ErrorBoundary fallback={<div className="spline-spinner" />}>
-                    <Spline scene="https://prod.spline.design/uZcO9FPQbMDoJgHy/scene.splinecode" />
-                  </ErrorBoundary>
-                </Suspense>
-              </div>
-            </div>
-
+          <div className="about-pillars">
+            <article className="pillar-card">
+              <h3>Data Analysis</h3>
+              <p>Structured analysis, visual reporting, and KPI-first thinking.</p>
+            </article>
+            <article className="pillar-card">
+              <h3>AI Workflows</h3>
+              <p>Model-driven solutions and automation for real operations.</p>
+            </article>
+            <article className="pillar-card">
+              <h3>IoT Integration</h3>
+              <p>Sensor-based systems and monitoring dashboards.</p>
+            </article>
+            <article className="pillar-card">
+              <h3>Execution</h3>
+              <p>Clean implementation from idea to delivery.</p>
+            </article>
           </div>
         </div>
       </div>
