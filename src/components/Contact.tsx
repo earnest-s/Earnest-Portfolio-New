@@ -19,32 +19,16 @@ export const Contact = () => {
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    ScrollTrigger.getAll().forEach(trigger => {
-      if (trigger.vars.trigger === sectionRef.current) {
-        trigger.kill();
-      }
-    });
-
     const ctx = gsap.context(() => {
-      gsap.from('.contact-left', {
+      gsap.from('.contact-panel, .contact-form-panel', {
+        y: 36,
         opacity: 0,
-        x: -50,
-        duration: 0.8,
-        ease: 'power3.out',
+        duration: 0.65,
+        stagger: 0.14,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
-        },
-      });
-
-      gsap.from('.contact-right', {
-        opacity: 0,
-        x: 50,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
+          start: 'top 72%',
         },
       });
     }, sectionRef);
@@ -81,7 +65,7 @@ export const Contact = () => {
       } else {
         alert('Oops! Please try again.');
       }
-    } catch (error) {
+    } catch {
       alert('Connection error. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -89,77 +73,54 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section" ref={sectionRef} style={{ padding: '120px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-      <div className="container">
-        <div className="contact-split-layout">
+    <section id="contact" className="section" ref={sectionRef}>
+      <div className="container contact-template-grid">
+        <aside className="contact-panel">
+          <p className="contact-kicker">LET'S BUILD SOMETHING REAL</p>
+          <h2>Contact</h2>
+          <p>
+            Open to internships, freelance work, and full-time opportunities in AI, analytics, and
+            IoT product development.
+          </p>
 
-          <div className="contact-left">
-            <h2 className="contact-headline">
-              Let's Work <span>Together</span>
-            </h2>
-
-            <div className="contact-social-stack">
-              <a href="mailto:contact@earnest.qzz.io" className="contact-social-link">
-                <span>Email Me</span>
-                <i className="fas fa-arrow-right arrow-icon" />
-              </a>
-              <a href="https://www.linkedin.com/in/earnest-kirubakaran-oswarld-s/" target="_blank" rel="noopener noreferrer" className="contact-social-link">
-                <span>LinkedIn</span>
-                <i className="fas fa-arrow-right arrow-icon" />
-              </a>
-              <a href="https://github.com/earnest-s" target="_blank" rel="noopener noreferrer" className="contact-social-link">
-                <span>GitHub</span>
-                <i className="fas fa-arrow-right arrow-icon" />
-              </a>
-            </div>
+          <div className="contact-links">
+            <a href="mailto:contact@earnest.qzz.io">Email</a>
+            <a href="https://www.linkedin.com/in/earnest-kirubakaran-oswarld-s/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/earnest-s" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
+        </aside>
 
-          <div className="contact-right">
-            <form
-              className="contact-form-minimal"
-              onSubmit={handleSubmit}
-            >
-              <div className="contact-input-group">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="contact-input-group">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="contact-input-group">
-                <textarea
-                  name="message"
-                  placeholder="Your Message..."
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+        <div className="contact-form-panel">
+          <form className="contact-form-template" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Your message"
+              rows={5}
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
 
-              <button
-                type="submit"
-                className="contact-submit-btn"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'} <i className="fas fa-arrow-right" />
-              </button>
-            </form>
-          </div>
-
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+          </form>
         </div>
       </div>
     </section>

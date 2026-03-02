@@ -1,202 +1,101 @@
-.experience-timeline-new {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 0;
+.experience-list {
+  display: grid;
+  gap: 12px;
 }
 
-/* Glowing central line — hidden, replaced by animated element */
-.experience-timeline-new::before {
-    display: none;
+.experience-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: clamp(16px, 3vw, 24px);
 }
 
-/* Animated line drawn by GSAP ScrollTrigger (scaleY 0→1) */
-.timeline-line-animated {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background: linear-gradient(180deg, #00F5FF 0%, rgba(0, 245, 255, 0.3) 100%);
-    box-shadow: 0 0 15px rgba(0, 245, 255, 0.7);
-    transform: translateX(-50%) scaleY(0);
-    transform-origin: top center;
-    z-index: 0;
+.experience-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
-@media (max-width: 768px) {
-    .timeline-line-animated {
-        left: 20px;
-    }
+.experience-date {
+  color: var(--text-soft);
+  font-size: 0.84rem;
+  font-weight: 600;
 }
 
-@media (max-width: 768px) {
-    .experience-timeline-new::before {
-        left: 20px;
-    }
+.experience-type {
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
 }
 
-.experience-item-new {
-    position: relative;
-    width: 50%;
-    padding: 40px 40px;
-    z-index: 1;
+.experience-type.internship {
+  background: color-mix(in srgb, var(--primary) 18%, var(--surface));
+  color: var(--chip-text);
 }
 
-.experience-item-new:nth-child(odd) {
-    left: 0;
-    text-align: right;
+.experience-type.simulation {
+  background: color-mix(in srgb, var(--primary) 14%, var(--surface));
+  color: var(--chip-text);
 }
 
-.experience-item-new:nth-child(even) {
-    left: 50%;
+.experience-type.job {
+  background: color-mix(in srgb, var(--primary) 22%, var(--surface));
+  color: var(--chip-text);
 }
 
-@media (max-width: 768px) {
-    .experience-item-new {
-        width: 100%;
-        padding: 20px 20px 20px 50px;
-    }
-
-    .experience-item-new:nth-child(odd),
-    .experience-item-new:nth-child(even) {
-        left: 0;
-        text-align: left;
-    }
+.experience-card h3 {
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  margin-bottom: 2px;
 }
 
-/* Timeline dot */
-.experience-item-new::after {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background: #080808;
-    border: 2px solid #00F5FF;
-    border-radius: 50%;
-    top: 55px;
-    box-shadow: 0 0 10px #00F5FF;
-    z-index: 2;
+.experience-company {
+  color: var(--text-soft);
+  margin: 8px 0 12px;
 }
 
-.experience-item-new:nth-child(odd)::after {
-    right: -8px;
+.experience-card ul {
+  list-style: none;
+  display: grid;
+  gap: 7px;
+  margin-bottom: 14px;
 }
 
-.experience-item-new:nth-child(even)::after {
-    left: -8px;
+.experience-card li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--text-soft);
+  font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-
-    .experience-item-new:nth-child(odd)::after,
-    .experience-item-new:nth-child(even)::after {
-        left: 12px;
-    }
+.experience-card li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
 }
 
-.exp-card {
-    background: rgba(15, 15, 15, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: 3px solid #00F5FF;
-    padding: 30px;
-    backdrop-filter: blur(10px);
-    position: relative;
-    transition: all 0.3s ease;
-    text-align: left;
-    /* reset text align */
+.experience-cert-btn {
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Change border color if internship vs simulation */
-.exp-card.internship {
-    border-top-color: #00F5FF;
-}
-
-.exp-card.simulation {
-    border-top-color: #bb86fc;
-    /* distinct color for simulation */
-}
-
-.exp-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1);
-    border-color: rgba(0, 245, 255, 0.2);
-}
-
-.exp-date {
-    font-family: 'Syne', sans-serif;
-    color: #00F5FF;
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    display: block;
-    text-transform: uppercase;
-}
-
-.exp-card.simulation .exp-date {
-    color: #bb86fc;
-}
-
-.exp-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 5px;
-}
-
-.exp-company {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    color: #a3a3a3;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.exp-achievements {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
-}
-
-.exp-achievements li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    color: #d1d1d1;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.exp-achievements li::before {
-    content: '▹';
-    position: absolute;
-    left: 0;
-    color: #00F5FF;
-    font-weight: bold;
-}
-
-.exp-cert-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0, 245, 255, 0.1);
-    border: 1px solid rgba(0, 245, 255, 0.2);
-    color: #00F5FF;
-    padding: 8px 16px;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.exp-cert-btn:hover {
-    background: #00F5FF;
-    color: #080808;
+.experience-cert-btn:hover {
+  background: color-mix(in srgb, var(--primary-soft) 80%, var(--surface));
 }

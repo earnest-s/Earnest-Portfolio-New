@@ -1,220 +1,99 @@
-/* ================================================
-   PROJECTS — Cinematic Cards with 3D Tilt + Hover Reveal
-   ================================================ */
-
-.projects-hscroll-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 30px;
-    padding: 20px 0 60px 0;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    perspective: 1200px;
+.projects-template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.projects-hscroll-container::-webkit-scrollbar {
-    display: none;
+.project-template-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
-/* ============== Cinematic Card ============== */
-.project-cinematic-card {
-    flex: 0 0 400px;
-    height: 550px;
-    scroll-snap-align: start;
-    background: rgba(13, 17, 23, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 40px;
-    transform-style: preserve-3d;
-    will-change: transform;
+.project-template-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
 }
 
-@media (max-width: 768px) {
-    .project-cinematic-card {
-        flex: 0 0 85vw;
-        height: 500px;
-        padding: 30px;
-    }
+.project-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Gradient vignette overlay */
-.project-cinematic-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(8, 8, 8, 0.92) 70%);
-    z-index: 1;
-    transition: background 0.4s ease;
+.project-head i {
+  color: var(--primary);
 }
 
-/* Cyan gradient overlay on top half on hover */
-.project-cinematic-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 55%;
-    background: linear-gradient(180deg, rgba(0, 245, 255, 0.12) 0%, transparent 100%);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+.project-head h3 {
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-size: 1rem;
 }
 
-.project-cinematic-card:hover::after {
-    opacity: 1;
+.project-template-card p {
+  color: var(--text-soft);
+  font-size: 0.9rem;
 }
 
-.project-cinematic-card:hover {
-    border-color: rgba(0, 245, 255, 0.4);
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(0, 245, 255, 0.12),
-        0 0 40px rgba(0, 245, 255, 0.08);
+.project-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
-/* ============== Content ============== */
-.project-cinematic-content {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+.project-tag-list span {
+  border-radius: 999px;
+  border: 1px solid var(--chip-border);
+  background: var(--primary-soft);
+  color: var(--chip-text);
+  font-size: 0.71rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 4px 8px;
 }
 
-.project-cinematic-icon {
-    font-size: 3rem;
-    color: #00F5FF;
-    opacity: 0.4;
-    transition: all 0.4s ease;
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    z-index: 2;
+.project-action-row {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
 }
 
-@media (max-width: 768px) {
-    .project-cinematic-icon {
-        top: 30px;
-        right: 30px;
-    }
+.project-action-row a {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
 }
 
-.project-cinematic-card:hover .project-cinematic-icon {
-    opacity: 0.9;
-    transform: scale(1.12) rotate(-5deg);
+.project-action-row a:hover {
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
-.project-cinematic-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 12px;
-    line-height: 1.2;
+@media (max-width: 980px) {
+  .projects-template-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.project-cinematic-desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: #a3a3a3;
-    margin-bottom: 22px;
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* Tags (slide up and fade out on hover, replaced by buttons) */
-.project-cinematic-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 0;
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.project-cinematic-tag {
-    background: rgba(0, 245, 255, 0.06);
-    border: 1px solid rgba(0, 245, 255, 0.2);
-    color: #00F5FF;
-    padding: 5px 13px;
-    border-radius: 4px;
-    font-size: 0.78rem;
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Links hidden below card, revealed on hover */
-.project-cinematic-links {
-    position: absolute;
-    bottom: 0;
-    left: 40px;
-    right: 40px;
-    display: flex;
-    gap: 12px;
-    transform: translateY(110%);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    z-index: 3;
-    padding-bottom: 40px;
-}
-
-@media (max-width: 768px) {
-    .project-cinematic-links {
-        left: 30px;
-        right: 30px;
-        padding-bottom: 30px;
-    }
-}
-
-.project-cinematic-card:hover .project-cinematic-tags {
-    transform: translateY(18px);
-    opacity: 0;
-}
-
-.project-cinematic-card:hover .project-cinematic-links {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* "View Code" button */
-.project-cinematic-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: #00F5FF;
-    color: #080808;
-    padding: 12px 20px;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    flex: 1;
-    text-align: center;
-    border-radius: 2px;
-}
-
-.project-cinematic-link:hover {
-    background: #fff;
-    color: #080808;
-    box-shadow: 0 0 24px rgba(0, 245, 255, 0.45);
+@media (max-width: 640px) {
+  .projects-template-grid {
+    grid-template-columns: 1fr;
+  }
 }

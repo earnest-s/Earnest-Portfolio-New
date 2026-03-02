@@ -1,78 +1,92 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
-import '../styles/header.css';
 import { navLinks } from '../data/portfolio';
+import { useTheme } from '../hooks/useTheme';
+import '../styles/header.css';
 
 export const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const mobileNavRef = useRef<HTMLDivElement>(null);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navLinks.map(link => document.getElementById(link.id));
-      const scrollPosition = window.scrollY + 100;
+      const sections = navLinks.map((link) => document.getElementById(link.id));
+      const scrollPosition = window.scrollY + 140;
 
       for (const section of sections) {
-        if (section) {
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section.id);
-            break;
-          }
+        if (!section) continue;
+
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+
+        if (scrollPosition >= top && scrollPosition < bottom) {
+          setActiveSection(section.id);
+          break;
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
 
-  // Stagger nav-link entrance animation on mount
-  useEffect(() => {
-    gsap.from('.nav .nav-link', {
-      y: -20,
+    const handleResize = () => {
+      if (window.innerWidth > 900) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    gsap.from('.brand, .nav-desktop .nav-link, .theme-toggle', {
+      y: -16,
       opacity: 0,
-      duration: 0.5,
-      stagger: 0.08,
-      ease: 'power3.out',
-      delay: 0.2,
+      duration: 0.4,
+      stagger: 0.05,
+      ease: 'power2.out',
+      delay: 0.1,
     });
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  // Animate mobile menu open/close
   useEffect(() => {
-    if (!mobileNavRef.current) return;
-    const links = mobileNavRef.current.querySelectorAll('.nav-link');
-
-    if (mobileMenuOpen) {
-      gsap.fromTo(
-        links,
-        { x: -30, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.4, stagger: 0.08, ease: 'power3.out', delay: 0.1 }
-      );
-    }
+    document.body.classList.toggle('no-scroll', mobileMenuOpen);
+    return () => document.body.classList.remove('no-scroll');
   }, [mobileMenuOpen]);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const section = document.getElementById(id);
-    if (section) {
-      const headerHeight = 90;
-      const targetPosition = section.offsetTop - headerHeight;
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      setMobileMenuOpen(false);
-    }
+    if (!section) return;
+
+    window.scrollTo({
+      top: section.offsetTop - 88,
+      behavior: 'smooth',
+    });
+
+    setMobileMenuOpen(false);
   };
 
   return (
     <header className="header">
-      <div className="container">
-        <h1 className="logo">ES</h1>
+      <div className="container header-shell">
+        <a href="#home" className="brand" onClick={(e) => scrollToSection(e, 'home')}>
+          EARNEST S
+        </a>
 
-        <nav className="nav">
-          {navLinks.map(link => (
+        <nav className="nav-desktop" aria-label="Desktop navigation">
+          {navLinks.map((link) => (
             <a
               key={link.id}
               href={link.href}
@@ -84,27 +98,36 @@ export const Header = () => {
           ))}
         </nav>
 
-        <button
-          className="nav-toggle"
-          onClick={() => setMobileMenuOpen(true)}
-          aria-label="Open navigation"
-        >
-          <i className="fas fa-bars" />
-        </button>
-
-        <div
-          className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}
-          ref={mobileNavRef}
-        >
-          <button
-            className="mobile-nav-close"
-            onClick={() => setMobileMenuOpen(false)}
-            aria-label="Close navigation"
-          >
-            <i className="fas fa-times" />
+        <div className="header-actions">
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
           </button>
 
-          {navLinks.map(link => (
+          <button
+            className="nav-toggle"
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Open navigation"
+          >
+            <i className="fas fa-bars" />
+          </button>
+        </div>
+      </div>
+
+      <div className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
+        <button
+          className="mobile-nav-close"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-label="Close navigation"
+        >
+          <i className="fas fa-times" />
+        </button>
+
+        <button className="theme-toggle mobile-theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+          <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
+        </button>
+
+        <nav className="mobile-nav-links" aria-label="Mobile navigation">
+          {navLinks.map((link) => (
             <a
               key={link.id}
               href={link.href}
@@ -114,7 +137,7 @@ export const Header = () => {
               {link.label}
             </a>
           ))}
-        </div>
+        </nav>
       </div>
     </header>
   );

@@ -1,142 +1,94 @@
-/* ================================================
-   CERTIFICATES SECTION — Dark Theme Fix
-   ================================================ */
-
-/* Segmented Control Tabs */
-.certificates-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-    margin-bottom: 50px;
-    background: rgba(13, 17, 23, 0.9);
-    padding: 6px;
-    border-radius: 8px;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid rgba(0, 245, 255, 0.15);
+.cert-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
 }
 
-.certificates-tab {
-    background: transparent;
-    color: #a3a3a3;
-    padding: 10px 22px;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
-    color: #ccc;
+.cert-pill {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text-soft);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
 }
 
-.certificates-tab:hover {
-    color: #00F5FF;
-    background: rgba(0, 245, 255, 0.08);
+.cert-pill.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
 }
 
-.certificates-tab.active {
-    background: #00F5FF;
-    color: #080808;
-    font-weight: 700;
-    box-shadow: 0 0 15px rgba(0, 245, 255, 0.35);
+.cert-template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-/* Masonry Grid */
-.certificates-grid {
-    column-count: 3;
-    column-gap: 20px;
-    width: 100%;
+.certificate-template-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  display: grid;
+  gap: 8px;
 }
 
-@media (max-width: 900px) {
-    .certificates-grid {
-        column-count: 2;
-    }
+.cert-provider {
+  color: var(--primary);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
 }
 
-@media (max-width: 600px) {
-    .certificates-grid {
-        column-count: 1;
-    }
+.certificate-template-card h3 {
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
-/* ============== Certificate Card — Dark ============== */
-.certificate-card {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    background: #0d1117;
-    border: 1px solid rgba(0, 245, 255, 0.18);
-    padding: 25px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
+.cert-issued {
+  color: var(--text-soft);
+  font-size: 0.84rem;
 }
 
-.certificate-card:hover {
-    border-color: rgba(0, 245, 255, 0.5);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 35px rgba(0, 245, 255, 0.12);
+.cert-link-btn {
+  width: fit-content;
+  border-radius: 999px;
+  border: 1px solid var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary);
+  padding: 7px 10px;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
 }
 
-.cert-issuer-icon {
-    font-size: 2rem;
-    color: #00F5FF;
-    margin-bottom: 18px;
+.cert-link-btn:hover {
+  background: color-mix(in srgb, var(--primary-soft) 80%, var(--surface));
 }
 
-.cert-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 10px;
-    line-height: 1.35;
+.cert-id-text {
+  color: var(--text-soft);
+  font-size: 0.8rem;
 }
 
-.cert-meta {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    color: #8b95a1;
-    margin-bottom: 22px;
-    flex-grow: 1;
+@media (max-width: 980px) {
+  .cert-template-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.cert-meta span {
-    display: block;
-    margin-bottom: 4px;
-}
-
-.cert-meta strong {
-    color: #c9d1d9;
-    font-weight: 600;
-}
-
-.view-cred-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    color: #00F5FF;
-    border: 1px solid rgba(0, 245, 255, 0.35);
-    padding: 9px 16px;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: fit-content;
-    text-decoration: none;
-    border-radius: 3px;
-}
-
-.view-cred-btn:hover {
-    background: #00F5FF;
-    color: #080808;
-    box-shadow: 0 0 18px rgba(0, 245, 255, 0.45);
+@media (max-width: 640px) {
+  .cert-template-grid {
+    grid-template-columns: 1fr;
+  }
 }
