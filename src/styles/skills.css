@@ -91,3 +91,23 @@
     grid-template-columns: 1fr;
   }
 }
+
+.skills-pill,
+.skill-title-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skill-title-row {
+  display: flex;
+}
+
+.skill-title-row i {
+  color: currentColor;
+}
+
+.skills-pill i {
+  color: currentColor;
+  font-size: 0.9em;
+}

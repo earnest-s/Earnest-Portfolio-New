@@ -110,3 +110,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+.cert-pill,
+.cert-provider,
+.cert-issued,
+.cert-link-btn,
+.cert-id-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cert-provider i,
+.cert-issued i,
+.cert-link-btn i,
+.cert-id-text i,
+.cert-pill i {
+  color: currentColor;
+}

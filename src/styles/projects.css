@@ -104,3 +104,8 @@
     grid-template-columns: 1fr;
   }
 }
+
+.project-head i,
+.project-action-row i {
+  color: currentColor;
+}
