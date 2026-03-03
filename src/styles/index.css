@@ -62,6 +62,11 @@ body.no-scroll {
   overflow: hidden;
 }
 
+.app-shell {
+  position: relative;
+  z-index: 1;
+}
+
 .container {
   width: min(1120px, 92vw);
   margin: 0 auto;

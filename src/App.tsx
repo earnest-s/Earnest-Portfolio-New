@@ -1,4 +1,5 @@
 import {
+  AnoAI,
   Header,
   Hero,
   About,
@@ -14,17 +15,20 @@ import './styles/index.css';
 function App() {
   return (
     <>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Certificates />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
+      <AnoAI />
+      <div className="app-shell">
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Experience />
+          <Skills />
+          <Certificates />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

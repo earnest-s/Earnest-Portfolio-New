@@ -1,4 +1,5 @@
 export { Header } from './Header';
+export { default as AnoAI } from './AnoAI';
 export { Hero } from './Hero';
 export { About } from './About';
 export { Experience } from './Experience';
