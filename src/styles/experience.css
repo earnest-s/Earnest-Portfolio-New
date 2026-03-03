@@ -94,8 +94,15 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  transition: transform 180ms ease, background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .experience-cert-btn:hover {
   background: color-mix(in srgb, var(--primary-soft) 80%, var(--surface));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.experience-cert-btn:active {
+  transform: translateY(0);
 }

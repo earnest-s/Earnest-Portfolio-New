@@ -49,6 +49,12 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-weight: 700;
+  transition: transform 170ms ease, box-shadow 220ms ease, background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+.contact-links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--primary) 16%, transparent);
 }
 
 .contact-form-template {
@@ -89,10 +95,22 @@
   letter-spacing: 0.05em;
   font-weight: 700;
   padding: 10px 14px;
+  transition: transform 180ms ease, background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .contact-form-template button:disabled {
   opacity: 0.65;
+}
+
+.contact-form-template button:hover:not(:disabled) {
+  background: var(--primary-strong);
+  border-color: var(--primary-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--primary) 24%, transparent);
+}
+
+.contact-form-template button:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .footer-minimal {

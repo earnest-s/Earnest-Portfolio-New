@@ -16,11 +16,22 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-weight: 700;
+  transition: transform 170ms ease, background-color 220ms ease, border-color 220ms ease, color 220ms ease;
 }
 
 .cert-pill.active {
   background: var(--primary);
   border-color: var(--primary);
+  color: #fff;
+}
+
+.cert-pill:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.cert-pill.active:hover {
   color: #fff;
 }
 
@@ -70,10 +81,17 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-weight: 700;
+  transition: transform 180ms ease, background-color 220ms ease, box-shadow 220ms ease;
 }
 
 .cert-link-btn:hover {
   background: color-mix(in srgb, var(--primary-soft) 80%, var(--surface));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.cert-link-btn:active {
+  transform: translateY(0);
 }
 
 .cert-id-text {
