@@ -68,6 +68,8 @@ export const Header = () => {
   return (
     <header className="header-wrap">
       <div className="header-shell">
+        <span className="header-side-spacer" aria-hidden="true" />
+
         <nav className="header-nav" aria-label="Primary">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
