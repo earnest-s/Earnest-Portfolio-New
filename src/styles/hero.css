@@ -7,7 +7,7 @@
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.25fr 0.75fr;
   gap: clamp(18px, 4vw, 46px);
   align-items: center;
 }
@@ -111,6 +111,7 @@
 .hero-side {
   display: grid;
   gap: 10px;
+  justify-items: end;
 }
 
 .hero-photo-wrap {
@@ -119,19 +120,21 @@
   background: var(--surface);
   box-shadow: var(--shadow);
   overflow: hidden;
+  width: min(340px, 100%);
 }
 
 .hero-photo-wrap img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3.5 / 4.2;
   object-fit: cover;
 }
 
 .hero-facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 8px;
+  width: min(340px, 100%);
 }
 
 .hero-fact {
@@ -159,6 +162,7 @@
 
   .hero-side {
     order: -1;
+    justify-items: start;
   }
 }
 
