@@ -53,21 +53,6 @@ export const Hero = () => {
           <div className="hero-photo-wrap">
             <img src="/assets/earnest-photo.jpg" alt="Earnest S" />
           </div>
-
-          <div className="hero-facts">
-            <div className="hero-fact">
-              <strong>12+</strong>
-              <span><i className="fas fa-certificate" /> Certifications</span>
-            </div>
-            <div className="hero-fact">
-              <strong>3+</strong>
-              <span><i className="fas fa-diagram-project" /> Key Projects</span>
-            </div>
-            <div className="hero-fact">
-              <strong>2+</strong>
-              <span><i className="fas fa-briefcase" /> Years Experience</span>
-            </div>
-          </div>
         </aside>
       </div>
     </section>
