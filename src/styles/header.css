@@ -124,6 +124,10 @@
   transition: color 180ms ease, border-color 200ms ease, transform 180ms ease;
 }
 
+.theme-toggle-mobile {
+  display: none;
+}
+
 .theme-toggle:hover {
   color: var(--primary);
   border-color: var(--primary);
@@ -156,15 +160,18 @@
 
   .header-nav {
     flex: 1;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
     gap: 2px;
     margin: 0;
     padding: 0;
   }
 
   .header-item {
-    padding: 9px;
-    min-width: 36px;
+    width: 100%;
+    min-width: 0;
+    height: 36px;
+    padding: 0;
   }
 
   .header-item-label {
@@ -180,6 +187,18 @@
   .theme-toggle {
     width: 36px;
     height: 36px;
+  }
+
+  .theme-toggle-desktop {
+    display: none;
+  }
+
+  .theme-toggle-mobile {
+    display: inline-flex;
+    width: 100%;
+    min-width: 0;
+    height: 36px;
+    margin: 0;
   }
 
   .theme-toggle:hover {
