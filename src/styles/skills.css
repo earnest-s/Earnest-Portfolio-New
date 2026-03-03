@@ -16,11 +16,22 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-weight: 700;
+  transition: transform 170ms ease, background-color 220ms ease, border-color 220ms ease, color 220ms ease;
 }
 
 .skills-pill.active {
   background: var(--primary);
   border-color: var(--primary);
+  color: #fff;
+}
+
+.skills-pill:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.skills-pill.active:hover {
   color: #fff;
 }
 
