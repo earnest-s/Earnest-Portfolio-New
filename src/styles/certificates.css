@@ -49,6 +49,7 @@
   padding: 16px;
   display: grid;
   gap: 8px;
+  min-width: 0;
 }
 
 .cert-provider {
@@ -63,6 +64,9 @@
   font-family: 'Google Sans', 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
 }
 
 .cert-issued {
@@ -97,6 +101,9 @@
 .cert-id-text {
   color: var(--text-soft);
   font-size: 0.8rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.4;
 }
 
 @media (max-width: 980px) {
@@ -106,8 +113,57 @@
 }
 
 @media (max-width: 640px) {
+  .cert-filter-row {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-bottom: 14px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .cert-filter-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cert-pill {
+    flex: 0 0 auto;
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+
   .cert-template-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .certificate-template-card {
+    padding: 14px;
+  }
+
+  .certificate-template-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .cert-provider {
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+  }
+
+  .cert-issued,
+  .cert-id-text {
+    font-size: 0.78rem;
+  }
+
+  .cert-link-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #certificates {
+    padding-bottom: 120px;
   }
 }
 
@@ -127,4 +183,15 @@
 .cert-id-text i,
 .cert-pill i {
   color: currentColor;
+}
+
+.cert-id-text i {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cert-id-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
 }
