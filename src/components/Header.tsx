@@ -14,6 +14,13 @@ export const Header = () => {
       const sections = navLinks.map((link) => document.getElementById(link.id));
       const scrollPosition = window.scrollY + 140;
 
+      // Keep the last section active when user reaches page end.
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 8) {
+        const lastLink = navLinks[navLinks.length - 1];
+        setActiveSection(lastLink.id);
+        return;
+      }
+
       for (const section of sections) {
         if (!section) continue;
 
@@ -107,26 +114,40 @@ export const Header = () => {
             className="nav-toggle"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open navigation"
+            aria-expanded={mobileMenuOpen}
           >
             <i className="fas fa-bars" />
           </button>
         </div>
       </div>
 
-      <div className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
+      <div
+        className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}
+        onClick={() => setMobileMenuOpen(false)}
+      >
         <button
           className="mobile-nav-close"
-          onClick={() => setMobileMenuOpen(false)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setMobileMenuOpen(false);
+          }}
           aria-label="Close navigation"
         >
           <i className="fas fa-times" />
         </button>
 
-        <button className="theme-toggle mobile-theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+        <button
+          className="theme-toggle mobile-theme-toggle"
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleTheme();
+          }}
+          aria-label="Toggle theme"
+        >
           <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
         </button>
 
-        <nav className="mobile-nav-links" aria-label="Mobile navigation">
+        <nav className="mobile-nav-links" aria-label="Mobile navigation" onClick={(e) => e.stopPropagation()}>
           {navLinks.map((link) => (
             <a
               key={link.id}
