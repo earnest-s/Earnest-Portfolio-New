@@ -79,17 +79,16 @@ export const Header = () => {
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.id)}
                 className={`header-item ${isActive ? 'active' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
               >
                 <span className="header-item-label">{link.label}</span>
                 <span className="header-item-icon" aria-hidden="true">
                   <i className={`fas ${linkIconMap[link.id] ?? 'fa-circle'}`} />
                 </span>
 
-                {isActive && (
-                  <span className="header-lamp" aria-hidden="true">
-                    <span className="header-lamp-top" />
-                  </span>
-                )}
+                <span className={`header-lamp ${isActive ? 'active' : ''}`} aria-hidden="true">
+                  <span className="header-lamp-top" />
+                </span>
               </a>
             );
           })}
