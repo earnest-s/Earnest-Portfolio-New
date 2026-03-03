@@ -33,6 +33,12 @@ export const Experience = () => {
     window.open(pdfPath, '_blank', 'noopener,noreferrer');
   };
 
+  const getTypeIcon = (type: string) => {
+    if (type === 'internship') return 'fa-user-graduate';
+    if (type === 'simulation') return 'fa-flask';
+    return 'fa-briefcase';
+  };
+
   return (
     <section id="experience" className="section" ref={sectionRef}>
       <div className="container">
@@ -44,8 +50,11 @@ export const Experience = () => {
           {experiences.map((exp) => (
             <article key={exp.id} className="experience-card">
               <div className="experience-meta">
-                <span className="experience-date">{exp.date}</span>
-                <span className={`experience-type ${exp.type}`}>{exp.type}</span>
+                <span className="experience-date"><i className="fas fa-calendar-days" /> {exp.date}</span>
+                <span className={`experience-type ${exp.type}`}>
+                  <i className={`fas ${getTypeIcon(exp.type)} experience-type-icon`} />
+                  {exp.type}
+                </span>
               </div>
 
               <h3>{exp.title}</h3>

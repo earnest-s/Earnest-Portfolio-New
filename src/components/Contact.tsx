@@ -84,9 +84,9 @@ export const Contact = () => {
           </p>
 
           <div className="contact-links">
-            <a href="mailto:contact@earnest.qzz.io">Email</a>
-            <a href="https://www.linkedin.com/in/earnest-kirubakaran-oswarld-s/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/earnest-s" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="mailto:contact@earnest.qzz.io"><i className="fas fa-envelope" /> Email</a>
+            <a href="https://www.linkedin.com/in/earnest-kirubakaran-oswarld-s/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin" /> LinkedIn</a>
+            <a href="https://github.com/earnest-s" target="_blank" rel="noopener noreferrer"><i className="fab fa-github" /> GitHub</a>
           </div>
         </aside>
 
@@ -118,7 +118,7 @@ export const Contact = () => {
             />
 
             <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              <i className="fas fa-paper-plane" /> {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>

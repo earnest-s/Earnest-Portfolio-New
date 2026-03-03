@@ -3,6 +3,16 @@ import { navLinks } from '../data/portfolio';
 import { useTheme } from '../hooks/useTheme';
 import '../styles/header.css';
 
+const linkIconMap: Record<string, string> = {
+  home: 'fa-house',
+  about: 'fa-user',
+  experience: 'fa-briefcase',
+  skills: 'fa-code',
+  certificates: 'fa-certificate',
+  projects: 'fa-diagram-project',
+  contact: 'fa-envelope',
+};
+
 export const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,7 +23,6 @@ export const Header = () => {
       const sections = navLinks.map((link) => document.getElementById(link.id));
       const scrollPosition = window.scrollY + 140;
 
-      // Keep the last section active when user reaches page end.
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 8) {
         const lastLink = navLinks[navLinks.length - 1];
         setActiveSection(lastLink.id);
@@ -90,6 +99,7 @@ export const Header = () => {
               className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
               onClick={(e) => scrollToSection(e, link.id)}
             >
+              <i className={`fas ${linkIconMap[link.id] ?? 'fa-circle'} nav-link-icon`} aria-hidden="true" />
               {link.label}
             </a>
           ))}
@@ -145,6 +155,7 @@ export const Header = () => {
               className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
               onClick={(e) => scrollToSection(e, link.id)}
             >
+              <i className={`fas ${linkIconMap[link.id] ?? 'fa-circle'} nav-link-icon`} aria-hidden="true" />
               {link.label}
             </a>
           ))}

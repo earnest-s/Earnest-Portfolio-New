@@ -49,19 +49,19 @@ export const About = () => {
 
           <div className="about-pillars">
             <article className="pillar-card">
-              <h3>Data Analysis</h3>
+              <h3><i className="fas fa-chart-line" /> Data Analysis</h3>
               <p>Structured analysis, visual reporting, and KPI-first thinking.</p>
             </article>
             <article className="pillar-card">
-              <h3>AI Workflows</h3>
+              <h3><i className="fas fa-robot" /> AI Workflows</h3>
               <p>Model-driven solutions and automation for real operations.</p>
             </article>
             <article className="pillar-card">
-              <h3>IoT Integration</h3>
+              <h3><i className="fas fa-microchip" /> IoT Integration</h3>
               <p>Sensor-based systems and monitoring dashboards.</p>
             </article>
             <article className="pillar-card">
-              <h3>Execution</h3>
+              <h3><i className="fas fa-check-circle" /> Execution</h3>
               <p>Clean implementation from idea to delivery.</p>
             </article>
           </div>
