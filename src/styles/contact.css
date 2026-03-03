@@ -148,3 +148,15 @@
 .contact-form-template button i {
   color: currentColor;
 }
+
+.contact-link-email i {
+  color: #ea4335;
+}
+
+.contact-link-linkedin i {
+  color: #0a66c2;
+}
+
+.contact-link-github i {
+  color: #181717;
+}
