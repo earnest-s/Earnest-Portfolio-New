@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { gsap } from 'gsap';
 import { navLinks } from '../data/portfolio';
 import { useTheme } from '../hooks/useTheme';
 import '../styles/header.css';
@@ -45,15 +44,6 @@ export const Header = () => {
         setMobileMenuOpen(false);
       }
     };
-
-    gsap.from('.brand, .nav-desktop .nav-link, .theme-toggle', {
-      y: -16,
-      opacity: 0,
-      duration: 0.4,
-      stagger: 0.05,
-      ease: 'power2.out',
-      delay: 0.1,
-    });
 
     handleScroll();
     window.addEventListener('scroll', handleScroll);
