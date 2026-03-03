@@ -13,6 +13,7 @@ export const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSent, setIsSent] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -45,6 +46,7 @@ export const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
 
     try {
@@ -61,12 +63,11 @@ export const Contact = () => {
 
       if (response.ok) {
         setFormData({ name: '', email: '', message: '' });
-        alert('Thank you! I will get back to you soon.');
-      } else {
-        alert('Oops! Please try again.');
+        setIsSent(true);
+        window.setTimeout(() => setIsSent(false), 2000);
       }
     } catch {
-      alert('Connection error. Please try again.');
+      // Silently keep button state controlled in UI (no alert box).
     } finally {
       setIsSubmitting(false);
     }
@@ -117,8 +118,9 @@ export const Contact = () => {
               required
             />
 
-            <button type="submit" disabled={isSubmitting}>
-              <i className="fas fa-paper-plane" /> {isSubmitting ? 'Sending...' : 'Send Message'}
+            <button type="submit" disabled={isSubmitting || isSent}>
+              <i className={`fas ${isSent ? 'fa-check' : 'fa-paper-plane'}`} />{' '}
+              {isSubmitting ? 'Sending...' : isSent ? 'Sent' : 'Send Message'}
             </button>
           </form>
         </div>
