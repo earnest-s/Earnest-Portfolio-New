@@ -107,3 +107,17 @@ textarea {
     scroll-behavior: auto !important;
   }
 }
+
+@media (max-width: 767px) {
+  .container {
+    width: min(1120px, calc(100vw - 24px));
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .app-shell main {
+    padding-bottom: 90px;
+  }
+}
