@@ -15,17 +15,19 @@ const linkIconMap: Record<string, string> = {
 
 export const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+
     const handleScroll = () => {
       const sections = navLinks.map((link) => document.getElementById(link.id));
-      const scrollPosition = window.scrollY + 140;
+      const offset = isMobile ? 120 : 150;
+      const scrollPosition = window.scrollY + offset;
 
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 8) {
-        const lastLink = navLinks[navLinks.length - 1];
-        setActiveSection(lastLink.id);
+        setActiveSection(navLinks[navLinks.length - 1].id);
         return;
       }
 
@@ -42,124 +44,60 @@ export const Header = () => {
       }
     };
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setMobileMenuOpen(false);
-      }
-    };
-
-    const handleResize = () => {
-      if (window.innerWidth > 900) {
-        setMobileMenuOpen(false);
-      }
-    };
-
+    handleResize();
     handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('keydown', handleKeyDown);
+
     window.addEventListener('resize', handleResize);
-
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
-
-  useEffect(() => {
-    document.body.classList.toggle('no-scroll', mobileMenuOpen);
-    return () => document.body.classList.remove('no-scroll');
-  }, [mobileMenuOpen]);
+  }, [isMobile]);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const section = document.getElementById(id);
     if (!section) return;
 
-    window.scrollTo({
-      top: section.offsetTop - 88,
-      behavior: 'smooth',
-    });
-
-    setMobileMenuOpen(false);
+    const headerOffset = isMobile ? 18 : 92;
+    window.scrollTo({ top: section.offsetTop - headerOffset, behavior: 'smooth' });
+    setActiveSection(id);
   };
 
   return (
-    <header className="header">
-      <div className="container header-shell">
-        <a href="#home" className="brand" onClick={(e) => scrollToSection(e, 'home')}>
-          EARNEST S
-        </a>
+    <header className="header-wrap">
+      <div className="header-shell">
+        {!isMobile && <span className="header-brand">EARNEST S</span>}
 
-        <nav className="nav-desktop" aria-label="Desktop navigation">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
-              onClick={(e) => scrollToSection(e, link.id)}
-            >
-              <i className={`fas ${linkIconMap[link.id] ?? 'fa-circle'} nav-link-icon`} aria-hidden="true" />
-              {link.label}
-            </a>
-          ))}
+        <nav className="header-nav" aria-label="Primary">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <a
+                key={link.id}
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.id)}
+                className={`header-item ${isActive ? 'active' : ''}`}
+              >
+                <span className="header-item-label">{link.label}</span>
+                <span className="header-item-icon" aria-hidden="true">
+                  <i className={`fas ${linkIconMap[link.id] ?? 'fa-circle'}`} />
+                </span>
+
+                {isActive && (
+                  <span className="header-lamp" aria-hidden="true">
+                    <span className="header-lamp-top" />
+                  </span>
+                )}
+              </a>
+            );
+          })}
         </nav>
 
-        <div className="header-actions">
-          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-            <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
-          </button>
-
-          <button
-            className="nav-toggle"
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open navigation"
-            aria-expanded={mobileMenuOpen}
-          >
-            <i className="fas fa-bars" />
-          </button>
-        </div>
-      </div>
-
-      <div
-        className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        <button
-          className="mobile-nav-close"
-          onClick={(e) => {
-            e.stopPropagation();
-            setMobileMenuOpen(false);
-          }}
-          aria-label="Close navigation"
-        >
-          <i className="fas fa-times" />
-        </button>
-
-        <button
-          className="theme-toggle mobile-theme-toggle"
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleTheme();
-          }}
-          aria-label="Toggle theme"
-        >
+        <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
           <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
         </button>
-
-        <nav className="mobile-nav-links" aria-label="Mobile navigation" onClick={(e) => e.stopPropagation()}>
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
-              onClick={(e) => scrollToSection(e, link.id)}
-            >
-              <i className={`fas ${linkIconMap[link.id] ?? 'fa-circle'} nav-link-icon`} aria-hidden="true" />
-              {link.label}
-            </a>
-          ))}
-        </nav>
       </div>
     </header>
   );
