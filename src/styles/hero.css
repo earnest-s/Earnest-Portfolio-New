@@ -122,6 +122,8 @@
   display: grid;
   gap: 10px;
   justify-items: center;
+  width: min(360px, 100%);
+  margin-inline: auto;
 }
 
 .hero-photo-wrap {
@@ -130,7 +132,7 @@
   background: var(--surface);
   box-shadow: var(--shadow);
   overflow: hidden;
-  width: min(300px, 100%);
+  width: 100%;
 }
 
 .hero-photo-wrap img {
@@ -144,7 +146,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  width: min(420px, 100%);
+  width: 100%;
 }
 
 .hero-fact {
