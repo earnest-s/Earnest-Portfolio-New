@@ -54,6 +54,12 @@
   transition: transform 170ms ease, background-color 220ms ease, color 220ms ease;
 }
 
+.nav-link-icon {
+  margin-right: 6px;
+  font-size: 0.78em;
+  color: currentColor;
+}
+
 .nav-link:hover {
   color: var(--text);
   background: var(--surface-alt);

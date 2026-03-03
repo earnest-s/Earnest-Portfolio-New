@@ -44,11 +44,11 @@ export const Skills = () => {
         </div>
 
         <div className="skills-filter-row">
-          <button className={`skills-pill ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')}>All</button>
-          <button className={`skills-pill ${activeCategory === 'data' ? 'active' : ''}`} onClick={() => setActiveCategory('data')}>Data</button>
-          <button className={`skills-pill ${activeCategory === 'dev' ? 'active' : ''}`} onClick={() => setActiveCategory('dev')}>Development</button>
-          <button className={`skills-pill ${activeCategory === 'devops' ? 'active' : ''}`} onClick={() => setActiveCategory('devops')}>DevOps</button>
-          <button className={`skills-pill ${activeCategory === 'tools' ? 'active' : ''}`} onClick={() => setActiveCategory('tools')}>Tools</button>
+          <button className={`skills-pill ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')}><i className="fas fa-layer-group" /> All</button>
+          <button className={`skills-pill ${activeCategory === 'data' ? 'active' : ''}`} onClick={() => setActiveCategory('data')}><i className="fas fa-chart-column" /> Data</button>
+          <button className={`skills-pill ${activeCategory === 'dev' ? 'active' : ''}`} onClick={() => setActiveCategory('dev')}><i className="fas fa-code" /> Development</button>
+          <button className={`skills-pill ${activeCategory === 'devops' ? 'active' : ''}`} onClick={() => setActiveCategory('devops')}><i className="fas fa-server" /> DevOps</button>
+          <button className={`skills-pill ${activeCategory === 'tools' ? 'active' : ''}`} onClick={() => setActiveCategory('tools')}><i className="fas fa-toolbox" /> Tools</button>
         </div>
 
         <div className="skills-grid-template">

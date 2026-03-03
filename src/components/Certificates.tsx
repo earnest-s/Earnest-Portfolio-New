@@ -44,26 +44,26 @@ export const Certificates = () => {
         </div>
 
         <div className="cert-filter-row">
-          <button className={`cert-pill ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')}>All</button>
-          <button className={`cert-pill ${activeCategory === 'data-analytics' ? 'active' : ''}`} onClick={() => setActiveCategory('data-analytics')}>Data</button>
-          <button className={`cert-pill ${activeCategory === 'job-simulation' ? 'active' : ''}`} onClick={() => setActiveCategory('job-simulation')}>Simulation</button>
-          <button className={`cert-pill ${activeCategory === 'ai-ml' ? 'active' : ''}`} onClick={() => setActiveCategory('ai-ml')}>AI/ML</button>
-          <button className={`cert-pill ${activeCategory === 'development' ? 'active' : ''}`} onClick={() => setActiveCategory('development')}>Dev</button>
+          <button className={`cert-pill ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')}><i className="fas fa-layer-group" /> All</button>
+          <button className={`cert-pill ${activeCategory === 'data-analytics' ? 'active' : ''}`} onClick={() => setActiveCategory('data-analytics')}><i className="fas fa-chart-line" /> Data</button>
+          <button className={`cert-pill ${activeCategory === 'job-simulation' ? 'active' : ''}`} onClick={() => setActiveCategory('job-simulation')}><i className="fas fa-flask" /> Simulation</button>
+          <button className={`cert-pill ${activeCategory === 'ai-ml' ? 'active' : ''}`} onClick={() => setActiveCategory('ai-ml')}><i className="fas fa-brain" /> AI/ML</button>
+          <button className={`cert-pill ${activeCategory === 'development' ? 'active' : ''}`} onClick={() => setActiveCategory('development')}><i className="fas fa-code" /> Dev</button>
         </div>
 
         <div className="cert-template-grid">
           {filteredCertificates.map((cert) => (
             <article key={cert.id} className="certificate-template-card">
-              <p className="cert-provider">{cert.provider}</p>
+              <p className="cert-provider"><i className="fas fa-building-columns" /> {cert.provider}</p>
               <h3>{cert.title}</h3>
-              <p className="cert-issued">Issued {cert.issueDate}</p>
+              <p className="cert-issued"><i className="fas fa-calendar-days" /> Issued {cert.issueDate}</p>
 
               {cert.credentialUrl ? (
                 <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="cert-link-btn">
-                  View Credential
+                  <i className="fas fa-up-right-from-square" /> View Credential
                 </a>
               ) : (
-                <p className="cert-id-text">{cert.credentialId ? `ID: ${cert.credentialId}` : 'Credential available on request'}</p>
+                <p className="cert-id-text"><i className="fas fa-fingerprint" /> {cert.credentialId ? `ID: ${cert.credentialId}` : 'Credential available on request'}</p>
               )}
             </article>
           ))}
