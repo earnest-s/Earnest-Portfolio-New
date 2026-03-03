@@ -91,9 +91,17 @@ export const Header = () => {
               </a>
             );
           })}
+
+          <button
+            className="theme-toggle theme-toggle-mobile"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
+          </button>
         </nav>
 
-        <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+        <button className="theme-toggle theme-toggle-desktop" onClick={toggleTheme} aria-label="Toggle theme">
           <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
         </button>
       </div>
