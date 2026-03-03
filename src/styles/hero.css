@@ -143,18 +143,55 @@
 }
 
 @media (max-width: 920px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 86px;
+  }
+
   .hero-layout {
     grid-template-columns: 1fr;
+    gap: 22px;
   }
 
   .hero-side {
-    order: -1;
     justify-items: center;
+    width: min(320px, 100%);
   }
 }
 
 @media (max-width: 620px) {
+  .hero-name {
+    font-size: 1.12rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-kicker {
+    font-size: 0.72rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-heading span {
+    font-size: clamp(2rem, 13vw, 2.8rem);
+    line-height: 0.95;
+  }
+
+  .hero-copy {
+    font-size: 0.98rem;
+    margin-bottom: 18px;
+  }
+
+  .hero-actions {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .hero-actions a {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-width: 0;
+  }
+
   .hero-photo-wrap {
-    max-width: 320px;
+    max-width: 250px;
   }
 }
