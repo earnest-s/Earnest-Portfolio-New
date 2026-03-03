@@ -9,7 +9,7 @@ const linkIconMap: Record<string, string> = {
   experience: 'fa-briefcase',
   skills: 'fa-code',
   certificates: 'fa-certificate',
-  projects: 'fa-diagram-project',
+  projects: 'fa-project-diagram',
   contact: 'fa-envelope',
 };
 
