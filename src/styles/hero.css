@@ -160,6 +160,10 @@
 }
 
 @media (max-width: 620px) {
+  .hero-main {
+    text-align: center;
+  }
+
   .hero-name {
     font-size: 1.12rem;
     letter-spacing: 0.06em;
@@ -178,11 +182,13 @@
   .hero-copy {
     font-size: 0.98rem;
     margin-bottom: 18px;
+    margin-inline: auto;
   }
 
   .hero-actions {
     width: 100%;
     gap: 8px;
+    justify-content: center;
   }
 
   .hero-actions a {
