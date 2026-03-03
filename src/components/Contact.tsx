@@ -84,9 +84,9 @@ export const Contact = () => {
           </p>
 
           <div className="contact-links">
-            <a href="mailto:contact@earnest.qzz.io"><i className="fas fa-envelope" /> Email</a>
-            <a href="https://www.linkedin.com/in/earnest-kirubakaran-oswarld-s/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin" /> LinkedIn</a>
-            <a href="https://github.com/earnest-s" target="_blank" rel="noopener noreferrer"><i className="fab fa-github" /> GitHub</a>
+            <a className="contact-link-email" href="mailto:contact@earnest.qzz.io"><i className="fas fa-envelope" /> Email</a>
+            <a className="contact-link-linkedin" href="https://www.linkedin.com/in/earnest-kirubakaran-oswarld-s/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin" /> LinkedIn</a>
+            <a className="contact-link-github" href="https://github.com/earnest-s" target="_blank" rel="noopener noreferrer"><i className="fab fa-github" /> GitHub</a>
           </div>
         </aside>
 
