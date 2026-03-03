@@ -24,7 +24,7 @@
 .hero-name {
   margin-bottom: 8px;
   font-family: 'Google Sans', 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
