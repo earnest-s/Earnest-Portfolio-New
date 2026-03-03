@@ -2,7 +2,7 @@
   min-height: calc(100vh - 84px);
   display: flex;
   align-items: center;
-  padding-top: clamp(20px, 4vw, 48px);
+  padding-top: clamp(52px, 8vw, 92px);
 }
 
 .hero-layout {
