@@ -21,6 +21,16 @@
   margin-bottom: 14px;
 }
 
+.hero-name {
+  margin-bottom: 8px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
 .hero-heading {
   display: flex;
   flex-direction: column;

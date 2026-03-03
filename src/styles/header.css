@@ -22,27 +22,15 @@
   animation: navFadeIn 280ms ease-out;
 }
 
-.header-brand {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0 8px;
-  font-family: 'Google Sans', 'Roboto', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--text);
-  white-space: nowrap;
-}
-
 .header-nav {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex: 1;
   gap: 2px;
   min-width: 0;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 44px 0 8px;
 }
 
 .header-item {
@@ -142,10 +130,6 @@
 }
 
 @media (max-width: 1080px) {
-  .header-brand {
-    display: none;
-  }
-
   .header-nav {
     padding-left: 8px;
   }
