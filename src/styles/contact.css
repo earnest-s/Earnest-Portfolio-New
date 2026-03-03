@@ -137,6 +137,12 @@
   }
 }
 
+@media (max-width: 767px) {
+  .footer-minimal {
+    padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 .contact-links a,
 .contact-form-template button {
   display: inline-flex;
