@@ -3,7 +3,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 120;
-  width: min(1120px, calc(100vw - 24px));
+  width: min(1080px, calc(100vw - 28px));
   top: 12px;
 }
 
@@ -11,13 +11,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 6px;
+  gap: 8px;
+  padding: 7px 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: color-mix(in srgb, var(--surface) 88%, transparent);
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
+  animation: navFadeIn 280ms ease-out;
 }
 
 .header-brand {
@@ -33,7 +34,7 @@
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 2px;
   min-width: 0;
 }
 
@@ -43,13 +44,13 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  padding: 9px 14px;
+  padding: 8px 10px;
   color: color-mix(in srgb, var(--text) 82%, transparent);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  transition: color 180ms ease, transform 180ms ease, background-color 200ms ease;
+  transition: color 200ms ease, transform 200ms ease, background-color 220ms ease;
   overflow: visible;
 }
 
@@ -61,6 +62,7 @@
 .header-item.active {
   background: color-mix(in srgb, var(--primary) 16%, var(--surface));
   color: var(--primary);
+  transform: translateY(-1px);
 }
 
 .header-item-label {
@@ -98,6 +100,14 @@
   box-shadow:
     0 0 12px color-mix(in srgb, var(--primary) 50%, transparent),
     0 0 20px color-mix(in srgb, var(--primary) 28%, transparent);
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0.4);
+  transition: opacity 200ms ease, transform 220ms ease;
+}
+
+.header-lamp.active .header-lamp-top {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
 }
 
 .theme-toggle {
@@ -129,7 +139,7 @@
 @media (max-width: 767px) {
   .header-wrap {
     top: auto;
-    bottom: 12px;
+    bottom: 10px;
     width: calc(100vw - 16px);
   }
 
@@ -163,5 +173,17 @@
   .theme-toggle {
     width: 36px;
     height: 36px;
+  }
+}
+
+@keyframes navFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
