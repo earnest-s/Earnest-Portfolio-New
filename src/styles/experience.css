@@ -106,3 +106,17 @@
 .experience-cert-btn:active {
   transform: translateY(0);
 }
+
+.experience-date,
+.experience-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.experience-date i,
+.experience-type i,
+.experience-company i,
+.experience-cert-btn i {
+  color: currentColor;
+}
