@@ -33,6 +33,10 @@
   padding: 0;
 }
 
+.header-nav .shatter-wrap {
+  display: inline-flex;
+}
+
 .header-item {
   position: relative;
   display: inline-flex;
@@ -165,6 +169,11 @@
     gap: 1px;
     margin: 0 auto;
     padding: 0;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .header-nav .shatter-wrap {
     width: 100%;
     min-width: 0;
   }

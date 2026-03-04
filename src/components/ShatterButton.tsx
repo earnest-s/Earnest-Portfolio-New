@@ -16,6 +16,7 @@ interface BaseProps {
   className?: string;
   shardCount?: number;
   shatterColor?: string;
+  preserveLayout?: boolean;
 }
 
 type ButtonModeProps = BaseProps & {
@@ -23,6 +24,7 @@ type ButtonModeProps = BaseProps & {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
+  ariaCurrent?: 'page' | undefined;
 };
 
 type LinkModeProps = BaseProps & {
@@ -31,6 +33,7 @@ type LinkModeProps = BaseProps & {
   target?: string;
   rel?: string;
   download?: boolean;
+  ariaCurrent?: 'page' | undefined;
 };
 
 type ShatterButtonProps = ButtonModeProps | LinkModeProps;
@@ -48,6 +51,7 @@ export const ShatterButton = ({
   className = '',
   shardCount = 20,
   shatterColor = 'var(--primary)',
+  preserveLayout = false,
   ...rest
 }: ShatterButtonProps) => {
   const [burstId, setBurstId] = useState(0);
@@ -89,6 +93,7 @@ export const ShatterButton = ({
           target={rest.target}
           rel={rest.rel}
           download={rest.download}
+          aria-current={rest.ariaCurrent}
           className={sharedClassName}
           onPointerDown={triggerBurst}
           onClick={(event) => {
@@ -97,12 +102,13 @@ export const ShatterButton = ({
           }}
         >
           <span className="shatter-glow" aria-hidden="true" />
-          <span className="shatter-label">{children}</span>
+          {preserveLayout ? children : <span className="shatter-label">{children}</span>}
         </a>
       ) : (
         <button
           type={rest.type ?? 'button'}
           disabled={rest.disabled}
+          aria-current={rest.ariaCurrent}
           className={sharedClassName}
           onPointerDown={triggerBurst}
           onClick={(event) => {
@@ -111,7 +117,7 @@ export const ShatterButton = ({
           }}
         >
           <span className="shatter-glow" aria-hidden="true" />
-          <span className="shatter-label">{children}</span>
+          {preserveLayout ? children : <span className="shatter-label">{children}</span>}
         </button>
       )}
 

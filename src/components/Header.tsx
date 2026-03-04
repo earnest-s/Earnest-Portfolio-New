@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { navLinks } from '../data/portfolio';
 import { useTheme } from '../hooks/useTheme';
+import { ShatterButton } from './ShatterButton';
 import '../styles/header.css';
 
 const linkIconMap: Record<string, string> = {
@@ -72,12 +73,14 @@ export const Header = () => {
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
-              <a
+              <ShatterButton
                 key={link.id}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.id)}
                 className={`header-item ${isActive ? 'active' : ''}`}
-                aria-current={isActive ? 'page' : undefined}
+                ariaCurrent={isActive ? 'page' : undefined}
+                preserveLayout
+                shatterColor="var(--primary)"
               >
                 <span className="header-item-label">{link.label}</span>
                 <span className="header-item-icon" aria-hidden="true">
@@ -87,7 +90,7 @@ export const Header = () => {
                 <span className={`header-lamp ${isActive ? 'active' : ''}`} aria-hidden="true">
                   <span className="header-lamp-top" />
                 </span>
-              </a>
+              </ShatterButton>
             );
           })}
 
