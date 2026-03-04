@@ -6,6 +6,8 @@ type ToggleOrigin = HTMLElement | { x: number; y: number } | undefined;
 const THEME_STORAGE_KEY = 'portfolio_theme';
 const LIGHT_BG = '#f7f8fa';
 const DARK_BG = '#0f1115';
+const LIGHT_FILL = 'rgba(247, 248, 250, 0.72)';
+const DARK_FILL = 'rgba(15, 17, 21, 0.72)';
 
 export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -30,7 +32,8 @@ export const useTheme = () => {
     // Between animated background and UI content.
     overlay.style.zIndex = '10';
     overlay.style.pointerEvents = 'none';
-    overlay.style.background = nextTheme === 'dark' ? DARK_BG : LIGHT_BG;
+    overlay.style.background = nextTheme === 'dark' ? DARK_FILL : LIGHT_FILL;
+    overlay.style.mixBlendMode = nextTheme === 'dark' ? 'multiply' : 'screen';
     overlay.style.borderRadius = '50%';
     overlay.style.willChange = 'transform, opacity';
 
@@ -58,7 +61,7 @@ export const useTheme = () => {
     overlay.style.top = `${y - maxRadius}px`;
     overlay.style.transformOrigin = '50% 50%';
     overlay.style.transform = 'scale(0)';
-    overlay.style.opacity = '1';
+    overlay.style.opacity = '0.86';
     document.body.appendChild(overlay);
 
     // Let the overlay render first to avoid a visible pop.
@@ -66,8 +69,8 @@ export const useTheme = () => {
 
     const expand = overlay.animate(
       [
-        { transform: 'scale(0)', opacity: 1 },
-        { transform: 'scale(1)', opacity: 1 },
+        { transform: 'scale(0)', opacity: 0.86 },
+        { transform: 'scale(1)', opacity: 0.86 },
       ],
       {
         duration: 560,
@@ -79,7 +82,7 @@ export const useTheme = () => {
     expand.onfinish = () => {
       const fade = overlay.animate(
         [
-          { opacity: 1 },
+          { opacity: 0.86 },
           { opacity: 0 },
         ],
         {
