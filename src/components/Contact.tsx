@@ -86,9 +86,27 @@ export const Contact = () => {
           </p>
 
           <div className="contact-links">
-            <a className="contact-link-email" href="mailto:contact@earnest.qzz.io"><i className="fas fa-envelope" /> Email</a>
-            <a className="contact-link-linkedin" href="https://www.linkedin.com/in/earnest-kirubakaran-oswarld-s/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin" /> LinkedIn</a>
-            <a className="contact-link-github" href="https://github.com/earnest-s" target="_blank" rel="noopener noreferrer"><i className="fab fa-github" /> GitHub</a>
+            <ShatterButton className="contact-link-email" href="mailto:contact@earnest.qzz.io" shatterColor="var(--primary)">
+              <i className="fas fa-envelope" /> Email
+            </ShatterButton>
+            <ShatterButton
+              className="contact-link-linkedin"
+              href="https://www.linkedin.com/in/earnest-kirubakaran-oswarld-s/"
+              target="_blank"
+              rel="noopener noreferrer"
+              shatterColor="var(--primary)"
+            >
+              <i className="fab fa-linkedin" /> LinkedIn
+            </ShatterButton>
+            <ShatterButton
+              className="contact-link-github"
+              href="https://github.com/earnest-s"
+              target="_blank"
+              rel="noopener noreferrer"
+              shatterColor="var(--primary)"
+            >
+              <i className="fab fa-github" /> GitHub
+            </ShatterButton>
           </div>
         </aside>
 

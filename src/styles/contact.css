@@ -38,7 +38,11 @@
   gap: 8px;
 }
 
-.contact-links a {
+.contact-links .shatter-wrap {
+  width: fit-content;
+}
+
+.contact-links .shatter-btn {
   width: fit-content;
   border-radius: 999px;
   border: 1px solid var(--chip-border);
@@ -52,7 +56,7 @@
   transition: transform 170ms ease, box-shadow 220ms ease, background-color 220ms ease, color 220ms ease, border-color 220ms ease;
 }
 
-.contact-links a:hover {
+.contact-links .shatter-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 18px color-mix(in srgb, var(--primary) 16%, transparent);
 }
@@ -96,6 +100,11 @@
   font-weight: 700;
   padding: 10px 14px;
   transition: transform 180ms ease, background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.contact-form-template .shatter-wrap {
+  width: fit-content;
+  justify-self: start;
 }
 
 .contact-form-template .contact-submit-btn:disabled {
@@ -143,26 +152,26 @@
   }
 }
 
-.contact-links a,
+.contact-links .shatter-btn,
 .contact-form-template .contact-submit-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
-.contact-links a i,
+.contact-links .shatter-btn i,
 .contact-form-template .contact-submit-btn i {
   color: currentColor;
 }
 
-.contact-links a.contact-link-email i {
+.contact-links .contact-link-email i {
   color: #ea4335;
 }
 
-.contact-links a.contact-link-linkedin i {
+.contact-links .contact-link-linkedin i {
   color: #0a66c2;
 }
 
-.contact-links a.contact-link-github i {
+.contact-links .contact-link-github i {
   color: #181717;
 }

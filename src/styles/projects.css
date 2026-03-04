@@ -64,7 +64,12 @@
   margin-top: auto;
 }
 
-.project-action-row a {
+.project-action-row .shatter-wrap {
+  flex: 1;
+  display: flex;
+}
+
+.project-action-row .project-action-btn {
   flex: 1;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -82,14 +87,14 @@
   transition: transform 180ms ease, border-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
 }
 
-.project-action-row a:hover {
+.project-action-row .project-action-btn:hover {
   border-color: var(--primary);
   color: var(--primary);
   transform: translateY(-2px);
   box-shadow: 0 8px 18px color-mix(in srgb, var(--primary) 18%, transparent);
 }
 
-.project-action-row a:active {
+.project-action-row .project-action-btn:active {
   transform: translateY(0);
 }
 
