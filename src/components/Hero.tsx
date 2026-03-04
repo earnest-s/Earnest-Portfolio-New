@@ -43,9 +43,6 @@ export const Hero = () => {
             <a href="/assets/Earnest_Resume.pdf" download className="btn-primary">
               <i className="fas fa-download" /> Download Resume
             </a>
-            <a href="#projects" className="btn-secondary">
-              <i className="fas fa-arrow-down" /> View Projects
-            </a>
           </div>
         </div>
 
