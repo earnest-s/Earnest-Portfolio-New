@@ -107,18 +107,18 @@ export const projects: Project[] = [
   {
     id: 'loqnova-core',
     title: 'LoqNova',
-    description: 'Core LoqNova application focused on AI-powered workflows and practical product implementation.',
-    icon: 'fa-robot',
+    description: 'Windows utility for Lenovo Legion/LOQ laptops to control power modes, battery, lighting, GPU modes and other Vantage-only features with no telemetry and no background services.',
+    icon: 'fa-sliders',
     githubLink: 'https://github.com/earnest-s/LoqNova.git',
-    tags: ['AI', 'Product', 'Automation'],
+    tags: ['Windows', 'Lenovo Legion', 'System Utility'],
   },
   {
     id: 'loqnova-website',
     title: 'LoqNova Website',
-    description: 'Official website implementation for LoqNova with structured UI, content layout, and deployment-ready frontend setup.',
+    description: 'Companion website for LoqNova covering product information, downloads, feature overviews, and user guidance.',
     icon: 'fa-globe',
     githubLink: 'https://github.com/earnest-s/LOQ_NOVA_WEBSITE.git',
-    tags: ['Web', 'Frontend', 'Brand Site'],
+    tags: ['Website', 'Docs', 'Frontend'],
   },
   {
     id: 'power-bi-essentials',
