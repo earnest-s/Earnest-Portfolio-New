@@ -45,41 +45,45 @@ export const Experience = () => {
         <div className="experience-list">
           {experiences.map((exp) => (
             <article key={exp.id} className="experience-card">
-              <div className="experience-meta">
-                <span className="experience-date"><i className="fas fa-calendar-days" /> {exp.date}</span>
-                <span className={`experience-type ${exp.type}`}>
-                  <i className={`fas ${getTypeIcon(exp.type)} experience-type-icon`} />
-                  {exp.type}
-                </span>
-              </div>
-
-              <h3>{exp.title}</h3>
-              <p className="experience-company">
-                <i className="fas fa-building" /> {exp.company}
-              </p>
-
-              <ul>
-                {exp.achievements.map((achievement, idx) => (
-                  <li key={idx}>{achievement}</li>
-                ))}
-              </ul>
-
-              {exp.certificate && (
-                <div className="experience-cert-frame">
-                  <div className="experience-cert-frame-head">
-                    <span><i className="fas fa-award" /> {exp.certificate.title}</span>
-                    <span><i className="fas fa-building-columns" /> {exp.certificate.provider}</span>
+              <div className="experience-layout">
+                <div className="experience-main">
+                  <div className="experience-meta">
+                    <span className="experience-date"><i className="fas fa-calendar-days" /> {exp.date}</span>
+                    <span className={`experience-type ${exp.type}`}>
+                      <i className={`fas ${getTypeIcon(exp.type)} experience-type-icon`} />
+                      {exp.type}
+                    </span>
                   </div>
-                  <div className="experience-cert-canvas">
-                    <img
-                      src={exp.certificate.imagePath}
-                      alt={`${exp.title} certificate preview`}
-                      loading="lazy"
-                      className="experience-cert-image"
-                    />
-                  </div>
+
+                  <h3>{exp.title}</h3>
+                  <p className="experience-company">
+                    <i className="fas fa-building" /> {exp.company}
+                  </p>
+
+                  <ul>
+                    {exp.achievements.map((achievement, idx) => (
+                      <li key={idx}>{achievement}</li>
+                    ))}
+                  </ul>
                 </div>
-              )}
+
+                {exp.certificate && (
+                  <div className="experience-cert-frame">
+                    <div className="experience-cert-frame-head">
+                      <span><i className="fas fa-award" /> {exp.certificate.title}</span>
+                      <span><i className="fas fa-building-columns" /> {exp.certificate.provider}</span>
+                    </div>
+                    <div className="experience-cert-canvas">
+                      <img
+                        src={exp.certificate.imagePath}
+                        alt={`${exp.title} certificate preview`}
+                        loading="lazy"
+                        className="experience-cert-image"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
             </article>
           ))}
         </div>
