@@ -6,6 +6,7 @@ type ToggleOrigin = HTMLElement | { x: number; y: number } | undefined;
 const THEME_STORAGE_KEY = 'portfolio_theme';
 const LIGHT_BG = '#f7f8fa';
 const DARK_BG = '#0f1115';
+const THEME_FILL_ID = 'theme-switch-fill';
 
 export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -25,7 +26,13 @@ export const useTheme = () => {
   const toggleTheme = (origin?: ToggleOrigin) => {
     const nextTheme: Theme = theme === 'light' ? 'dark' : 'light';
 
+    const existing = document.getElementById(THEME_FILL_ID);
+    if (existing) {
+      existing.remove();
+    }
+
     const overlay = document.createElement('div');
+    overlay.id = THEME_FILL_ID;
     overlay.style.position = 'fixed';
     // Between animated background and UI content.
     overlay.style.zIndex = '10';
@@ -58,25 +65,40 @@ export const useTheme = () => {
     overlay.style.top = `${y - maxRadius}px`;
     overlay.style.transformOrigin = '50% 50%';
     overlay.style.transform = 'scale(0)';
-    overlay.style.opacity = '0.98';
+    overlay.style.opacity = '1';
     document.body.appendChild(overlay);
 
-    setTheme(nextTheme);
+    // Let the overlay render first to avoid a visible pop.
+    window.requestAnimationFrame(() => setTheme(nextTheme));
 
-    const animation = overlay.animate(
+    const expand = overlay.animate(
       [
-        { transform: 'scale(0)', opacity: 0.98 },
+        { transform: 'scale(0)', opacity: 1 },
         { transform: 'scale(1)', opacity: 1 },
       ],
       {
-        duration: 580,
+        duration: 560,
         easing: 'cubic-bezier(0.22, 0.8, 0.22, 1)',
         fill: 'forwards',
       },
     );
 
-    animation.onfinish = () => {
-      overlay.remove();
+    expand.onfinish = () => {
+      const fade = overlay.animate(
+        [
+          { opacity: 1 },
+          { opacity: 0 },
+        ],
+        {
+          duration: 220,
+          easing: 'ease-out',
+          fill: 'forwards',
+        },
+      );
+
+      fade.onfinish = () => {
+        overlay.remove();
+      };
     };
   };
 
