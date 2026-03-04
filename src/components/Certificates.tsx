@@ -45,11 +45,11 @@ export const Certificates = () => {
         </div>
 
         <div className="cert-filter-row">
-          <button className={`cert-pill ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')}><i className="fas fa-layer-group" /> All</button>
-          <button className={`cert-pill ${activeCategory === 'data-analytics' ? 'active' : ''}`} onClick={() => setActiveCategory('data-analytics')}><i className="fas fa-chart-line" /> Data</button>
-          <button className={`cert-pill ${activeCategory === 'job-simulation' ? 'active' : ''}`} onClick={() => setActiveCategory('job-simulation')}><i className="fas fa-flask" /> Simulation</button>
-          <button className={`cert-pill ${activeCategory === 'ai-ml' ? 'active' : ''}`} onClick={() => setActiveCategory('ai-ml')}><i className="fas fa-brain" /> AI/ML</button>
-          <button className={`cert-pill ${activeCategory === 'development' ? 'active' : ''}`} onClick={() => setActiveCategory('development')}><i className="fas fa-code" /> Dev</button>
+          <ShatterButton className={`cert-pill ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')} shatterColor="var(--primary)"><i className="fas fa-layer-group" /> All</ShatterButton>
+          <ShatterButton className={`cert-pill ${activeCategory === 'data-analytics' ? 'active' : ''}`} onClick={() => setActiveCategory('data-analytics')} shatterColor="var(--primary)"><i className="fas fa-chart-line" /> Data</ShatterButton>
+          <ShatterButton className={`cert-pill ${activeCategory === 'job-simulation' ? 'active' : ''}`} onClick={() => setActiveCategory('job-simulation')} shatterColor="var(--primary)"><i className="fas fa-flask" /> Simulation</ShatterButton>
+          <ShatterButton className={`cert-pill ${activeCategory === 'ai-ml' ? 'active' : ''}`} onClick={() => setActiveCategory('ai-ml')} shatterColor="var(--primary)"><i className="fas fa-brain" /> AI/ML</ShatterButton>
+          <ShatterButton className={`cert-pill ${activeCategory === 'development' ? 'active' : ''}`} onClick={() => setActiveCategory('development')} shatterColor="var(--primary)"><i className="fas fa-code" /> Dev</ShatterButton>
         </div>
 
         <div className="cert-template-grid">

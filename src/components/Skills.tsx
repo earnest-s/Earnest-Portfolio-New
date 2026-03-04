@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { skills } from '../data/portfolio';
+import { ShatterButton } from './ShatterButton';
 import '../styles/skills.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -44,11 +45,11 @@ export const Skills = () => {
         </div>
 
         <div className="skills-filter-row">
-          <button className={`skills-pill ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')}><i className="fas fa-layer-group" /> All</button>
-          <button className={`skills-pill ${activeCategory === 'data' ? 'active' : ''}`} onClick={() => setActiveCategory('data')}><i className="fas fa-chart-column" /> Data</button>
-          <button className={`skills-pill ${activeCategory === 'dev' ? 'active' : ''}`} onClick={() => setActiveCategory('dev')}><i className="fas fa-code" /> Development</button>
-          <button className={`skills-pill ${activeCategory === 'devops' ? 'active' : ''}`} onClick={() => setActiveCategory('devops')}><i className="fas fa-server" /> DevOps</button>
-          <button className={`skills-pill ${activeCategory === 'tools' ? 'active' : ''}`} onClick={() => setActiveCategory('tools')}><i className="fas fa-toolbox" /> Tools</button>
+          <ShatterButton className={`skills-pill ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')} shatterColor="var(--primary)"><i className="fas fa-layer-group" /> All</ShatterButton>
+          <ShatterButton className={`skills-pill ${activeCategory === 'data' ? 'active' : ''}`} onClick={() => setActiveCategory('data')} shatterColor="var(--primary)"><i className="fas fa-chart-column" /> Data</ShatterButton>
+          <ShatterButton className={`skills-pill ${activeCategory === 'dev' ? 'active' : ''}`} onClick={() => setActiveCategory('dev')} shatterColor="var(--primary)"><i className="fas fa-code" /> Development</ShatterButton>
+          <ShatterButton className={`skills-pill ${activeCategory === 'devops' ? 'active' : ''}`} onClick={() => setActiveCategory('devops')} shatterColor="var(--primary)"><i className="fas fa-server" /> DevOps</ShatterButton>
+          <ShatterButton className={`skills-pill ${activeCategory === 'tools' ? 'active' : ''}`} onClick={() => setActiveCategory('tools')} shatterColor="var(--primary)"><i className="fas fa-toolbox" /> Tools</ShatterButton>
         </div>
 
         <div className="skills-grid-template">

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { projects } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ShatterButton } from './ShatterButton';
 import '../styles/projects.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -56,13 +57,25 @@ export const Projects = () => {
               )}
 
               <div className="project-action-row">
-                <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                <ShatterButton
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  shatterColor="var(--primary)"
+                  className="project-action-btn"
+                >
                   <i className="fab fa-github" /> Code
-                </a>
+                </ShatterButton>
                 {project.liveLink && (
-                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                  <ShatterButton
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    shatterColor="var(--primary)"
+                    className="project-action-btn"
+                  >
                     <i className="fas fa-arrow-up-right-from-square" /> Live
-                  </a>
+                  </ShatterButton>
                 )}
               </div>
             </article>
