@@ -33,8 +33,8 @@ export const useTheme = () => {
 
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
-    // Keep the fill behind app content so UI elements remain intact.
-    overlay.style.zIndex = '0';
+    // Between animated background and UI content.
+    overlay.style.zIndex = '10';
     overlay.style.pointerEvents = 'none';
     overlay.style.background = nextTheme === 'dark' ? DARK_BG : LIGHT_BG;
     overlay.style.borderRadius = '50%';
