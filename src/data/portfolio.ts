@@ -29,7 +29,7 @@ export const experiences: Experience[] = [
       title: 'Deloitte Data Analytics Job Simulation',
       description: 'Credential ID: FBf6vW4FzdCRNTGpwj',
       provider: 'Verified by Forage Platform',
-      imagePath: 'public/assets/deloitte-certificate.png',
+      imagePath: '/assets/deloitte-certificate.png',
     },
   },
   {
@@ -78,6 +78,27 @@ export const experiences: Experience[] = [
       description: 'Credential ID: wK5u5naxZnTDKGpr',
       provider: 'Verified by Forage Platform',
       imagePath: '/assets/ea-certificate.png',
+    },
+  },
+  {
+    id: 'siemens',
+    date: 'October 2025',
+    title: 'Commercial Project Manager Job Simulation',
+    company: 'Siemens Mobility - Forage',
+    type: 'simulation',
+    description: 'Completed Siemens Mobility\'s Commercial Project Manager virtual simulation focused on project commercials, stakeholder communication, and contract-aware decision making.',
+    achievements: [
+      'Analyzed commercial project scenarios and identified risk areas',
+      'Prepared structured recommendations for project profitability',
+      'Applied project planning and milestone-oriented thinking',
+      'Communicated tradeoffs between scope, cost, and delivery timelines',
+      'Demonstrated practical decision making in simulation-based tasks',
+    ],
+    certificate: {
+      title: 'Siemens Mobility - Commercial Project Manager Job Simulation',
+      description: 'Credential ID: RitwWCHt2yM2MfSqF',
+      provider: 'Verified by Forage Platform',
+      imagePath: '/assets/siemens-commercial-project-manager-job-simulation.png',
     },
   },
 ];
