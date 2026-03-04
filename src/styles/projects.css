@@ -27,8 +27,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 100%;
+  height: 336px;
   min-height: 336px;
+  overflow: hidden;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
@@ -41,7 +42,8 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  min-height: 52px;
+  height: 52px;
+  overflow: hidden;
 }
 
 .project-head i {
@@ -62,7 +64,7 @@
   color: var(--text-soft);
   font-size: 0.9rem;
   line-height: 1.5;
-  min-height: 96px;
+  height: 96px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -73,8 +75,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  min-height: 60px;
+  height: 60px;
   align-content: flex-start;
+  overflow: hidden;
 }
 
 .project-tag-list span {
@@ -149,11 +152,13 @@
   .project-template-card {
     height: auto;
     min-height: 0;
+    overflow: visible;
   }
 
   .project-head h3,
   .project-template-card p {
     min-height: 0;
+    height: auto;
   }
 
   .project-template-card p {
@@ -165,6 +170,8 @@
 
   .project-tag-list {
     min-height: 0;
+    height: auto;
+    overflow: visible;
   }
 }
 
