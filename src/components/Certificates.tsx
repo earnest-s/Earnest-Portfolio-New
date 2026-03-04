@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { certificates } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ShatterButton } from './ShatterButton';
 import '../styles/certificates.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -59,9 +60,15 @@ export const Certificates = () => {
               <p className="cert-issued"><i className="fas fa-calendar-days" /> Issued {cert.issueDate}</p>
 
               {cert.credentialUrl ? (
-                <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="cert-link-btn">
+                <ShatterButton
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cert-link-btn"
+                  shatterColor="var(--primary)"
+                >
                   <i className="fas fa-up-right-from-square" /> View Credential
-                </a>
+                </ShatterButton>
               ) : (
                 <p className="cert-id-text"><i className="fas fa-fingerprint" /> {cert.credentialId ? `ID: ${cert.credentialId}` : 'Credential available on request'}</p>
               )}
