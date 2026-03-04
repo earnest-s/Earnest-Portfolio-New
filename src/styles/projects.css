@@ -11,11 +11,11 @@
   background: var(--surface);
   box-shadow: var(--shadow);
   padding: 16px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
   gap: 10px;
   height: 100%;
-  min-height: 332px;
+  min-height: 320px;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
@@ -26,9 +26,8 @@
 
 .project-head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
-  min-height: 48px;
 }
 
 .project-head i {
@@ -38,19 +37,26 @@
 .project-head h3 {
   font-family: 'Google Sans', 'Roboto', sans-serif;
   font-size: 1rem;
+  line-height: 1.28;
+  min-height: 2.56em;
 }
 
 .project-template-card p {
   color: var(--text-soft);
   font-size: 0.9rem;
-  min-height: 92px;
+  line-height: 1.5;
+  min-height: 4.5em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .project-tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  min-height: 62px;
+  min-height: 58px;
   align-content: flex-start;
 }
 
@@ -68,7 +74,8 @@
 .project-action-row {
   display: flex;
   gap: 8px;
-  margin-top: auto;
+  margin-top: 2px;
+  align-self: end;
 }
 
 .project-action-row .shatter-wrap {
@@ -120,9 +127,15 @@
     min-height: 0;
   }
 
-  .project-head,
+  .project-head h3,
   .project-template-card p {
     min-height: 0;
+  }
+
+  .project-template-card p {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: visible;
   }
 
   .project-tag-list {
