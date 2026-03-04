@@ -6,8 +6,8 @@ type ToggleOrigin = HTMLElement | { x: number; y: number } | undefined;
 const THEME_STORAGE_KEY = 'portfolio_theme';
 const LIGHT_BG = '#f7f8fa';
 const DARK_BG = '#0f1115';
-const LIGHT_FILL = 'rgba(247, 248, 250, 0.72)';
-const DARK_FILL = 'rgba(15, 17, 21, 0.72)';
+const LIGHT_FILL = 'rgba(247, 248, 250, 0.64)';
+const DARK_FILL = 'rgba(15, 17, 21, 0.64)';
 
 export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -61,7 +61,7 @@ export const useTheme = () => {
     overlay.style.top = `${y - maxRadius}px`;
     overlay.style.transformOrigin = '50% 50%';
     overlay.style.transform = 'scale(0)';
-    overlay.style.opacity = '0.86';
+    overlay.style.opacity = '0.82';
     document.body.appendChild(overlay);
 
     // Let the overlay render first to avoid a visible pop.
@@ -69,12 +69,13 @@ export const useTheme = () => {
 
     const expand = overlay.animate(
       [
-        { transform: 'scale(0)', opacity: 0.86 },
-        { transform: 'scale(1)', opacity: 0.86 },
+        { transform: 'scale(0)', opacity: 0.42 },
+        { transform: 'scale(0.55)', opacity: 0.82 },
+        { transform: 'scale(1.03)', opacity: 0.82 },
       ],
       {
-        duration: 560,
-        easing: 'cubic-bezier(0.22, 0.8, 0.22, 1)',
+        duration: 880,
+        easing: 'cubic-bezier(0.19, 0.8, 0.22, 1)',
         fill: 'forwards',
       },
     );
@@ -82,12 +83,13 @@ export const useTheme = () => {
     expand.onfinish = () => {
       const fade = overlay.animate(
         [
-          { opacity: 0.86 },
+          { opacity: 0.82 },
+          { opacity: 0.52 },
           { opacity: 0 },
         ],
         {
-          duration: 220,
-          easing: 'ease-out',
+          duration: 420,
+          easing: 'cubic-bezier(0.18, 0.84, 0.22, 1)',
           fill: 'forwards',
         },
       );
