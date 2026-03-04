@@ -64,7 +64,7 @@ body.no-scroll {
 
 .app-shell {
   position: relative;
-  z-index: 1;
+  z-index: 30;
 }
 
 .container {
