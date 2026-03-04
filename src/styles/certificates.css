@@ -88,6 +88,11 @@
   transition: transform 180ms ease, background-color 220ms ease, box-shadow 220ms ease;
 }
 
+.certificate-template-card .shatter-wrap {
+  display: block;
+  width: 100%;
+}
+
 .cert-link-btn:hover {
   background: color-mix(in srgb, var(--primary-soft) 80%, var(--surface));
   transform: translateY(-2px);

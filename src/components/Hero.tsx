@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ShatterButton } from './ShatterButton';
 import '../styles/hero.css';
 
 export const Hero = () => {
@@ -40,9 +41,14 @@ export const Hero = () => {
           </p>
 
           <div className="hero-actions">
-            <a href="/assets/Earnest_Resume.pdf" download className="btn-primary">
+            <ShatterButton
+              href="/assets/Earnest_Resume.pdf"
+              download
+              className="btn-primary"
+              shatterColor="var(--primary)"
+            >
               <i className="fas fa-download" /> Download Resume
-            </a>
+            </ShatterButton>
           </div>
         </div>
 

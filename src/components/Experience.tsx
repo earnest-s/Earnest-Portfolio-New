@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { experiences } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ShatterButton } from './ShatterButton';
 import '../styles/experience.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -69,9 +70,13 @@ export const Experience = () => {
               </ul>
 
               {exp.certificate && (
-                <button className="experience-cert-btn" onClick={() => openCertificatePDF(exp.certificate!.pdfPath)}>
+                <ShatterButton
+                  className="experience-cert-btn"
+                  shatterColor="var(--primary)"
+                  onClick={() => openCertificatePDF(exp.certificate!.pdfPath)}
+                >
                   <i className="fas fa-award" /> View Credential
-                </button>
+                </ShatterButton>
               )}
             </article>
           ))}

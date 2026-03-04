@@ -84,7 +84,7 @@
   box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
-.contact-form-template button {
+.contact-form-template .contact-submit-btn {
   width: fit-content;
   border: 1px solid var(--primary);
   border-radius: 999px;
@@ -98,18 +98,18 @@
   transition: transform 180ms ease, background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
-.contact-form-template button:disabled {
+.contact-form-template .contact-submit-btn:disabled {
   opacity: 0.65;
 }
 
-.contact-form-template button:hover:not(:disabled) {
+.contact-form-template .contact-submit-btn:hover:not(:disabled) {
   background: var(--primary-strong);
   border-color: var(--primary-strong);
   transform: translateY(-2px);
   box-shadow: 0 10px 20px color-mix(in srgb, var(--primary) 24%, transparent);
 }
 
-.contact-form-template button:active:not(:disabled) {
+.contact-form-template .contact-submit-btn:active:not(:disabled) {
   transform: translateY(0);
 }
 
@@ -144,14 +144,14 @@
 }
 
 .contact-links a,
-.contact-form-template button {
+.contact-form-template .contact-submit-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
 .contact-links a i,
-.contact-form-template button i {
+.contact-form-template .contact-submit-btn i {
   color: currentColor;
 }
 

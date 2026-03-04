@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { ContactFormData } from '../types';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ShatterButton } from './ShatterButton';
 import '../styles/contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -118,10 +119,15 @@ export const Contact = () => {
               required
             />
 
-            <button type="submit" disabled={isSubmitting || isSent}>
+            <ShatterButton
+              type="submit"
+              disabled={isSubmitting || isSent}
+              className="contact-submit-btn"
+              shatterColor="var(--primary)"
+            >
               <i className={`fas ${isSent ? 'fa-check' : 'fa-paper-plane'}`} />{' '}
               {isSubmitting ? 'Sending...' : isSent ? 'Sent' : 'Send Message'}
-            </button>
+            </ShatterButton>
           </form>
         </div>
       </div>
