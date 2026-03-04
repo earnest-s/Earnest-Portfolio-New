@@ -6,7 +6,6 @@ type ToggleOrigin = HTMLElement | { x: number; y: number } | undefined;
 const THEME_STORAGE_KEY = 'portfolio_theme';
 const LIGHT_BG = '#f7f8fa';
 const DARK_BG = '#0f1115';
-const THEME_FILL_ID = 'theme-switch-fill';
 
 export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -26,13 +25,7 @@ export const useTheme = () => {
   const toggleTheme = (origin?: ToggleOrigin) => {
     const nextTheme: Theme = theme === 'light' ? 'dark' : 'light';
 
-    const existing = document.getElementById(THEME_FILL_ID);
-    if (existing) {
-      existing.remove();
-    }
-
     const overlay = document.createElement('div');
-    overlay.id = THEME_FILL_ID;
     overlay.style.position = 'fixed';
     // Between animated background and UI content.
     overlay.style.zIndex = '10';
