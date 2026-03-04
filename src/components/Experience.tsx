@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { experiences } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ShatterButton } from './ShatterButton';
 import '../styles/experience.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -29,10 +28,6 @@ export const Experience = () => {
 
     return () => ctx.revert();
   }, []);
-
-  const openCertificatePDF = (pdfPath: string) => {
-    window.open(pdfPath, '_blank', 'noopener,noreferrer');
-  };
 
   const getTypeIcon = (type: string) => {
     if (type === 'internship') return 'fa-user-graduate';
@@ -70,13 +65,20 @@ export const Experience = () => {
               </ul>
 
               {exp.certificate && (
-                <ShatterButton
-                  className="experience-cert-btn"
-                  shatterColor="var(--primary)"
-                  onClick={() => openCertificatePDF(exp.certificate!.pdfPath)}
-                >
-                  <i className="fas fa-award" /> View Credential
-                </ShatterButton>
+                <div className="experience-cert-frame">
+                  <div className="experience-cert-frame-head">
+                    <span><i className="fas fa-award" /> {exp.certificate.title}</span>
+                    <span><i className="fas fa-building-columns" /> {exp.certificate.provider}</span>
+                  </div>
+                  <div className="experience-cert-canvas">
+                    <img
+                      src={exp.certificate.imagePath}
+                      alt={`${exp.title} certificate preview`}
+                      loading="lazy"
+                      className="experience-cert-image"
+                    />
+                  </div>
+                </div>
               )}
             </article>
           ))}
