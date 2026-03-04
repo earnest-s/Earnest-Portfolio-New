@@ -105,6 +105,46 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    id: 'loqnova-core',
+    title: 'LoqNova',
+    description: 'Core LoqNova application focused on AI-powered workflows and practical product implementation.',
+    icon: 'fa-robot',
+    githubLink: 'https://github.com/earnest-s/LoqNova.git',
+    tags: ['AI', 'Product', 'Automation'],
+  },
+  {
+    id: 'loqnova-website',
+    title: 'LoqNova Website',
+    description: 'Official website implementation for LoqNova with structured UI, content layout, and deployment-ready frontend setup.',
+    icon: 'fa-globe',
+    githubLink: 'https://github.com/earnest-s/LOQ_NOVA_WEBSITE.git',
+    tags: ['Web', 'Frontend', 'Brand Site'],
+  },
+  {
+    id: 'power-bi-essentials',
+    title: 'Power BI Essentials',
+    description: 'Hands-on Power BI repository with foundational dashboards, reporting workflows, and data visualization practice.',
+    icon: 'fa-chart-pie',
+    githubLink: 'https://github.com/earnest-s/Power_BI_essentials.git',
+    tags: ['Power BI', 'Dashboard', 'Data Viz'],
+  },
+  {
+    id: 'crop-monitoring',
+    title: 'Intelligent Crop Monitoring System',
+    description: 'Python + Power BI + IoT sensors to predict crop health, reduce waste, and visualize trends via dashboards.',
+    icon: 'fa-seedling',
+    githubLink: 'https://github.com/earnest-s/IntelligentCropMonitoringSystem.git',
+    tags: ['IoT', 'Python', 'Power BI', 'Machine Learning'],
+  },
+  {
+    id: 'food-recipe-generator',
+    title: 'Food Recipe Generator',
+    description: 'Recipe generation project that helps users discover meal ideas and automate recipe suggestions based on inputs.',
+    icon: 'fa-utensils',
+    githubLink: 'https://github.com/earnest-s/Food-Recipie-Generator.git',
+    tags: ['AI', 'Generator', 'Food Tech'],
+  },
+  {
     id: 'iot-health',
     title: 'IoT Patient Health Monitoring',
     description: 'Real-time monitoring system for bedridden patients using IoT, improving emergency response time by 40%.',
@@ -119,14 +159,6 @@ export const projects: Project[] = [
     icon: 'fa-microchip',
     githubLink: 'https://github.com/earnest-s/Ai_ChatBot.git',
     tags: ['AI', 'NLP', 'Gemini API'],
-  },
-  {
-    id: 'crop-monitoring',
-    title: 'Intelligent Crop Monitoring System',
-    description: 'Python + Power BI + IoT sensors to predict crop health, reduce waste, and visualize trends via dashboards.',
-    icon: 'fa-brain',
-    githubLink: 'https://github.com/earnest-s/IntelligentCropMonitoringSystem.git',
-    tags: ['IoT', 'Python', 'Power BI', 'Machine Learning'],
   },
 ];
 
