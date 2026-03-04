@@ -25,12 +25,6 @@ export const useTheme = () => {
   const toggleTheme = (origin?: ToggleOrigin) => {
     const nextTheme: Theme = theme === 'light' ? 'dark' : 'light';
 
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
-      setTheme(nextTheme);
-      return;
-    }
-
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     // Between animated background and UI content.
