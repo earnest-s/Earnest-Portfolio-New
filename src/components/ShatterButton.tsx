@@ -90,8 +90,9 @@ export const ShatterButton = ({
           rel={rest.rel}
           download={rest.download}
           className={sharedClassName}
+          onPointerDown={triggerBurst}
           onClick={(event) => {
-            triggerBurst();
+            if (!isBursting) triggerBurst();
             rest.onClick?.(event);
           }}
         >
@@ -103,8 +104,9 @@ export const ShatterButton = ({
           type={rest.type ?? 'button'}
           disabled={rest.disabled}
           className={sharedClassName}
+          onPointerDown={triggerBurst}
           onClick={(event) => {
-            triggerBurst();
+            if (!isBursting) triggerBurst();
             rest.onClick?.(event);
           }}
         >
