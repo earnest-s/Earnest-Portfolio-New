@@ -29,7 +29,7 @@ export const experiences: Experience[] = [
       title: 'Deloitte Data Analytics Job Simulation',
       description: 'Credential ID: FBf6vW4FzdCRNTGpwj',
       provider: 'Verified by Forage Platform',
-      pdfPath: '/assets/Deloitte Data Analytics Job Simulation.pdf',
+      imagePath: 'public/assets/deloitte-certificate.png',
     },
   },
   {
@@ -51,7 +51,7 @@ export const experiences: Experience[] = [
       title: 'Data Science & Data Analytics Internship',
       description: 'Grade: A+ Excellence',
       provider: 'Edify Techno Solutions',
-      pdfPath: '/assets/Edify Internship.pdf',
+      imagePath: '/assets/edify-certificate.jpg',
     },
     relatedWork: {
       title: 'Power BI Basics Repository',
@@ -77,7 +77,7 @@ export const experiences: Experience[] = [
       title: 'Product Management Job Simulation',
       description: 'Credential ID: wK5u5naxZnTDKGpr',
       provider: 'Verified by Forage Platform',
-      pdfPath: '/assets/Electronic Arts Product Management Job Simulation.pdf',
+      imagePath: '/assets/ea-certificate.png',
     },
   },
 ];

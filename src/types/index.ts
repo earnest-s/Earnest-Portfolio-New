@@ -17,7 +17,7 @@ export interface Certificate {
   title: string;
   description: string;
   provider: string;
-  pdfPath: string;
+  imagePath: string;
   credentialId?: string;
 }
 
