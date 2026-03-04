@@ -6,6 +6,10 @@
   margin-bottom: 18px;
 }
 
+.cert-filter-row .shatter-wrap {
+  display: inline-flex;
+}
+
 .cert-pill {
   border: 1px solid var(--line);
   background: var(--surface);
@@ -137,6 +141,10 @@
     flex: 0 0 auto;
     padding: 6px 10px;
     font-size: 0.7rem;
+  }
+
+  .cert-filter-row .shatter-wrap {
+    flex: 0 0 auto;
   }
 
   .cert-template-grid {
