@@ -2,8 +2,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 18px;
+  gap: 6px;
+  margin-bottom: 20px;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
 }
 
 .cert-filter-row .shatter-wrap {
@@ -11,28 +20,33 @@
 }
 
 .cert-pill {
-  border: 1px solid var(--line);
-  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
   color: var(--text-soft);
   border-radius: 999px;
-  padding: 7px 12px;
-  font-size: 0.76rem;
+  padding: 8px 14px;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   font-weight: 700;
-  transition: transform 170ms ease, background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+  transition: transform 170ms ease, background-color 220ms ease, border-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
 }
 
 .cert-pill.active {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 88%, #fff 12%) 0%,
+    var(--primary) 100%
+  );
+  border-color: color-mix(in srgb, var(--primary) 75%, #fff 25%);
   color: #fff;
+  box-shadow: 0 8px 16px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 .cert-pill:hover {
   transform: translateY(-1px);
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: color-mix(in srgb, var(--primary) 65%, var(--line));
+  color: color-mix(in srgb, var(--primary) 82%, var(--text));
 }
 
 .cert-pill.active:hover {
@@ -143,12 +157,13 @@
 
 @media (max-width: 640px) {
   .cert-filter-row {
+    width: 100%;
     flex-wrap: nowrap;
     justify-content: flex-start;
     gap: 6px;
     margin-bottom: 14px;
     overflow-x: auto;
-    padding-bottom: 2px;
+    padding: 5px 6px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -159,7 +174,7 @@
 
   .cert-pill {
     flex: 0 0 auto;
-    padding: 6px 10px;
+    padding: 7px 11px;
     font-size: 0.7rem;
   }
 
