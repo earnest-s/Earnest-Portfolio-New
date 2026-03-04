@@ -55,6 +55,16 @@ export const Certificates = () => {
         <div className="cert-template-grid">
           {filteredCertificates.map((cert) => (
             <article key={cert.id} className="certificate-template-card">
+              {cert.thumbnail && (
+                <div className="cert-thumb-wrap">
+                  <img
+                    src={cert.thumbnail}
+                    alt={`${cert.title} certificate`}
+                    loading="lazy"
+                    className="cert-thumb"
+                  />
+                </div>
+              )}
               <p className="cert-provider"><i className="fas fa-building-columns" /> {cert.provider}</p>
               <h3>{cert.title}</h3>
               <p className="cert-issued"><i className="fas fa-calendar-days" /> Issued {cert.issueDate}</p>
