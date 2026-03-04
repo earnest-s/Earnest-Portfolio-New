@@ -6,6 +6,18 @@
   align-items: stretch;
 }
 
+/* Center leftover cards in the last row for cleaner justification */
+@media (min-width: 981px) {
+  .projects-template-grid > :last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
+
+  .projects-template-grid > :last-child:nth-child(3n + 2),
+  .projects-template-grid > :nth-last-child(2):nth-child(3n + 1) {
+    grid-column: auto;
+  }
+}
+
 .project-template-card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -116,6 +128,13 @@
 @media (max-width: 980px) {
   .projects-template-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projects-template-grid > :last-child:nth-child(2n + 1) {
+    grid-column: 1 / span 2;
+    max-width: min(560px, 100%);
+    justify-self: center;
+    width: 100%;
   }
 }
 
