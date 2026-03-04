@@ -6,6 +6,10 @@
   margin-bottom: 18px;
 }
 
+.skills-filter-row .shatter-wrap {
+  display: inline-flex;
+}
+
 .skills-pill {
   border: 1px solid var(--line);
   background: var(--surface);
