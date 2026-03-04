@@ -217,6 +217,16 @@ export const certificates: CertificateItem[] = [
     skills: ['Product Management', 'Data Analysis'],
   },
   {
+    id: 'edify-internship',
+    title: 'Data Science & Data Analytics Internship',
+    provider: 'Edify Techno Solutions',
+    issueDate: 'Jul 2025',
+    credentialId: 'ETSIN250635',
+    thumbnail: '/assets/edify-certificate.jpg',
+    category: 'data-analytics',
+    skills: ['Power BI', 'Data Analytics', 'Data Science'],
+  },
+  {
     id: 'ethics-ai',
     title: 'Ethics in the Age of Generative AI',
     provider: 'LinkedIn',
