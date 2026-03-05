@@ -111,6 +111,7 @@ export const projects: Project[] = [
     icon: 'fa-sliders',
     githubLink: 'https://github.com/earnest-s/LoqNova.git',
     tags: ['Windows', 'Lenovo Legion', 'System Utility'],
+    thumbnail: '/assets/loq-nova.png',
   },
   {
     id: 'loqnova-website',
@@ -119,6 +120,7 @@ export const projects: Project[] = [
     icon: 'fa-globe',
     githubLink: 'https://github.com/earnest-s/LOQ_NOVA_WEBSITE.git',
     tags: ['Website', 'Docs', 'Frontend'],
+    thumbnail: '/assets/loq-nova-website.png',
   },
   {
     id: 'power-bi-essentials',
@@ -143,6 +145,7 @@ export const projects: Project[] = [
     icon: 'fa-utensils',
     githubLink: 'https://github.com/earnest-s/Food-Recipie-Generator.git',
     tags: ['AI', 'Generator', 'Food Tech'],
+    thumbnail: '/assets/food-recepie-generator.png',
   },
   {
     id: 'iot-health',

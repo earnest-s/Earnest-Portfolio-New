@@ -41,6 +41,16 @@ export const Projects = () => {
         <div className="projects-template-grid">
           {projects.map((project) => (
             <article key={project.id} className="project-template-card">
+              {project.thumbnail && (
+                <div className="project-thumb-wrap">
+                  <img
+                    src={project.thumbnail}
+                    alt={`${project.title} preview`}
+                    loading="lazy"
+                    className="project-thumb"
+                  />
+                </div>
+              )}
               <div className="project-head">
                 <i className={`fas ${project.icon}`} />
                 <h3>{project.title}</h3>

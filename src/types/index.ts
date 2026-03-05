@@ -35,6 +35,7 @@ export interface Project {
   githubLink: string;
   liveLink?: string;
   tags?: string[];
+  thumbnail?: string;
 }
 
 export interface Skill {
