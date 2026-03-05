@@ -27,8 +27,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 360px;
-  min-height: 360px;
+  height: 390px;
+  min-height: 390px;
   overflow: hidden;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
@@ -40,7 +40,7 @@
 
 .project-thumb-wrap {
   width: 100%;
-  height: 92px;
+  height: 110px;
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, var(--line) 70%, var(--primary) 30%);
   background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
@@ -62,7 +62,7 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  height: 48px;
+  height: 52px;
   overflow: hidden;
 }
 
@@ -84,7 +84,7 @@
   color: var(--text-soft);
   font-size: 0.9rem;
   line-height: 1.5;
-  height: 84px;
+  height: 100px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -95,7 +95,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  height: 56px;
+  height: 64px;
   align-content: flex-start;
   overflow: hidden;
 }
