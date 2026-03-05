@@ -84,7 +84,7 @@ export const Projects = () => {
                     shatterColor="var(--primary)"
                     className="project-action-btn"
                   >
-                    <i className="fas fa-arrow-up-right-from-square" /> Live
+                    <i className="fas fa-arrow-up-right-from-square" /> Live Demo
                   </ShatterButton>
                 )}
               </div>
