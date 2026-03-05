@@ -27,8 +27,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 390px;
-  min-height: 390px;
+  height: 450px;
+  min-height: 450px;
   overflow: hidden;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
@@ -40,7 +40,7 @@
 
 .project-thumb-wrap {
   width: 100%;
-  height: 110px;
+  height: 120px;
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, var(--line) 70%, var(--primary) 30%);
   background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
@@ -48,12 +48,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 6px;
 }
 
 .project-thumb {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
 }
@@ -84,7 +85,7 @@
   color: var(--text-soft);
   font-size: 0.9rem;
   line-height: 1.5;
-  height: 100px;
+  height: 120px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -95,7 +96,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  height: 64px;
+  height: 72px;
   align-content: flex-start;
   overflow: hidden;
 }
@@ -176,7 +177,7 @@
   }
 
   .project-thumb-wrap {
-    height: 140px;
+    height: 170px;
   }
 
   .project-head h3,
