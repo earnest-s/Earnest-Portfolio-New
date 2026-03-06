@@ -38,7 +38,11 @@ type LinkModeProps = BaseProps & {
 
 type ShatterButtonProps = ButtonModeProps | LinkModeProps;
 
-const isLinkProps = (props: ShatterButtonProps): props is LinkModeProps => 'href' in props;
+type LinkModeRest = Omit<LinkModeProps, keyof BaseProps>;
+type ButtonModeRest = Omit<ButtonModeProps, keyof BaseProps>;
+type ShatterButtonRest = LinkModeRest | ButtonModeRest;
+
+const isLinkRest = (props: ShatterButtonRest): props is LinkModeRest => 'href' in props;
 
 const makePolygon = () => {
   const p1 = `${Math.round(Math.random() * 50)}% 0%`;
@@ -48,14 +52,16 @@ const makePolygon = () => {
   return `${p1}, ${p2}, ${p3}, ${p4}`;
 };
 
-export const ShatterButton = ({
-  children,
-  className = '',
-  shardCount = 20,
-  shatterColor = 'var(--primary)',
-  preserveLayout = false,
-  ...rest
-}: ShatterButtonProps) => {
+export const ShatterButton = (props: ShatterButtonProps) => {
+  const {
+    children,
+    className = '',
+    shardCount = 20,
+    shatterColor = 'var(--primary)',
+    preserveLayout = false,
+    ...rest
+  } = props;
+  const restProps = rest as ShatterButtonRest;
   const [burstId, setBurstId] = useState(0);
   const [isBursting, setIsBursting] = useState(false);
 
@@ -89,18 +95,18 @@ export const ShatterButton = ({
 
   return (
     <span className={`shatter-wrap${isBursting ? ' is-bursting' : ''}`} style={colorStyle}>
-      {isLinkProps(rest) ? (
+      {isLinkRest(restProps) ? (
         <a
-          href={rest.href}
-          target={rest.target}
-          rel={rest.rel}
-          download={rest.download}
-          aria-current={rest.ariaCurrent}
+          href={restProps.href}
+          target={restProps.target}
+          rel={restProps.rel}
+          download={restProps.download}
+          aria-current={restProps.ariaCurrent}
           className={sharedClassName}
           onPointerDown={triggerBurst}
           onClick={(event) => {
             if (!isBursting) triggerBurst();
-            rest.onClick?.(event);
+            restProps.onClick?.(event);
           }}
         >
           <span className="shatter-glow" aria-hidden="true" />
@@ -108,14 +114,14 @@ export const ShatterButton = ({
         </a>
       ) : (
         <button
-          type={rest.type ?? 'button'}
-          disabled={rest.disabled}
-          aria-current={rest.ariaCurrent}
+          type={restProps.type ?? 'button'}
+          disabled={restProps.disabled}
+          aria-current={restProps.ariaCurrent}
           className={sharedClassName}
           onPointerDown={triggerBurst}
           onClick={(event) => {
             if (!isBursting) triggerBurst();
-            rest.onClick?.(event);
+            restProps.onClick?.(event);
           }}
         >
           <span className="shatter-glow" aria-hidden="true" />
