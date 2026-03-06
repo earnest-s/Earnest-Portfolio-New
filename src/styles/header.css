@@ -23,6 +23,18 @@
   animation: navFadeIn 280ms ease-out;
 }
 
+.header-brand {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-alt);
+}
+
 .header-nav {
   display: flex;
   align-items: center;
@@ -167,6 +179,10 @@
     left: 8px;
     right: 8px;
     bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .header-brand {
+    display: none;
   }
 
   .header-nav {
