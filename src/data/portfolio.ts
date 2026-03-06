@@ -1,7 +1,7 @@
 import { Experience, Project, Skill, NavLink, CertificateItem } from '../types';
 
 export const navLinks: NavLink[] = [
-  { id: 'home', label: 'Home', href: '#home' },
+  { id: 'home', label: "Home", href: '#home' },
   { id: 'about', label: 'About', href: '#about' },
   { id: 'experience', label: 'Experience', href: '#experience' },
   { id: 'skills', label: 'Technical Skills', href: '#skills' },
