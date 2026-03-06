@@ -103,13 +103,14 @@
 
 .project-tag-list span {
   border-radius: 999px;
-  border: 1px solid var(--chip-border);
-  background: var(--primary-soft);
+  border: 1px solid color-mix(in srgb, var(--chip-border) 70%, transparent);
+  background: color-mix(in srgb, var(--surface) 35%, transparent);
   color: var(--chip-text);
   font-size: 0.71rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   padding: 4px 8px;
+  backdrop-filter: blur(10px) saturate(140%);
 }
 
 .project-action-row {
