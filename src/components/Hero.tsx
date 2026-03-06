@@ -29,7 +29,7 @@ export const Hero = () => {
     <section id="home" className="section hero-section" ref={heroRef}>
       <div className="container hero-layout">
         <div className="hero-main">
-          <p className="hero-name">Earnest S</p>
+          <p className="hero-name">I'm Earnest S</p>
           <p className="hero-kicker">
             <span className="hero-typing">{typedText}</span>
           </p>
