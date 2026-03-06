@@ -140,7 +140,7 @@
   display: grid;
   gap: 10px;
   justify-items: center;
-  width: min(360px, 100%);
+  width: min(420px, 100%);
   margin-inline: auto;
 }
 
