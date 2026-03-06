@@ -38,6 +38,8 @@ type LinkModeProps = BaseProps & {
 
 type ShatterButtonProps = ButtonModeProps | LinkModeProps;
 
+const isLinkProps = (props: ShatterButtonProps): props is LinkModeProps => 'href' in props;
+
 const makePolygon = () => {
   const p1 = `${Math.round(Math.random() * 50)}% 0%`;
   const p2 = `100% ${Math.round(Math.random() * 50)}%`;
@@ -87,7 +89,7 @@ export const ShatterButton = ({
 
   return (
     <span className={`shatter-wrap${isBursting ? ' is-bursting' : ''}`} style={colorStyle}>
-      {'href' in rest ? (
+      {isLinkProps(rest) ? (
         <a
           href={rest.href}
           target={rest.target}
