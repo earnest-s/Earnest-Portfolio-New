@@ -174,8 +174,8 @@ export const skills: Skill[] = [
     title: 'Data Analysis & Visualization',
     icon: 'fa-chart-line',
     items: [
-      { label: 'Power BI', iconClass: 'devicon-powerbi-plain colored' },
-      { label: 'Tableau', iconClass: 'devicon-tableau-plain colored' },
+      { label: 'Power BI', iconClass: 'fas fa-chart-column', iconUrl: 'https://cdn.simpleicons.org/powerbi/F2C811' },
+      { label: 'Tableau', iconClass: 'fas fa-chart-pie', iconUrl: 'https://cdn.simpleicons.org/tableau/4E79A7' },
       { label: 'Python', iconClass: 'devicon-python-plain colored' },
       { label: 'Pandas', iconClass: 'devicon-pandas-plain colored' },
       { label: 'NumPy', iconClass: 'devicon-numpy-plain colored' },

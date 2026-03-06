@@ -50,6 +50,7 @@ export interface SkillItem {
   label: string;
   iconClass: string;
   iconColor?: string;
+  iconUrl?: string;
 }
 
 export interface CertificateItem {
