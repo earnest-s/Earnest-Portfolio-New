@@ -89,13 +89,21 @@
   gap: 6px;
 }
 
-.skill-chip-list span {
+.skill-chip-list .skill-chip {
   border: 1px solid var(--chip-border);
   background: var(--primary-soft);
   color: var(--chip-text);
   border-radius: 999px;
   font-size: 0.74rem;
   padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-chip i {
+  font-size: 0.95rem;
+  line-height: 1;
 }
 
 @media (max-width: 960px) {
