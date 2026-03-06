@@ -4,8 +4,6 @@ export type Theme = 'light' | 'dark';
 type ToggleOrigin = HTMLElement | { x: number; y: number } | undefined;
 
 const THEME_STORAGE_KEY = 'portfolio_theme';
-const LIGHT_BG = '#f7f8fa';
-const DARK_BG = '#0f1115';
 const LIGHT_FILL = 'rgba(247, 248, 250, 0.64)';
 const DARK_FILL = 'rgba(15, 17, 21, 0.64)';
 
