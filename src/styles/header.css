@@ -33,6 +33,7 @@
   border-radius: 999px;
   border: 1px solid var(--line);
   background: var(--surface-alt);
+  margin-right: 13px;
 }
 
 .header-nav {
