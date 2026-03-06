@@ -27,7 +27,11 @@ export const Hero = () => {
       <div className="container hero-layout">
         <div className="hero-main">
           <p className="hero-name">Earnest S</p>
-          <p className="hero-kicker">AI Engineer • Data Analyst • IoT Developer</p>
+          <p className="hero-kicker">
+            <span className="hero-kicker-text" style={{ ['--type-ch' as string]: 42 }}>
+              AI Engineer • Data Analyst • IoT Developer
+            </span>
+          </p>
 
           <h1 className="hero-heading">
             <span>Building useful</span>

@@ -43,7 +43,13 @@ export interface Skill {
   category: 'data' | 'dev' | 'devops' | 'tools';
   title: string;
   icon: string;
-  items: string[];
+  items: SkillItem[];
+}
+
+export interface SkillItem {
+  label: string;
+  iconClass: string;
+  iconColor?: string;
 }
 
 export interface CertificateItem {

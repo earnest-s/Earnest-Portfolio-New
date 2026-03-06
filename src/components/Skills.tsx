@@ -61,7 +61,13 @@ export const Skills = () => {
               </div>
               <div className="skill-chip-list">
                 {skill.items.map((item, idx) => (
-                  <span key={idx}>{item}</span>
+                  <span key={idx} className="skill-chip">
+                    <i
+                      className={item.iconClass}
+                      style={item.iconColor ? { color: item.iconColor } : undefined}
+                    />
+                    {item.label}
+                  </span>
                 ))}
               </div>
             </article>
