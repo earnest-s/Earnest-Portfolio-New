@@ -204,6 +204,9 @@ export const skills: Skill[] = [
       { label: 'React', iconClass: 'devicon-react-original colored' },
       { label: 'Vite', iconClass: 'devicon-vitejs-plain colored' },
       { label: 'TypeScript', iconClass: 'devicon-typescript-plain colored' },
+      { label: 'Bootstrap', iconClass: 'devicon-bootstrap-plain colored' },
+      { label: 'Tailwind', iconClass: 'devicon-tailwindcss-plain colored' },
+      { label: 'Flutter', iconClass: 'devicon-flutter-plain colored' },
     ],
   },
   {
@@ -246,6 +249,7 @@ export const skills: Skill[] = [
     items: [
       { label: 'PostgreSQL', iconClass: 'devicon-postgresql-plain colored' },
       { label: 'MongoDB', iconClass: 'devicon-mongodb-plain colored' },
+      { label: 'MySQL', iconClass: 'devicon-mysql-plain colored' },
     ],
   },
   {
@@ -259,6 +263,17 @@ export const skills: Skill[] = [
     ],
   },
   {
+    id: 'backend',
+    category: 'devops',
+    title: 'Backend & APIs',
+    icon: 'fa-server',
+    items: [
+      { label: 'FastAPI', iconClass: 'devicon-fastapi-plain colored' },
+      { label: 'Node.js', iconClass: 'devicon-nodejs-plain colored' },
+      { label: 'npm', iconClass: 'devicon-npm-original-wordmark colored' },
+    ],
+  },
+  {
     id: 'tools',
     category: 'tools',
     title: 'Tools',
@@ -266,6 +281,10 @@ export const skills: Skill[] = [
     items: [
       { label: 'Visual Studio Code', iconClass: 'devicon-vscode-plain colored' },
       { label: 'Jupyter Notebook', iconClass: 'devicon-jupyter-plain colored' },
+      { label: 'Linux', iconClass: 'devicon-linux-plain colored' },
+      { label: 'Render', iconClass: 'devicon-render-plain colored' },
+      { label: 'Vercel', iconClass: 'devicon-vercel-original', iconColor: '#e2e8f0' },
+      { label: 'Netlify', iconClass: 'devicon-netlify-plain colored' },
     ],
   },
 ];
