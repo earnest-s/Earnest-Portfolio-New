@@ -33,15 +33,11 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text);
-  padding: 6px 10px;
-  border-radius: 999px;
+  padding: 0 6px 0 0;
+  border-radius: 0;
   border: none;
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--surface-alt) 70%, transparent),
-    color-mix(in srgb, var(--surface) 40%, transparent)
-  );
-  backdrop-filter: blur(12px) saturate(140%);
+  background: transparent;
+  backdrop-filter: none;
   margin-right: 13px;
 }
 
