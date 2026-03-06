@@ -168,12 +168,14 @@
 @media (max-width: 640px) {
   .projects-template-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .project-template-card {
     height: auto;
     min-height: 0;
     overflow: visible;
+    padding-bottom: 18px;
   }
 
   .project-thumb-wrap {
@@ -197,6 +199,10 @@
     min-height: 0;
     height: auto;
     overflow: visible;
+  }
+
+  #projects {
+    padding-bottom: 140px;
   }
 }
 

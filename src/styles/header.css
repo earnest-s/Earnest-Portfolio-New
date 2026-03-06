@@ -143,7 +143,7 @@
 @media (max-width: 767px) {
   .header-wrap {
     top: auto;
-    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
     left: 8px;
     right: 8px;
     transform: none;
@@ -152,6 +152,7 @@
     overflow: visible;
     opacity: 1;
     visibility: visible;
+    z-index: 10000;
   }
 
   .header-shell {
@@ -159,7 +160,7 @@
     padding: 4px;
     width: 100%;
     min-width: 0;
-    background: color-mix(in srgb, var(--surface) 95%, transparent);
+    background: var(--mobile-overlay);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 
