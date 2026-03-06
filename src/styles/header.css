@@ -152,7 +152,7 @@
     overflow: visible;
     opacity: 1;
     visibility: visible;
-    z-index: 10000;
+    z-index: 999999;
   }
 
   .header-shell {
