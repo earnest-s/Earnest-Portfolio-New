@@ -94,16 +94,23 @@
   background: var(--primary-soft);
   color: var(--chip-text);
   border-radius: 999px;
-  font-size: 0.74rem;
-  padding: 4px 8px;
+  font-size: 0.82rem;
+  padding: 6px 12px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .skill-chip i {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   line-height: 1;
+}
+
+.skill-chip img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  object-fit: contain;
 }
 
 @media (max-width: 960px) {
