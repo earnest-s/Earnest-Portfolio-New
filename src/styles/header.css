@@ -17,8 +17,12 @@
   padding: 7px 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
-  backdrop-filter: blur(14px);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--surface) 78%, transparent),
+    color-mix(in srgb, var(--surface-alt) 58%, transparent)
+  );
+  backdrop-filter: blur(18px) saturate(140%);
   box-shadow: var(--shadow);
   animation: navFadeIn 280ms ease-out;
 }
@@ -32,7 +36,12 @@
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: var(--surface-alt);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--surface-alt) 70%, transparent),
+    color-mix(in srgb, var(--surface) 40%, transparent)
+  );
+  backdrop-filter: blur(12px) saturate(140%);
   margin-right: 13px;
 }
 
@@ -64,6 +73,9 @@
   text-transform: uppercase;
   transition: color 200ms ease, transform 200ms ease, background-color 220ms ease;
   overflow: visible;
+  background: color-mix(in srgb, var(--surface) 35%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  backdrop-filter: blur(10px) saturate(140%);
 }
 
 .header-item:hover {
@@ -72,7 +84,11 @@
 }
 
 .header-item.active {
-  background: color-mix(in srgb, var(--primary) 16%, var(--surface));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 25%, transparent),
+    color-mix(in srgb, var(--surface) 65%, transparent)
+  );
   color: var(--primary);
   transform: translateY(-1px);
 }
