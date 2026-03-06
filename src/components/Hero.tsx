@@ -1,10 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ShatterButton } from './ShatterButton';
+import { useTypingEffect } from '../hooks/useTypingEffect';
+import { typingPhrases } from '../data/portfolio';
 import '../styles/hero.css';
 
 export const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const typedText = useTypingEffect(typingPhrases, 90, 45, 1200);
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -28,9 +31,7 @@ export const Hero = () => {
         <div className="hero-main">
           <p className="hero-name">Earnest S</p>
           <p className="hero-kicker">
-            <span className="hero-kicker-text" style={{ ['--type-ch' as string]: 42 }}>
-              AI Engineer • Data Analyst • IoT Developer
-            </span>
+            <span className="hero-typing">{typedText}</span>
           </p>
 
           <h1 className="hero-heading">
