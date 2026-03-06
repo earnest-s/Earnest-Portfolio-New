@@ -27,8 +27,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 470px;
-  min-height: 470px;
+  height: 480px;
+  min-height: 480px;
   overflow: hidden;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
@@ -40,7 +40,8 @@
 
 .project-thumb-wrap {
   width: 100%;
-  height: 150px;
+  height: 170px;
+  aspect-ratio: 16 / 9;
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, var(--line) 70%, var(--primary) 30%);
   background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
