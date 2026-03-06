@@ -1,71 +1,103 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { navLinks } from '../data/portfolio';
-import { Theme } from '../types';
+import { useTheme } from '../hooks/useTheme';
+import { ShatterButton } from './ShatterButton';
+import '../styles/header.css';
 
-interface HeaderProps {
-  theme: Theme;
-  toggleTheme: () => void;
-}
+const linkIconMap: Record<string, string> = {
+  home: 'fa-house',
+  about: 'fa-user',
+  experience: 'fa-briefcase',
+  skills: 'fa-code',
+  certificates: 'fa-certificate',
+  projects: 'fa-project-diagram',
+  contact: 'fa-envelope',
+};
 
-export const Header = ({ theme, toggleTheme }: HeaderProps) => {
+export const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+
     const handleScroll = () => {
-      const sections = navLinks.map(link => document.getElementById(link.id));
-      const scrollPosition = window.scrollY + 100;
+      const sections = navLinks.map((link) => document.getElementById(link.id));
+      const offset = isMobile ? 120 : 150;
+      const scrollPosition = window.scrollY + offset;
+
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 8) {
+        setActiveSection(navLinks[navLinks.length - 1].id);
+        return;
+      }
 
       for (const section of sections) {
-        if (section) {
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
+        if (!section) continue;
 
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section.id);
-            break;
-          }
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+
+        if (scrollPosition >= top && scrollPosition < bottom) {
+          setActiveSection(section.id);
+          break;
         }
       }
     };
 
+    handleResize();
+    handleScroll();
+
+    window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isMobile]);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const section = document.getElementById(id);
-    if (section) {
-      const headerHeight = 80;
-      const targetPosition = section.offsetTop - headerHeight;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth',
-      });
-      setMobileMenuOpen(false);
-    }
+    if (!section) return;
+
+    const headerOffset = isMobile ? 18 : 92;
+    window.scrollTo({ top: section.offsetTop - headerOffset, behavior: 'smooth' });
+    setActiveSection(id);
   };
 
   return (
-    <header className="header">
-      <div className="container">
-        <h1 className="logo">Earnest S</h1>
-        
-        <nav className="nav">
-          {navLinks.map(link => (
-            <a
-              key={link.id}
-              href={link.href}
-              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
-              onClick={(e) => scrollToSection(e, link.id)}
-            >
-              {link.label}
-            </a>
-          ))}
+    <header className="header-wrap">
+      <div className="header-shell">
+        <span className="header-brand">Earnest S</span>
+        <nav className="header-nav" aria-label="Primary">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <ShatterButton
+                key={link.id}
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.id)}
+                className={`header-item ${isActive ? 'active' : ''}`}
+                ariaCurrent={isActive ? 'page' : undefined}
+                preserveLayout
+                shatterColor="var(--primary)"
+              >
+                <span className="header-item-label">{link.label}</span>
+                <span className="header-item-icon" aria-hidden="true">
+                  <i className={`fas ${linkIconMap[link.id] ?? 'fa-circle'}`} />
+                </span>
+
+                <span className={`header-lamp ${isActive ? 'active' : ''}`} aria-hidden="true">
+                  <span className="header-lamp-top" />
+                </span>
+              </ShatterButton>
+            );
+          })}
+
           <button
-            className="theme-btn"
-            onClick={toggleTheme}
+            className="theme-toggle theme-toggle-mobile"
+            onClick={(e) => toggleTheme(e.currentTarget)}
             aria-label="Toggle theme"
           >
             <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
@@ -73,41 +105,12 @@ export const Header = ({ theme, toggleTheme }: HeaderProps) => {
         </nav>
 
         <button
-          className="nav-toggle"
-          onClick={() => setMobileMenuOpen(true)}
-          aria-label="Open navigation"
+          className="theme-toggle theme-toggle-desktop"
+          onClick={(e) => toggleTheme(e.currentTarget)}
+          aria-label="Toggle theme"
         >
-          <i className="fas fa-bars" />
+          <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
         </button>
-
-        <div className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
-          <button
-            className="mobile-nav-close"
-            onClick={() => setMobileMenuOpen(false)}
-            aria-label="Close navigation"
-          >
-            <i className="fas fa-times" />
-          </button>
-          
-          {navLinks.map(link => (
-            <a
-              key={link.id}
-              href={link.href}
-              className="nav-link"
-              onClick={(e) => scrollToSection(e, link.id)}
-            >
-              {link.label}
-            </a>
-          ))}
-          
-          <button
-            className="theme-btn"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
-          </button>
-        </div>
       </div>
     </header>
   );

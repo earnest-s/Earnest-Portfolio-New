@@ -1,0 +1,191 @@
+.contact-template-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.contact-panel,
+.contact-form-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--surface) 78%, transparent),
+    color-mix(in srgb, var(--surface-alt) 58%, transparent)
+  );
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow);
+  padding: clamp(16px, 3vw, 26px);
+}
+
+.contact-kicker {
+  color: var(--primary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.contact-panel h2 {
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  margin-bottom: 8px;
+}
+
+.contact-panel p {
+  color: var(--text-soft);
+}
+
+.contact-links {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.contact-links .shatter-wrap {
+  width: fit-content;
+}
+
+.contact-links .shatter-btn {
+  width: fit-content;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--chip-border) 70%, transparent);
+  background: color-mix(in srgb, var(--surface) 35%, transparent);
+  color: var(--chip-text);
+  padding: 7px 11px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  transition: transform 170ms ease, box-shadow 220ms ease, background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+.contact-links .shatter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--primary) 16%, transparent);
+}
+
+.contact-form-template {
+  display: grid;
+  gap: 10px;
+}
+
+.contact-form-template input,
+.contact-form-template textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--surface) 40%, transparent),
+    color-mix(in srgb, var(--surface-alt) 25%, transparent)
+  );
+  backdrop-filter: blur(12px) saturate(140%);
+  color: var(--text);
+  padding: 10px 12px;
+}
+
+.contact-form-template input::placeholder,
+.contact-form-template textarea::placeholder {
+  color: #9ca3af;
+}
+
+.contact-form-template input:focus,
+.contact-form-template textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.contact-form-template .contact-submit-btn {
+  width: fit-content;
+  border: 1px solid color-mix(in srgb, var(--primary) 55%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 20%, transparent);
+  color: var(--primary);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 10px 14px;
+  transition: transform 180ms ease, background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.contact-form-template .shatter-wrap {
+  width: fit-content;
+  justify-self: start;
+}
+
+.contact-form-template .contact-submit-btn:disabled {
+  opacity: 0.65;
+}
+
+.contact-form-template .contact-submit-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--primary) 30%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 70%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--primary) 24%, transparent);
+}
+
+.contact-form-template .contact-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.footer-minimal {
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+  padding: 22px 0 30px;
+}
+
+.footer-shell {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+@media (max-width: 900px) {
+  .contact-template-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-shell {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-minimal {
+    padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.contact-links .shatter-btn,
+.contact-form-template .contact-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-links .shatter-btn i,
+.contact-form-template .contact-submit-btn i {
+  color: currentColor;
+}
+
+.contact-links .contact-link-email i {
+  color: #ea4335;
+}
+
+.contact-links .contact-link-linkedin i {
+  color: #0a66c2;
+}
+
+.contact-links .contact-link-github i {
+  color: #181717;
+}
+
+[data-theme='dark'] .contact-links .contact-link-github i {
+  color: #f3f4f6;
+}

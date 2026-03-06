@@ -17,7 +17,7 @@ export interface Certificate {
   title: string;
   description: string;
   provider: string;
-  pdfPath: string;
+  imagePath: string;
   credentialId?: string;
 }
 
@@ -35,6 +35,7 @@ export interface Project {
   githubLink: string;
   liveLink?: string;
   tags?: string[];
+  thumbnail?: string;
 }
 
 export interface Skill {
@@ -42,7 +43,14 @@ export interface Skill {
   category: 'data' | 'dev' | 'devops' | 'tools';
   title: string;
   icon: string;
-  items: string[];
+  items: SkillItem[];
+}
+
+export interface SkillItem {
+  label: string;
+  iconClass: string;
+  iconColor?: string;
+  iconUrl?: string;
 }
 
 export interface CertificateItem {

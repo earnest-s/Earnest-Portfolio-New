@@ -1,43 +1,26 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import '../styles/about.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !contentRef.current) return;
+    if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Animate section with optimized settings
-      gsap.from('.section-title', {
+      gsap.from('.about-intro-card, .about-pillars .pillar-card', {
+        y: 24,
         opacity: 0,
-        y: 30,
-        duration: 0.5,
-        ease: 'power3.out',
-        force3D: true,
+        duration: 0.55,
+        stagger: 0.1,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 75%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-      
-      // Stagger animate paragraphs
-      gsap.from('.about-content p', {
-        opacity: 0,
-        y: 20,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: 'power2.out',
-        force3D: true,
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
         },
       });
     }, sectionRef);
@@ -48,34 +31,39 @@ export const About = () => {
   return (
     <section id="about" className="section" ref={sectionRef}>
       <div className="container">
-        <div className="section-content" ref={contentRef}>
-          <div className="section-header">
-            <h2 className="section-title">
-              <i className="fas fa-user" />
-              About Me
-            </h2>
-          </div>
-          <div className="about-content">
-            <p>
-              As a dedicated Data Analyst, I bring a unique combination of analytical 
-              expertise and technical proficiency to every project. My professional 
-              journey encompasses hands-on experience in IoT systems development, AI 
-              implementation, and advanced data visualization.
+        <div className="section-header">
+          <h2 className="section-title">About</h2>
+        </div>
+
+        <div className="about-template-grid">
+          <article className="about-intro-card">
+            <p className="about-lead">
+              I transform complex data into clear insights and build AI systems that solve practical
+              business problems.
             </p>
             <p>
-              With strong foundations in Python, SQL, Power BI, and Tableau, I specialize 
-              in transforming complex datasets into actionable insights. My experience 
-              extends to developing IoT healthcare solutions, implementing machine learning 
-              models, and creating interactive business intelligence dashboards that drive 
-              data-informed decision-making.
+              With a strong foundation in Python, SQL, Power BI, and machine learning, I focus on
+              solutions that are reliable, measurable, and easy to maintain.
             </p>
-            <p>
-              I am particularly passionate about leveraging emerging technologies to solve 
-              real-world challenges. My work in patient health monitoring systems and 
-              agricultural IoT solutions demonstrates my commitment to creating meaningful 
-              impact through technology. I consistently strive to stay ahead of industry 
-              trends and embrace new tools that enhance data analysis capabilities.
-            </p>
+          </article>
+
+          <div className="about-pillars">
+            <article className="pillar-card">
+              <h3><i className="fas fa-chart-line" /> Data Analysis</h3>
+              <p>Structured analysis, visual reporting, and KPI-first thinking.</p>
+            </article>
+            <article className="pillar-card">
+              <h3><i className="fas fa-robot" /> AI Workflows</h3>
+              <p>Model-driven solutions and automation for real operations.</p>
+            </article>
+            <article className="pillar-card">
+              <h3><i className="fas fa-microchip" /> IoT Integration</h3>
+              <p>Sensor-based systems and monitoring dashboards.</p>
+            </article>
+            <article className="pillar-card">
+              <h3><i className="fas fa-check-circle" /> Execution</h3>
+              <p>Clean implementation from idea to delivery.</p>
+            </article>
           </div>
         </div>
       </div>

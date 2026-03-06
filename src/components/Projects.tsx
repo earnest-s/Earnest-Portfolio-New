@@ -1,7 +1,9 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { projects } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ShatterButton } from './ShatterButton';
+import '../styles/projects.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,40 +13,19 @@ export const Projects = () => {
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    // Kill any existing ScrollTriggers for this section
-    ScrollTrigger.getAll().forEach(trigger => {
-      if (trigger.vars.trigger === sectionRef.current || trigger.vars.trigger === '.projects-grid') {
-        trigger.kill();
-      }
-    });
-
     const ctx = gsap.context(() => {
-      // Optimized stagger animation for cards
-      const cards = gsap.utils.toArray<HTMLElement>('.project-card');
-      
-      // Set initial state
-      gsap.set(cards, { opacity: 1, scale: 1, y: 0 });
-      
-      if (cards.length > 0) {
-        gsap.from(cards, {
-          opacity: 0,
-          y: 40,
-          scale: 0.95,
-          duration: 0.4,
-          stagger: {
-            amount: 0.3,
-            from: 'start',
-            ease: 'power2.out'
-          },
-          ease: 'back.out(1.2)',
-          force3D: true,
-          scrollTrigger: {
-            trigger: '.projects-grid',
-            start: 'top 80%',
-            once: true,
-          },
-        });
-      }
+      gsap.from('.project-template-card', {
+        y: 40,
+        opacity: 0,
+        scale: 0.96,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 72%',
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -53,52 +34,62 @@ export const Projects = () => {
   return (
     <section id="projects" className="section" ref={sectionRef}>
       <div className="container">
-        <div className="section-content">
-          <div className="section-header">
-            <h2 className="section-title">
-              <i className="fas fa-code-branch" />
-              Projects
-            </h2>
-          </div>
+        <div className="section-header">
+          <h2 className="section-title">Projects</h2>
+        </div>
 
-          <div className="projects-grid">
-            {projects.map((project) => (
-              <div key={project.id} className="project-card">
-                <div className="project-icon">
-                  <i className={`fas ${project.icon}`} />
+        <div className="projects-template-grid">
+          {projects.map((project) => (
+            <article key={project.id} className="project-template-card">
+              {project.thumbnail && (
+                <div className="project-thumb-wrap">
+                  <img
+                    src={project.thumbnail}
+                    alt={`${project.title} preview`}
+                    loading="lazy"
+                    className="project-thumb"
+                  />
                 </div>
+              )}
+              <div className="project-head">
+                <i className={`fas ${project.icon}`} />
                 <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                {project.tags && (
-                  <div className="project-tags">
-                    {project.tags.map((tag, idx) => (
-                      <span key={idx} className="project-tag">{tag}</span>
-                    ))}
-                  </div>
-                )}
-                <div className="project-links">
-                  <a
-                    href={project.githubLink}
-                    className="project-link"
+              </div>
+
+              <p>{project.description}</p>
+
+              {project.tags && (
+                <div className="project-tag-list">
+                  {project.tags.map((tag, idx) => (
+                    <span key={idx}>{tag}</span>
+                  ))}
+                </div>
+              )}
+
+              <div className="project-action-row">
+                <ShatterButton
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  shatterColor="var(--primary)"
+                  className="project-action-btn"
+                >
+                  <i className="fab fa-github" /> Code
+                </ShatterButton>
+                {project.liveLink && (
+                  <ShatterButton
+                    href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
+                    shatterColor="var(--primary)"
+                    className="project-action-btn"
                   >
-                    <i className="fab fa-github" /> View Code
-                  </a>
-                  {project.liveLink && (
-                    <a
-                      href={project.liveLink}
-                      className="project-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="fas fa-external-link-alt" /> Live Demo
-                    </a>
-                  )}
-                </div>
+                    <i className="fas fa-arrow-up-right-from-square" /> Live Demo
+                  </ShatterButton>
+                )}
               </div>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

@@ -1,0 +1,107 @@
+.shatter-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.shatter-btn {
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+  transition: transform 140ms ease, opacity 140ms ease, filter 180ms ease;
+}
+
+.shatter-btn:hover {
+  filter: brightness(1.04);
+}
+
+.shatter-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.shatter-label {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shatter-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 170ms ease;
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--shatter-color) 26%, transparent) 0%, transparent 70%);
+}
+
+.shatter-btn:hover .shatter-glow {
+  opacity: 1;
+}
+
+.shatter-wrap.is-bursting .shatter-btn {
+  transform: scale(0.92);
+}
+
+.shatter-shards {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.shard {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+  background: var(--shatter-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--shatter-color) 75%, transparent);
+  clip-path: var(--poly);
+  transform: translate(-50%, -50%);
+  animation: shardFly var(--dur) cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.shatter-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--shatter-color) 86%, transparent);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--shatter-color) 56%, transparent);
+  transform: translate(-50%, -50%);
+  animation: ringBurst 620ms ease-out forwards;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes shardFly {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(0, 0) rotate(0deg) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.5);
+  }
+}
+
+@keyframes ringBurst {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  100% {
+    width: 220px;
+    height: 220px;
+    opacity: 0;
+  }
+}

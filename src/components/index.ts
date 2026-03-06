@@ -1,4 +1,6 @@
 export { Header } from './Header';
+export { default as AnoAI } from './AnoAI';
+export { ShatterButton } from './ShatterButton';
 export { Hero } from './Hero';
 export { About } from './About';
 export { Experience } from './Experience';
