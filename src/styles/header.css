@@ -153,6 +153,7 @@
     opacity: 1;
     visibility: visible;
     z-index: 999999;
+    position: fixed;
   }
 
   .header-shell {
@@ -162,6 +163,10 @@
     min-width: 0;
     background: var(--mobile-overlay);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    position: fixed;
+    left: 8px;
+    right: 8px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
   }
 
   .header-nav {
@@ -172,6 +177,15 @@
     padding: 0;
     width: 100%;
     min-width: 0;
+    position: fixed;
+    left: 8px;
+    right: 8px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    padding: 4px;
+    border-radius: 999px;
+    background: var(--mobile-overlay);
+    border: 1px solid var(--line);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 
   .header-nav .shatter-wrap {

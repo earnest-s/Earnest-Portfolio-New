@@ -166,6 +166,12 @@
 }
 
 @media (max-width: 767px) {
+  .projects-template-grid > * {
+    grid-column: 1 / -1;
+    max-width: 100%;
+    justify-self: stretch;
+  }
+
   .projects-template-grid {
     grid-template-columns: 1fr;
     gap: 14px;
