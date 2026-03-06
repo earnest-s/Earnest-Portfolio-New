@@ -1,7 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { certificates } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ShatterButton } from './ShatterButton';
+import '../styles/certificates.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,168 +12,78 @@ type CertificateCategory = 'all' | 'data-analytics' | 'job-simulation' | 'ai-ml'
 export const Certificates = () => {
   const [activeCategory, setActiveCategory] = useState<CertificateCategory>('all');
   const sectionRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !gridRef.current) return;
-
-    // Kill any existing ScrollTriggers to prevent duplicates
-    ScrollTrigger.getAll().forEach(trigger => {
-      if (trigger.vars.trigger === gridRef.current || trigger.vars.trigger === sectionRef.current) {
-        trigger.kill();
-      }
-    });
+    if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>('.certificate-card');
-      
-      // Set initial state
-      gsap.set(cards, { opacity: 1, scale: 1, y: 0 });
-      
-      if (cards.length > 0) {
-        gsap.from(cards, {
-          opacity: 0,
-          y: 40,
-          scale: 0.95,
-          duration: 0.4,
-          stagger: {
-            amount: 0.3,
-            from: 'start',
-            ease: 'power2.out'
-          },
-          ease: 'back.out(1.2)',
-          force3D: true,
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: 'top 80%',
-            once: true,
-          },
-        });
-        
-        // Animate certificate icons
-        gsap.from('.certificate-provider-icon', {
-          scale: 0,
-          rotation: 360,
-          duration: 0.5,
-          stagger: 0.05,
-          ease: 'elastic.out(1, 0.5)',
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: 'top 80%',
-            once: true,
-          },
-        });
-      }
+      gsap.from('.certificate-template-card', {
+        y: 24,
+        opacity: 0,
+        duration: 0.45,
+        stagger: 0.08,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 70%',
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, [activeCategory]);
 
-  const filteredCertificates = activeCategory === 'all' 
-    ? certificates 
-    : certificates.filter(cert => cert.category === activeCategory);
+  const filteredCertificates = activeCategory === 'all'
+    ? certificates
+    : certificates.filter((cert) => cert.category === activeCategory);
 
   return (
     <section id="certificates" className="section" ref={sectionRef}>
       <div className="container">
-        <div className="section-content">
-          <div className="section-header">
-            <h2 className="section-title">
-              <i className="fas fa-certificate" />
-              Licenses & Certifications
-            </h2>
-          </div>
+        <div className="section-header">
+          <h2 className="section-title">Certificates</h2>
+        </div>
 
-          <div className="certificates-tabs">
-            <button
-              className={`certificates-tab ${activeCategory === 'all' ? 'active' : ''}`}
-              onClick={() => setActiveCategory('all')}
-            >
-              <i className="fas fa-th-large" /> All
-            </button>
-            <button
-              className={`certificates-tab ${activeCategory === 'data-analytics' ? 'active' : ''}`}
-              onClick={() => setActiveCategory('data-analytics')}
-            >
-              <i className="fas fa-chart-line" /> Data Analytics
-            </button>
-            <button
-              className={`certificates-tab ${activeCategory === 'job-simulation' ? 'active' : ''}`}
-              onClick={() => setActiveCategory('job-simulation')}
-            >
-              <i className="fas fa-briefcase" /> Job Simulations
-            </button>
-            <button
-              className={`certificates-tab ${activeCategory === 'ai-ml' ? 'active' : ''}`}
-              onClick={() => setActiveCategory('ai-ml')}
-            >
-              <i className="fas fa-brain" /> AI & ML
-            </button>
-            <button
-              className={`certificates-tab ${activeCategory === 'networking' ? 'active' : ''}`}
-              onClick={() => setActiveCategory('networking')}
-            >
-              <i className="fas fa-network-wired" /> Networking
-            </button>
-            <button
-              className={`certificates-tab ${activeCategory === 'development' ? 'active' : ''}`}
-              onClick={() => setActiveCategory('development')}
-            >
-              <i className="fas fa-code" /> Development
-            </button>
-          </div>
+        <div className="cert-filter-row">
+          <ShatterButton className={`cert-pill ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')} shatterColor="var(--primary)"><i className="fas fa-layer-group" /> All</ShatterButton>
+          <ShatterButton className={`cert-pill ${activeCategory === 'data-analytics' ? 'active' : ''}`} onClick={() => setActiveCategory('data-analytics')} shatterColor="var(--primary)"><i className="fas fa-chart-line" /> Data</ShatterButton>
+          <ShatterButton className={`cert-pill ${activeCategory === 'job-simulation' ? 'active' : ''}`} onClick={() => setActiveCategory('job-simulation')} shatterColor="var(--primary)"><i className="fas fa-flask" /> Simulation</ShatterButton>
+          <ShatterButton className={`cert-pill ${activeCategory === 'ai-ml' ? 'active' : ''}`} onClick={() => setActiveCategory('ai-ml')} shatterColor="var(--primary)"><i className="fas fa-brain" /> AI/ML</ShatterButton>
+          <ShatterButton className={`cert-pill ${activeCategory === 'development' ? 'active' : ''}`} onClick={() => setActiveCategory('development')} shatterColor="var(--primary)"><i className="fas fa-code" /> Dev</ShatterButton>
+        </div>
 
-          <div className="certificates-grid" ref={gridRef}>
-            {filteredCertificates.map((cert) => (
-              <div 
-                key={cert.id} 
-                className="certificate-card"
-                data-category={cert.category}
-              >
-                <div className="certificate-header">
-                  <div className="certificate-provider-icon">
-                    {cert.provider === 'NVIDIA' && <i className="fas fa-microchip" />}
-                    {cert.provider === 'Forage' && <i className="fas fa-briefcase" />}
-                    {cert.provider === 'LinkedIn' && <i className="fab fa-linkedin" />}
-                    {cert.provider === 'Cisco Networking Academy' && <i className="fas fa-network-wired" />}
-                    {cert.provider === 'Geekster' && <i className="fab fa-github" />}
-                    {cert.provider === 'Infosys Springboard' && <i className="fas fa-graduation-cap" />}
-                    {cert.provider === 'MongoDB' && <i className="fas fa-leaf" />}
-                    {cert.provider === 'TCS iON' && <i className="fas fa-award" />}
-                    {cert.provider === 'IBM' && <i className="fas fa-cloud" />}
-                  </div>
-                  <div className="certificate-meta">
-                    <h3 className="certificate-title">{cert.title}</h3>
-                    <p className="certificate-provider">{cert.provider}</p>
-                    <p className="certificate-date">Issued {cert.issueDate}</p>
-                  </div>
+        <div className="cert-template-grid">
+          {filteredCertificates.map((cert) => (
+            <article key={cert.id} className="certificate-template-card">
+              {cert.thumbnail && (
+                <div className="cert-thumb-wrap">
+                  <img
+                    src={cert.thumbnail}
+                    alt={`${cert.title} certificate`}
+                    loading="lazy"
+                    className="cert-thumb"
+                  />
                 </div>
+              )}
+              <p className="cert-provider"><i className="fas fa-building-columns" /> {cert.provider}</p>
+              <h3>{cert.title}</h3>
+              <p className="cert-issued"><i className="fas fa-calendar-days" /> Issued {cert.issueDate}</p>
 
-                {cert.credentialId && (
-                  <p className="certificate-credential">
-                    <i className="fas fa-fingerprint" /> Credential ID: {cert.credentialId}
-                  </p>
-                )}
-
-                {cert.skills && cert.skills.length > 0 && (
-                  <div className="certificate-skills">
-                    <strong>Skills:</strong> {cert.skills.join(' · ')}
-                  </div>
-                )}
-
-                {cert.credentialUrl && (
-                  <a
-                    href={cert.credentialUrl}
-                    className="certificate-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fas fa-external-link-alt" /> Show credential
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
+              {cert.credentialUrl ? (
+                <ShatterButton
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cert-link-btn"
+                  shatterColor="var(--primary)"
+                >
+                  <i className="fas fa-up-right-from-square" /> View Credential
+                </ShatterButton>
+              ) : (
+                <p className="cert-id-text"><i className="fas fa-fingerprint" /> {cert.credentialId ? `ID: ${cert.credentialId}` : 'Credential available on request'}</p>
+              )}
+            </article>
+          ))}
         </div>
       </div>
     </section>
