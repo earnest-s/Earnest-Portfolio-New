@@ -436,8 +436,7 @@ export const certificates: CertificateItem[] = [
 ];
 
 export const typingPhrases = [
+  'AI Engineer',
   'Data Analyst',
   'IoT Developer',
-  'AI Enthusiast',
-  'Problem Solver',
 ];
