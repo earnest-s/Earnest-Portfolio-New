@@ -129,4 +129,11 @@ img:hover {
   .app-shell main {
     padding-bottom: 132px;
   }
+
+  .header-wrap {
+    position: fixed !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
 }

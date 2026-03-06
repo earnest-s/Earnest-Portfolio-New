@@ -165,7 +165,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .projects-template-grid {
     grid-template-columns: 1fr;
     gap: 14px;
