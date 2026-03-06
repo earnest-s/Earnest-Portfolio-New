@@ -183,6 +183,27 @@ export const skills: Skill[] = [
     items: ['Python', 'SQL'],
   },
   {
+    id: 'frontend',
+    category: 'dev',
+    title: 'Frontend Development',
+    icon: 'fa-laptop-code',
+    items: ['HTML', 'CSS', 'JavaScript', 'React', 'Vite', 'TypeScript'],
+  },
+  {
+    id: 'windows-app',
+    category: 'dev',
+    title: 'Windows App Development',
+    icon: 'fa-desktop',
+    items: ['.NET Framework', 'Windows Desktop Apps'],
+  },
+  {
+    id: 'llm-dev',
+    category: 'data',
+    title: 'LLM Model Development',
+    icon: 'fa-brain',
+    items: ['Prompt Engineering', 'Model Tuning', 'RAG Pipelines'],
+  },
+  {
     id: 'iot',
     category: 'dev',
     title: 'IoT Development',
