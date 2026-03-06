@@ -21,17 +21,16 @@
   margin-bottom: 14px;
   display: inline-flex;
   align-items: center;
+  min-height: 1.2em;
 }
 
-.hero-kicker-text {
-  display: inline-block;
+.hero-typing {
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
-  overflow: hidden;
   border-right: 2px solid var(--primary);
-  width: 0;
-  max-width: calc(var(--type-ch) * 1ch);
-  animation: typing 3.6s steps(var(--type-ch), end) 0.15s forwards,
-    caretBlink 720ms step-end infinite;
+  padding-right: 4px;
+  animation: caretBlink 720ms step-end infinite;
 }
 
 .hero-name {
@@ -128,12 +127,6 @@
 @keyframes ctaShine {
   to {
     left: 140%;
-  }
-}
-
-@keyframes typing {
-  to {
-    width: calc(var(--type-ch) * 1ch);
   }
 }
 
