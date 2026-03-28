@@ -297,7 +297,7 @@ export const certificates: CertificateItem[] = [
     issueDate: 'March 27, 2026',
     credentialId: 'xv2krii9scud',
     credentialUrl: 'https://verify.skilljar.com/c/xv2krii9scud',
-    thumbnail: '/assets/anthropic-mcp-preview.svg',
+    thumbnail: '/assets/Anthropic_MCP.png',
     category: 'ai-ml',
     skills: ['Model Context Protocol', 'Anthropic', 'AI Integration'],
   },
