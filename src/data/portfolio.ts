@@ -291,6 +291,15 @@ export const skills: Skill[] = [
 
 export const certificates: CertificateItem[] = [
   {
+    id: 'anthropic-mcp',
+    title: 'Model Context Protocol (MCP)',
+    provider: 'Anthropic Education',
+    issueDate: 'Mar 2026',
+    credentialUrl: '/assets/Anthropic_MCP.pdf',
+    category: 'ai-ml',
+    skills: ['Model Context Protocol', 'LLM Tooling', 'AI Integration'],
+  },
+  {
     id: 'nvidia-jetson',
     title: 'Getting Started with AI on Jetson Nano',
     provider: 'NVIDIA',
