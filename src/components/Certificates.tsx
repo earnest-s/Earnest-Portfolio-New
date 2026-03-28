@@ -55,16 +55,24 @@ export const Certificates = () => {
         <div className="cert-template-grid">
           {filteredCertificates.map((cert) => (
             <article key={cert.id} className="certificate-template-card">
-              {cert.thumbnail && (
-                <div className="cert-thumb-wrap">
+              <div className="cert-thumb-wrap">
+                {cert.thumbnail ? (
                   <img
                     src={cert.thumbnail}
                     alt={`${cert.title} certificate`}
                     loading="lazy"
                     className="cert-thumb"
                   />
-                </div>
-              )}
+                ) : (
+                  <div className="cert-thumb cert-thumb-placeholder" aria-hidden="true">
+                    <span className="cert-placeholder-badge">
+                      <i className="fas fa-circle-check" /> Certificate of Completion
+                    </span>
+                    <strong className="cert-placeholder-title">{cert.title}</strong>
+                    <span className="cert-placeholder-footer">{cert.provider}</span>
+                  </div>
+                )}
+              </div>
               <p className="cert-provider"><i className="fas fa-building-columns" /> {cert.provider}</p>
               <h3>{cert.title}</h3>
               <p className="cert-issued"><i className="fas fa-calendar-days" /> Issued {cert.issueDate}</p>

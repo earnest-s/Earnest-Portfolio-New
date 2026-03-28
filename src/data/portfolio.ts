@@ -292,12 +292,13 @@ export const skills: Skill[] = [
 export const certificates: CertificateItem[] = [
   {
     id: 'anthropic-mcp',
-    title: 'Model Context Protocol (MCP)',
-    provider: 'Anthropic Education',
-    issueDate: 'Mar 2026',
-    credentialUrl: '/assets/Anthropic_MCP.pdf',
+    title: 'Introduction to Model Context Protocol',
+    provider: 'Anthropic',
+    issueDate: 'March 27, 2026',
+    credentialId: 'xv2krii9scud',
+    credentialUrl: 'https://verify.skilljar.com/c/xv2krii9scud',
     category: 'ai-ml',
-    skills: ['Model Context Protocol', 'LLM Tooling', 'AI Integration'],
+    skills: ['Model Context Protocol', 'Anthropic', 'AI Integration'],
   },
   {
     id: 'nvidia-jetson',
