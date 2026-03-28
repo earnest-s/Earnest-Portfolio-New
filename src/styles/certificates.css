@@ -108,38 +108,45 @@
   background: linear-gradient(180deg, #dce9e3 0%, #c8ddd4 100%);
   color: #16181d;
   border-radius: 10px;
-  padding: 18px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   text-align: center;
+  overflow: hidden;
 }
 
 .cert-placeholder-badge {
-  align-self: center;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
+  max-width: 100%;
+  padding: 6px 12px;
   border: 2px solid rgba(22, 24, 29, 0.8);
   border-radius: 999px;
-  font-size: 0.7rem;
+  font-size: 0.58rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
   text-transform: uppercase;
 }
 
 .cert-placeholder-title {
-  font-size: 1.45rem;
-  line-height: 1.08;
+  max-width: 12ch;
+  font-size: clamp(0.95rem, 1.2vw + 0.55rem, 1.2rem);
+  line-height: 1.02;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
 .cert-placeholder-footer {
-  font-size: 0.88rem;
+  font-size: 0.74rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
+  line-height: 1;
   text-transform: uppercase;
 }
 
@@ -255,22 +262,23 @@
   }
 
   .cert-thumb-placeholder {
-    padding: 14px;
+    padding: 10px 12px;
+    gap: 8px;
   }
 
   .cert-placeholder-badge {
-    font-size: 0.62rem;
-    padding: 7px 10px;
-    letter-spacing: 0.08em;
+    font-size: 0.52rem;
+    padding: 6px 9px;
+    letter-spacing: 0.06em;
   }
 
   .cert-placeholder-title {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
   }
 
   .cert-placeholder-footer {
-    font-size: 0.76rem;
-    letter-spacing: 0.12em;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
   }
 
   .certificate-template-card h3 {
