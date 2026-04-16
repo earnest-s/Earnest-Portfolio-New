@@ -60,7 +60,7 @@
 .skills-grid-template {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .skill-card {
@@ -73,8 +73,8 @@
   );
   backdrop-filter: blur(18px) saturate(140%);
   box-shadow: var(--shadow);
-  padding: 18px;
-  min-height: 170px;
+  padding: 22px;
+  min-height: 210px;
 }
 
 .skill-title-row {
@@ -89,8 +89,8 @@
 }
 
 .skill-title-row h3 {
-  font-family: 'Google Sans', 'Roboto', sans-serif;
-  font-size: 1.02rem;
+  font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
+  font-size: 1.14rem;
 }
 
 .skill-chip-list {
@@ -104,8 +104,8 @@
   background: color-mix(in srgb, var(--surface) 35%, transparent);
   color: var(--chip-text);
   border-radius: 999px;
-  font-size: 0.86rem;
-  padding: 7px 14px;
+  font-size: 0.95rem;
+  padding: 8px 16px;
   display: inline-flex;
   align-items: center;
   gap: 10px;

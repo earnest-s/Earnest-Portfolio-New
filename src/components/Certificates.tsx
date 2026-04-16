@@ -87,9 +87,9 @@ export const Certificates = () => {
                 >
                   <i className="fas fa-up-right-from-square" /> View Credential
                 </ShatterButton>
-              ) : (
-                <p className="cert-id-text"><i className="fas fa-fingerprint" /> {cert.credentialId ? `ID: ${cert.credentialId}` : 'Credential available on request'}</p>
-              )}
+              ) : cert.credentialId ? (
+                <p className="cert-id-text"><i className="fas fa-fingerprint" /> {`ID: ${cert.credentialId}`}</p>
+              ) : null}
             </article>
           ))}
         </div>

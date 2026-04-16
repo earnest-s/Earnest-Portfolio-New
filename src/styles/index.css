@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/oneplus-sans-3');
+
 :root,
 [data-theme='light'] {
   --bg: #f7f8fa;
@@ -49,10 +51,11 @@ body,
 }
 
 body {
-  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
+  font-size: clamp(1rem, 0.2vw + 0.98rem, 1.08rem);
   color: var(--text);
   background: var(--bg);
-  line-height: 1.65;
+  line-height: 1.72;
   overflow-x: hidden;
   scroll-behavior: smooth;
   transition: background-color 200ms ease, color 200ms ease;
@@ -68,12 +71,12 @@ body.no-scroll {
 }
 
 .container {
-  width: min(1120px, 92vw);
+  width: min(1240px, 94vw);
   margin: 0 auto;
 }
 
 .section {
-  padding: clamp(64px, 8vw, 106px) 0;
+  padding: clamp(72px, 8.6vw, 124px) 0;
 }
 
 .section-header {
@@ -83,8 +86,8 @@ body.no-scroll {
 
 .section-title {
   display: inline-block;
-  font-family: 'Google Sans', 'Roboto', sans-serif;
-  font-size: clamp(1.9rem, 4.8vw, 3rem);
+  font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
+  font-size: clamp(2.1rem, 5vw, 3.3rem);
   line-height: 1.08;
   letter-spacing: -0.02em;
 }

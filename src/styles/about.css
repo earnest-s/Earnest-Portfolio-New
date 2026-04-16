@@ -18,7 +18,7 @@
 }
 
 .about-lead {
-  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
   font-size: clamp(1.16rem, 2.8vw, 1.7rem);
   line-height: 1.25;
   margin-bottom: 12px;
@@ -47,7 +47,7 @@
 }
 
 .pillar-card h3 {
-  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
   font-size: 0.98rem;
   margin-bottom: 6px;
 }

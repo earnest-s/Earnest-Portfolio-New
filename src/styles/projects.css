@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-auto-rows: 1fr;
-  gap: 12px;
+  gap: 16px;
   align-items: stretch;
 }
 
@@ -28,12 +28,12 @@
   );
   backdrop-filter: blur(18px) saturate(140%);
   box-shadow: var(--shadow);
-  padding: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 480px;
-  min-height: 480px;
+  height: 530px;
+  min-height: 530px;
   overflow: hidden;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
@@ -45,7 +45,7 @@
 
 .project-thumb-wrap {
   width: 100%;
-  height: 170px;
+  height: 195px;
   aspect-ratio: 16 / 9;
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, var(--line) 70%, var(--primary) 30%);
@@ -77,8 +77,8 @@
 }
 
 .project-head h3 {
-  font-family: 'Google Sans', 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
+  font-size: 1.1rem;
   line-height: 1.28;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -88,9 +88,9 @@
 
 .project-template-card p {
   color: var(--text-soft);
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   line-height: 1.5;
-  height: 120px;
+  height: 136px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -101,7 +101,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  height: 72px;
+  height: 82px;
   align-content: flex-start;
   overflow: hidden;
 }
@@ -111,10 +111,10 @@
   border: 1px solid color-mix(in srgb, var(--chip-border) 70%, transparent);
   background: color-mix(in srgb, var(--surface) 35%, transparent);
   color: var(--chip-text);
-  font-size: 0.71rem;
+  font-size: 0.84rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  padding: 4px 8px;
+  padding: 5px 10px;
   backdrop-filter: blur(10px) saturate(140%);
 }
 

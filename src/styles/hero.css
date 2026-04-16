@@ -35,7 +35,7 @@
 
 .hero-name {
   margin-bottom: 8px;
-  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
   font-size: clamp(1.25rem, 2.2vw, 1.6rem);
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -50,7 +50,7 @@
 }
 
 .hero-heading span {
-  font-family: 'Google Sans', 'Roboto', sans-serif;
+  font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
   font-size: clamp(2.2rem, 7vw, 5rem);
   line-height: 0.93;
   letter-spacing: -0.03em;
