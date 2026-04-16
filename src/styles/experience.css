@@ -201,8 +201,7 @@
   }
 
   .experience-cert-frame-head {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: 1fr;
   }
 
   .experience-cert-image {
