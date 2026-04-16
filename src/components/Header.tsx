@@ -61,7 +61,7 @@ export const Header = () => {
     const section = document.getElementById(id);
     if (!section) return;
 
-    const headerOffset = isMobile ? 18 : 92;
+    const headerOffset = isMobile ? 18 : 110;
     window.scrollTo({ top: section.offsetTop - headerOffset, behavior: 'smooth' });
     setActiveSection(id);
   };
