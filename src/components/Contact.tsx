@@ -31,6 +31,7 @@ export const Contact = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 72%',
+          once: true,
         },
       });
     }, sectionRef);

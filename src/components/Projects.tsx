@@ -24,6 +24,7 @@ export const Projects = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 72%',
+          once: true,
         },
       });
     }, sectionRef);

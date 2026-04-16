@@ -92,6 +92,36 @@ body.no-scroll {
   letter-spacing: -0.02em;
 }
 
+/* Performance guardrails for long single-page scrolling */
+.about-intro-card,
+.pillar-card,
+.experience-card,
+.skill-card,
+.certificate-template-card,
+.project-template-card,
+.contact-panel,
+.contact-form-panel {
+  content-visibility: auto;
+  contain-intrinsic-size: 380px;
+}
+
+.header-shell,
+.header-item,
+.about-intro-card,
+.pillar-card,
+.experience-card,
+.skills-filter-row,
+.skill-card,
+.cert-filter-row,
+.certificate-template-card,
+.project-template-card,
+.contact-panel,
+.contact-form-panel,
+.contact-form-template input,
+.contact-form-template textarea {
+  backdrop-filter: blur(12px) saturate(122%);
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -104,12 +134,13 @@ textarea {
 }
 
 img {
-  transition: transform 220ms ease;
-  will-change: transform;
+  transition: transform 180ms ease;
 }
 
-img:hover {
-  transform: scale(1.03);
+@media (hover: hover) and (pointer: fine) {
+  img:hover {
+    transform: scale(1.015);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

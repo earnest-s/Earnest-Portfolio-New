@@ -14,9 +14,15 @@ const AnoAI = () => {
     let width = 0;
     let height = 0;
     let dpr = 1;
+    let lastFrameTime = 0;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isSmallViewport = window.matchMedia('(max-width: 960px)').matches;
+    const targetFps = reducedMotion ? 0 : isSmallViewport ? 20 : 30;
+    const frameInterval = targetFps > 0 ? 1000 / targetFps : 0;
 
     const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = Math.floor(width * dpr);
@@ -28,7 +34,7 @@ const AnoAI = () => {
 
     const drawWave = (time: number, yOffset: number, amp: number, speed: number, color: string) => {
       ctx.beginPath();
-      for (let x = 0; x <= width; x += 8) {
+      for (let x = 0; x <= width; x += 12) {
         const y = yOffset + Math.sin((x * 0.006) + (time * speed)) * amp;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
@@ -44,25 +50,51 @@ const AnoAI = () => {
       ctx.fill();
     };
 
-    const animate = (timestamp: number) => {
-      const t = timestamp * 0.001;
+    const drawFrame = (timeSeconds: number) => {
       ctx.clearRect(0, 0, width, height);
 
       // Soft animated aurora-like layers.
-      drawWave(t, height * 0.24, 48, 0.85, 'rgba(255, 60, 120, 0.26)');
-      drawWave(t, height * 0.34, 64, 0.62, 'rgba(70, 170, 255, 0.20)');
-      drawWave(t, height * 0.46, 72, 0.48, 'rgba(145, 95, 255, 0.16)');
+      drawWave(timeSeconds, height * 0.24, 48, 0.85, 'rgba(255, 60, 120, 0.26)');
+      drawWave(timeSeconds, height * 0.34, 64, 0.62, 'rgba(70, 170, 255, 0.20)');
+      drawWave(timeSeconds, height * 0.46, 72, 0.48, 'rgba(145, 95, 255, 0.16)');
+    };
 
+    const animate = (timestamp: number) => {
+      if (document.hidden) {
+        frameId = window.requestAnimationFrame(animate);
+        return;
+      }
+
+      if (frameInterval && timestamp - lastFrameTime < frameInterval) {
+        frameId = window.requestAnimationFrame(animate);
+        return;
+      }
+
+      lastFrameTime = timestamp;
+      drawFrame(timestamp * 0.001);
       frameId = window.requestAnimationFrame(animate);
     };
 
     resize();
-    frameId = window.requestAnimationFrame(animate);
+
+    if (reducedMotion) {
+      drawFrame(0);
+    } else {
+      frameId = window.requestAnimationFrame(animate);
+    }
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) return;
+      lastFrameTime = 0;
+    };
+
     window.addEventListener('resize', resize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       window.cancelAnimationFrame(frameId);
       window.removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
 

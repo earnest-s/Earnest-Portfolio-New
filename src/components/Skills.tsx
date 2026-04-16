@@ -26,6 +26,7 @@ export const Skills = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 70%',
+          once: true,
         },
       });
     }, sectionRef);

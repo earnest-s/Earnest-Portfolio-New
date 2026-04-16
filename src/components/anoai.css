@@ -23,11 +23,11 @@
 }
 
 [data-theme='dark'] .anoai-canvas {
-  opacity: 0.46;
-  mix-blend-mode: screen;
+  opacity: 0.4;
+  mix-blend-mode: normal;
 }
 
 [data-theme='light'] .anoai-canvas {
-  opacity: 0.30;
-  mix-blend-mode: multiply;
+  opacity: 0.24;
+  mix-blend-mode: normal;
 }
