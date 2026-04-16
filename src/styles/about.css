@@ -1,7 +1,7 @@
 .about-template-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 18px;
 }
 
 .about-intro-card {
@@ -14,24 +14,27 @@
   );
   backdrop-filter: blur(18px) saturate(140%);
   box-shadow: var(--shadow);
-  padding: clamp(18px, 3vw, 26px);
+  padding: clamp(24px, 3.6vw, 36px);
+  min-height: 280px;
 }
 
 .about-lead {
   font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
-  font-size: clamp(1.16rem, 2.8vw, 1.7rem);
+  font-size: clamp(1.3rem, 3vw, 1.95rem);
   line-height: 1.25;
   margin-bottom: 12px;
 }
 
 .about-intro-card p:last-child {
   color: var(--text-soft);
+  font-size: 1.08rem;
+  line-height: 1.78;
 }
 
 .about-pillars {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 14px;
 }
 
 .pillar-card {
@@ -43,18 +46,19 @@
     color-mix(in srgb, var(--surface-alt) 55%, transparent)
   );
   backdrop-filter: blur(14px) saturate(135%);
-  padding: 14px;
+  padding: 18px;
+  min-height: 136px;
 }
 
 .pillar-card h3 {
   font-family: 'OnePlus Sans', 'Google Sans', 'Roboto', sans-serif;
-  font-size: 0.98rem;
+  font-size: 1.08rem;
   margin-bottom: 6px;
 }
 
 .pillar-card p {
   color: var(--text-soft);
-  font-size: 0.88rem;
+  font-size: 0.98rem;
 }
 
 @media (max-width: 960px) {
