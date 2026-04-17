@@ -30,6 +30,7 @@
   pointer-events: none;
   transform: translateY(8px);
   transition: opacity 180ms ease, transform 180ms ease, color 180ms ease, border-color 180ms ease;
+  z-index: 3;
 }
 
 .previewable-image:hover .previewable-image-expand,
