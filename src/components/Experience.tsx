@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { experiences } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { PreviewableImage } from './PreviewableImage';
 import '../styles/experience.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -75,11 +76,11 @@ export const Experience = () => {
                       <span><i className="fas fa-building-columns" /> {exp.certificate.provider}</span>
                     </div>
                     <div className="experience-cert-canvas">
-                      <img
+                      <PreviewableImage
                         src={exp.certificate.imagePath}
                         alt={`${exp.title} certificate preview`}
                         loading="lazy"
-                        className="experience-cert-image"
+                        imageClassName="experience-cert-image"
                       />
                     </div>
                   </div>
