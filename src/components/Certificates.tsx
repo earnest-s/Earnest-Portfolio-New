@@ -3,6 +3,7 @@ import { certificates } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ShatterButton } from './ShatterButton';
+import { PreviewableImage } from './PreviewableImage';
 import '../styles/certificates.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -58,11 +59,11 @@ export const Certificates = () => {
             <article key={cert.id} className="certificate-template-card">
               <div className="cert-thumb-wrap">
                 {cert.thumbnail ? (
-                  <img
+                  <PreviewableImage
                     src={cert.thumbnail}
                     alt={`${cert.title} certificate`}
                     loading="lazy"
-                    className="cert-thumb"
+                    imageClassName="cert-thumb"
                   />
                 ) : (
                   <div className="cert-thumb cert-thumb-placeholder" aria-hidden="true">
