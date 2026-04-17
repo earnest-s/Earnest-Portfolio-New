@@ -3,6 +3,7 @@ import { projects } from '../data/portfolio';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ShatterButton } from './ShatterButton';
+import { PreviewableImage } from './PreviewableImage';
 import '../styles/projects.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -44,11 +45,11 @@ export const Projects = () => {
             <article key={project.id} className="project-template-card">
               {project.thumbnail && (
                 <div className="project-thumb-wrap">
-                  <img
+                  <PreviewableImage
                     src={project.thumbnail}
                     alt={`${project.title} preview`}
                     loading="lazy"
-                    className="project-thumb"
+                    imageClassName="project-thumb"
                   />
                 </div>
               )}
