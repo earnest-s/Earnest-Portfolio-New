@@ -4,6 +4,10 @@
   height: 100%;
 }
 
+.previewable-image img {
+  cursor: zoom-in;
+}
+
 .previewable-image-expand {
   position: absolute;
   right: 10px;
