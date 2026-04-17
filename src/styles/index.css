@@ -92,19 +92,6 @@ body.no-scroll {
   letter-spacing: -0.02em;
 }
 
-/* Performance guardrails for long single-page scrolling */
-.about-intro-card,
-.pillar-card,
-.experience-card,
-.skill-card,
-.certificate-template-card,
-.project-template-card,
-.contact-panel,
-.contact-form-panel {
-  content-visibility: auto;
-  contain-intrinsic-size: 380px;
-}
-
 .header-shell,
 .header-item,
 .about-intro-card,
